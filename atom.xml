@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-11-01T06:16:36.463Z</updated>
+  <updated>2016-11-01T06:27:31.454Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://chanran.github.io/2016/11/01/stylus%E9%A2%84%E5%A4%84%E7%90%86%E5%85%A5%E9%97%A8%E4%B8%89%E6%8F%92%E5%80%BC/"/>
     <id>https://chanran.github.io/2016/11/01/stylus预处理入门三插值/</id>
     <published>2016-11-01T05:56:17.000Z</published>
-    <updated>2016-11-01T06:16:36.463Z</updated>
+    <updated>2016-11-01T06:27:31.454Z</updated>
     
     <content type="html"><![CDATA[<h1 id="插值-interporation"><a href="#插值-interporation" class="headerlink" title="插值(interporation)"></a>插值(interporation)</h1><blockquote>
 <p>插值相当于解析表达式或者变量，让它们的值替换插值的位置。<br><strong>注：</strong> 不能用于属性值的插值（但属性值可以使用变量替换）。</p>
@@ -64,6 +64,8 @@
     
     </summary>
     
+      <category term="css" scheme="https://chanran.github.io/categories/css/"/>
+    
     
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
@@ -80,7 +82,7 @@
     <link href="https://chanran.github.io/2016/11/01/stylus%E9%A2%84%E5%A4%84%E7%90%86%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8F%98%E9%87%8F/"/>
     <id>https://chanran.github.io/2016/11/01/stylus预处理入门二变量/</id>
     <published>2016-11-01T05:54:34.000Z</published>
-    <updated>2016-11-01T06:16:33.395Z</updated>
+    <updated>2016-11-01T06:27:22.134Z</updated>
     
     <content type="html"><![CDATA[<h1 id="变量-variables"><a href="#变量-variables" class="headerlink" title="变量(variables)"></a>变量(variables)</h1><blockquote>
 <p><strong>变量的标识符可以由$、下划线、字母、数字组成，其中数字不能作为变量的开头。其实这里的变量只是理解为单纯的字符替换</strong></p>
@@ -128,6 +130,8 @@
     
     </summary>
     
+      <category term="css" scheme="https://chanran.github.io/categories/css/"/>
+    
     
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
@@ -144,7 +148,7 @@
     <link href="https://chanran.github.io/2016/11/01/stylus%E9%A2%84%E5%A4%84%E7%90%86%E5%85%A5%E9%97%A8%E4%B8%80%E9%80%89%E6%8B%A9%E5%99%A8/"/>
     <id>https://chanran.github.io/2016/11/01/stylus预处理入门一选择器/</id>
     <published>2016-11-01T05:50:46.000Z</published>
-    <updated>2016-11-01T06:16:55.425Z</updated>
+    <updated>2016-11-01T06:27:42.522Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <h1 id="相关网站"><a href="#相关网站" class="headerlink" title="相关网站"></a>相关网站</h1><ul>
@@ -304,6 +308,8 @@
     
     </summary>
     
+      <category term="css" scheme="https://chanran.github.io/categories/css/"/>
+    
     
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
@@ -320,7 +326,7 @@
     <link href="https://chanran.github.io/2016/11/01/css3%E5%8A%A8%E7%94%BB%E7%AC%94%E8%AE%B0/"/>
     <id>https://chanran.github.io/2016/11/01/css3动画笔记/</id>
     <published>2016-11-01T05:34:41.000Z</published>
-    <updated>2016-11-01T05:49:36.447Z</updated>
+    <updated>2016-11-01T06:27:57.470Z</updated>
     
     <content type="html"><![CDATA[<h1 id="some-sites"><a href="#some-sites" class="headerlink" title="some sites"></a>some sites</h1><ul>
 <li><a href="http://www.w3school.com.cn/css3/css3_animation.asp" target="_blank" rel="external">css3动画文档</a> by W3CSchool</li>
@@ -575,6 +581,10 @@
 </ul>
 </li>
 </ul>
+<hr>
+<blockquote>
+<p>QUOTE: If you are not moving ahead , you are falling behind.</p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
@@ -583,6 +593,8 @@
 &lt;li&gt;&lt;a href=&quot;http://www.w3school.com
     
     </summary>
+    
+      <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
       <category term="css3" scheme="https://chanran.github.io/tags/css3/"/>
