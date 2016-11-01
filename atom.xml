@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-11-01T05:35:35.633Z</updated>
+  <updated>2016-11-01T05:36:41.026Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="https://chanran.github.io/2016/11/01/css3%E5%8A%A8%E7%94%BB%E7%AC%94%E8%AE%B0/"/>
     <id>https://chanran.github.io/2016/11/01/css3动画笔记/</id>
     <published>2016-11-01T05:34:41.000Z</published>
-    <updated>2016-11-01T05:35:35.633Z</updated>
+    <updated>2016-11-01T05:36:41.026Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="some-websites-to-learn-css3Animate"><a href="#some-websites-to-learn-css3Animate" class="headerlink" title="some websites to learn css3Animate"></a>some websites to learn css3Animate</h1><ul>
+    <content type="html"><![CDATA[<h1 id="some-sites"><a href="#some-sites" class="headerlink" title="some sites"></a>some sites</h1><ul>
 <li><a href="http://www.w3school.com.cn/css3/css3_animation.asp" target="_blank" rel="external">css3动画文档</a> by W3CSchool</li>
 <li><a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html" target="_blank" rel="external">css3动画简介</a> by阮一峰</li>
 <li><a href="http://isux.tencent.com/css3/" target="_blank" rel="external">css3动画手册</a> by 腾讯 isux</li>
@@ -279,21 +279,8 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;some-websites-to-learn-css3Animate&quot;&gt;&lt;a href=&quot;#some-websites-to-learn-css3Animate&quot; class=&quot;headerlink&quot; title=&quot;some websites to learn c
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://chanran.github.io/2016/11/01/hello-world/"/>
-    <id>https://chanran.github.io/2016/11/01/hello-world/</id>
-    <published>2016-11-01T05:26:11.492Z</published>
-    <updated>2016-11-01T05:26:11.492Z</updated>
-    
-    <summary type="html">
+      &lt;h1 id=&quot;some-sites&quot;&gt;&lt;a href=&quot;#some-sites&quot; class=&quot;headerlink&quot; title=&quot;some sites&quot;&gt;&lt;/a&gt;some sites&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.w3school.com
     
     </summary>
     
