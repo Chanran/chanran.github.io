@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-11-01T05:58:19.383Z</updated>
+  <updated>2016-11-01T06:09:11.121Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>stylus预处理入门三插值</title>
+    <title>stylus预处理入门(三)--插值</title>
     <link href="https://chanran.github.io/2016/11/01/stylus%E9%A2%84%E5%A4%84%E7%90%86%E5%85%A5%E9%97%A8%E4%B8%89%E6%8F%92%E5%80%BC/"/>
     <id>https://chanran.github.io/2016/11/01/stylus预处理入门三插值/</id>
     <published>2016-11-01T05:56:17.000Z</published>
-    <updated>2016-11-01T05:58:19.383Z</updated>
+    <updated>2016-11-01T06:09:11.121Z</updated>
     
     <content type="html"><![CDATA[<h1 id="插值-interporation"><a href="#插值-interporation" class="headerlink" title="插值(interporation)"></a>插值(interporation)</h1><blockquote>
 <p>插值相当于解析表达式或者变量，让它们的值替换插值的位置。<br><strong>注：</strong> 不能用于属性值的插值（但属性值可以使用变量替换）。</p>
