@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-10-31T08:21:38.279Z</updated>
+  <updated>2016-11-01T05:35:35.633Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -16,26 +16,284 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://chanran.github.io/2016/10/31/hello-world/"/>
-    <id>https://chanran.github.io/2016/10/31/hello-world/</id>
-    <published>2016-10-31T08:21:38.279Z</published>
-    <updated>2016-10-31T08:21:38.279Z</updated>
+    <title>css3动画笔记</title>
+    <link href="https://chanran.github.io/2016/11/01/css3%E5%8A%A8%E7%94%BB%E7%AC%94%E8%AE%B0/"/>
+    <id>https://chanran.github.io/2016/11/01/css3动画笔记/</id>
+    <published>2016-11-01T05:34:41.000Z</published>
+    <updated>2016-11-01T05:35:35.633Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<h1 id="some-websites-to-learn-css3Animate"><a href="#some-websites-to-learn-css3Animate" class="headerlink" title="some websites to learn css3Animate"></a>some websites to learn css3Animate</h1><ul>
+<li><a href="http://www.w3school.com.cn/css3/css3_animation.asp" target="_blank" rel="external">css3动画文档</a> by W3CSchool</li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html" target="_blank" rel="external">css3动画简介</a> by阮一峰</li>
+<li><a href="http://isux.tencent.com/css3/" target="_blank" rel="external">css3动画手册</a> by 腾讯 isux</li>
+<li><a href="http://www.w3cplus.com/css3/introduction-to-hardware-acceleration-css-animations.html" target="_blank" rel="external">css3动画之硬件加速</a> by w3cplus</li>
+<li><a href="http://www.w3ctech.com/topic/1472" target="_blank" rel="external">调试css3 动画 keyframe</a> by w3ctech</li>
+<li><a href="http://zencode.in/14.CSS%E5%8A%A8%E7%94%BB%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.html" target="_blank" rel="external">css动画的性能优化</a> by zencode.in</li>
+<li><a href="http://code.leozhang2018.me/2016/03/07/%E9%9D%A2%E5%90%91%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%84%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9B%86%E9%94%A6/" target="_blank" rel="external">浏览器是如何渲染页面的</a> by code.leozhang2018.me (读完了之后会更加懂得如何提升css动画性能)</li>
+<li><a href="https://github.com/fouber/blog/issues/2" target="_blank" rel="external">前端开发体系建设日记</a> by 张云龙 （这个链接是作为拓展的）</li>
+</ul>
+<h1 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h1><ul>
+<li>grammar: tansition: property duration timing-function delay;</li>
+<li>detail<ul>
+<li>transition-property：要过渡的css属性</li>
+<li>transition-duration：要过渡持续多少秒或者毫秒</li>
+<li>transition-timing-function：速度效果的速度曲线</li>
+<li>transition-delay：延迟多少秒执行过渡</li>
+</ul>
+</li>
+<li>notice<ul>
+<li>默认值：transition:all 0 ease 0</li>
+<li>如果transition-duration属性没有被设置，则默认为0，即不会产生过渡效果</li>
+<li>tanstion-timing-function: linear/<em>匀速</em>/ | ease-in /<em>加速</em>/ | ease-out /<em>减速</em>/ | ease /<em>逐渐放慢</em>/ | cubic-bezier /<em>函数，自定义速度模式，可以使用 <a href="http://cubic-bezier.com/" target="_blank" rel="external">工具网站</a> 这个网站制作</em>/</li>
+</ul>
+</li>
+<li>compatibility<ul>
+<li>目前，各大浏览器（包括IE 10）都已经支持无前缀的transition，所以transition已经可以很安全地不加浏览器前缀。</li>
+<li>不是所有的CSS属性都支持transition，完整的列表查看<a href="http://oli.jp/2010/css-animatable-properties/" target="_blank" rel="external">这里</a>，以及具体的<a href="http://leaverou.github.io/animatable/" target="_blank" rel="external">效果</a>。</li>
+<li>transition需要明确知道，开始状态和结束状态的具体数值，才能计算出中间状态。比如，height从0px变化到100px，transition可以算出中间状态。但是，transition没法算出0px到auto的中间状态，也就是说，如果开始或结束的设置是height: auto，那么就不会产生动画效果。类似的情况还有，display: none到block，background: url(foo.jpg)到url(bar.jpg)等等。</li>
+</ul>
+</li>
+<li>advantage : 简单易用</li>
+<li>disavantage<ul>
+<li>transition需要事件触发，所以没法在网页加载时自动发生。</li>
+<li>transition是一次性的，不能重复发生，除非一再触发。</li>
+<li>transition只能定义开始状态和结束状态，不能定义中间状态，也就是说只有两个状态。</li>
+<li>一条transition规则，只能定义一个属性的变化，不能涉及多个属性。</li>
+</ul>
+</li>
+</ul>
+<h1 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h1><ul>
+<li>grammar: name duration timing-function delay iteration-count direction</li>
+<li>detail<ul>
+<li>@keyframes：规定动画</li>
+<li>animation-name：绑定选择器的keyframe名称</li>
+<li>animation-duration：动画的持续时间，以秒或者毫秒计</li>
+<li>animation-timing-function：动画的速度曲线</li>
+<li>animation-delay：延迟多少秒执行动画</li>
+<li>animation-iteration-count：动画播放次数</li>
+<li>animation-diretion：是否应该轮流反向播放动画</li>
+<li>animation-play-state(通常用在js控制是否播放,object.style.animationPlayState)：（paused[停止] | running[播放]）规定动画正在播放还是暂停</li>
+<li>animation-fill-mode(通常用在js控制动画效果是否可见,object.style.animationFillMode)：（none[不改变默认行为] | forwards[当动画完成后，保持最后一个属性值] | backwards[在animation-delay 所制定的一段时间内，在动画显示之前，应该开始属性值] | both[向前和向后填充模式都被应用]）规定动画在播放之前或之后，其动画效果是否可见。</li>
+</ul>
+</li>
+<li>compatibility<ul>
+<li>Internet Explorer 10、Firefox 以及 Opera 支持 @keyframes 规则和 animation 属性。Chrome 和 Safari 需要前缀 -webkit-</li>
+<li>Internet Explorer 9，以及更早的版本，不支持 @keyframe 规则或 animation 属性</li>
+</ul>
+</li>
+<li>notice<ul>
+<li>默认值：animation:none 0 ease 0 1 normal</li>
+<li>尽量少在@keyframe里使用除了transform,opacity,filter以外的元素，因为会触发浏览器的重绘(repaint)<a href="http://www.w3cplus.com/css3/introduction-to-hardware-acceleration-css-animations.html" target="_blank" rel="external">详情</a></li>
+<li>@keyframe<ul>
+<li>定义：以百分比来规定改变发生的时间，或者通过关键词”from” 和 “to”，等价于0%和100%，0%是动画的开始时间，100%是结束时间</li>
+<li>grammar:@keyframes animationname{ keyframes-selector { css-styles;} }</li>
+<li>detail<ul>
+<li>animationname：（必需）定义动画名称</li>
+<li>keyframes-selector：（必需）动画时长的百分比，合法的值：0%-100%（可以使用 from[0%] 和 to[100%]）</li>
+<li>css-styles：（必需）一个或多个合法的css样式属性</li>
+</ul>
+</li>
+<li>example</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<pre><code>@keyframes mymove
+{
+  0%   {top:0px;}
+  25%  {top:200px;}
+  50%  {top:100px;}
+  75%  {top:200px;}
+  100% {top:0px;}
+}
+@-moz-keyframes mymove /* Firefox */
+{
+  0%   {top:0px;}
+  25%  {top:200px;}
+  50%  {top:100px;}
+  75%  {top:200px;}
+  100% {top:0px;}
+}
+
+@-webkit-keyframes mymove /* Safari 和 Chrome */
+{
+  0%   {top:0px;}
+  25%  {top:200px;}
+  50%  {top:100px;}
+  75%  {top:200px;}
+  100% {top:0px;}
+}
+
+@-o-keyframes mymove /* Opera */
+{
+  0%   {top:0px;}
+  25%  {top:200px;}
+  50%  {top:100px;}
+  75%  {top:200px;}
+  100% {top:0px;}
+}
+</code></pre><hr>
+<ul>
+<li>如果animation-duration属性没有设置，则时长为0，即动画不会被播放</li>
+<li>animation-iteration-count默认值为1，可设置为infinite（无限次播放）</li>
+<li>animation-direction:normal /<em>正常播放</em>/ | alternate /<em>轮流反向播放</em>/<ul>
+<li>advantage ：解决了transition过渡效果不能循环播放的弊端</li>
+<li>disvantage：目前，IE 10和Firefox（&gt;= 16）支持没有前缀的animation，而chrome不支持，所以必须使用webkit前缀。代码必须写成下面这样。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<pre><code>div:hover {
+  -webkit-animation: 1s rainbow;
+  animation: 1s rainbow;  
+}
+
+@-webkit-keyframes rainbow {
+  0% { background: #c00; }
+  50% { background: orange; }
+  100% { background: yellowgreen; }
+}
+
+@keyframes rainbow {
+  0% { background: #c00; }
+  50% { background: orange; }
+  100% { background: yellowgreen; }
+}
+</code></pre><hr>
+<h1 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h1><ul>
+<li>grammar:transform:none | transform-functions</li>
+<li>detail:none and transform-functions<ul>
+<li>none：不定义转换</li>
+<li>matrix(n,n,n,n,n,n)：定义2D转换，使用六个值的矩阵</li>
+<li>matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)：定义3D转换，使用16个值的4X4矩阵</li>
+<li>translate(x,y)：定义2D转换（参数：x轴移动量，y轴移动量。+即向右移动，-即向左移动。单独一个量时表示x轴移动量与y轴移动量相等）</li>
+<li>translate3d(x,y,z)：定义3D转换（参数基于translate(x,y)扩展）</li>
+<li>translateX(x)：定义转换，只用于X轴的值</li>
+<li>translateY(y)：定义转换，只用于Y轴的值</li>
+<li>translateZ(z)：定义转换，只用于Z轴的值</li>
+<li>scale(x,y)：定义2D缩放转换（参数x,y是倍数）</li>
+<li>scale(x,y,z)：定义3D缩放转换（参数基于scale(x,y)扩展）</li>
+<li>scaleX(x)：设置X轴的值来定义缩放转换</li>
+<li>scaleY(y)：设置Y轴的值来定义缩放转换</li>
+<li>scaleZ(z)：设置Z轴的值来定义缩放转换</li>
+<li>rotate(angle)：定义2D旋转。在参数中规定角度（正是顺时针，负是逆时针）</li>
+<li>rotate3d(x,y,z,angle)：定义3D旋转</li>
+<li>rotateX(angle)：定义沿着X轴的3D旋转</li>
+<li>rotateY(angle)：定义沿着Y轴的3D旋转</li>
+<li>rotateZ(angle)：定义沿着Z轴的3D旋转</li>
+<li>skew(x-angle,y-angle)：定义沿着X和Y轴的2D倾斜转换</li>
+<li>skew(angle)：定义沿着X轴的2D倾斜转换</li>
+<li>skew(angle)：定义沿着Y轴的2D倾斜转换</li>
+<li>perspective(n)：为3D转换元素定义透视视图</li>
+</ul>
+</li>
+<li>compatibility<ul>
+<li>Internet Explorer 10、Firefox、Opera 支持 transform 属性</li>
+<li>Internet Explorer 9 支持替代的 -ms-transform 属性（仅适用于 2D 转换）</li>
+<li>Safari 和 Chrome 支持替代的 -webkit-transform 属性（3D 和 2D 转换）</li>
+<li>Opera 只支持 2D 转换</li>
+<li>Internet Explorer 10 和 Firefox 支持 3D 转换</li>
+<li>Chrome 和 Safari 需要前缀 -webkit-</li>
+<li>Opera 仍然不支持 3D 转换（它只支持 2D 转换）</li>
+</ul>
+</li>
+<li>notice<ul>
+<li>transform-origin可以定义改变被转换元素的位置<ul>
+<li>grammar：transform-origin:x-axis,y-axis,z-zxis</li>
+<li>默认值：transform-origin:50% 50% 0</li>
+<li>detail<ul>
+<li>x-axis | y-axis：定义视图被置于X轴的何处。可能的值：left | center | right | length | %</li>
+<li>z-axis：定义视图被置于Z轴的何处。可能的值：length</li>
+</ul>
+</li>
+<li>compatibility<ul>
+<li>Internet Explorer 10、Firefox、Opera 支持 transform-origin 属性</li>
+<li>Internet Explorer 9 支持替代的 -ms-transform-origin 属性（仅适用于 2D 转换）</li>
+<li>Safari 和 Chrome 支持替代的 -webkit-transform-origin 属性（3D 和 2D 转换）</li>
+<li>Opera 只支持 2D 转换</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>transform-style规定如何在3D空间中呈现被嵌套的元素<ul>
+<li>grammar:transform-style:flat | preserve-3d</li>
+<li>tranform-style默认值：transform-style:flat</li>
+<li>compatibility<ul>
+<li>Firefox 支持 transform-style 属性</li>
+<li>Chrome、Safari 和 Opera 支持替代的 -webkit-transform-style 属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>perspective定义3D元素距视图的距离，以像素计。<ul>
+<li>grammar:perspective number | none</li>
+<li>perspective默认值：perspective:none</li>
+<li>detail<ul>
+<li>当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身</li>
+<li>perspective 属性只影响 3D 转换元素</li>
+<li>通常和perspective-origin属性配合改变3D元素的底部位置</li>
+</ul>
+</li>
+<li>compatibility<ul>
+<li>目前浏览器都不支持 perspective 属性</li>
+<li>Chrome 和 Safari 支持替代的 -webkit-perspective 属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>perspective-origin定义 3D 元素所基于的 X 轴和 Y 轴。该属性允许您改变 3D 元素的底部位置<ul>
+<li>grammar:perspective-origin:x-axis,y-axis</li>
+<li>perspective-origin默认值：perspective-origin:50% 50%</li>
+<li>detail<ul>
+<li>当为元素定义 perspective-origin 属性时，其子元素会获得透视效果，而不是元素本身</li>
+<li>该属性必须与 perspective 属性一同使用，而且只影响 3D 转换元素</li>
+</ul>
+</li>
+<li>compatibility<ul>
+<li>目前浏览器都不支持 perspective-origin 属性</li>
+<li>Chrome 和 Safari 支持替代的 -webkit-perspecitve-origin 属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>backface-visibility定义当元素不面向屏幕时是否可见<ul>
+<li>grammar:backface-visibility: visible | hidden</li>
+<li>backface-visibility默认值：backface-visibility:visible</li>
+<li>detail<ul>
+<li>如果在旋转元素不希望看到其背面时，该属性很有用</li>
+</ul>
+</li>
+<li>compatility<ul>
+<li>只有 Internet Explorer 10+ 和 Firefox 支持 backface-visibility 属性</li>
+<li>Opera 15+、Safari 和 Chrome 支持替代的 -webkit-backface-visibility 属性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;h1 id=&quot;some-websites-to-learn-css3Animate&quot;&gt;&lt;a href=&quot;#some-websites-to-learn-css3Animate&quot; class=&quot;headerlink&quot; title=&quot;some websites to learn c
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://chanran.github.io/2016/11/01/hello-world/"/>
+    <id>https://chanran.github.io/2016/11/01/hello-world/</id>
+    <published>2016-11-01T05:26:11.492Z</published>
+    <updated>2016-11-01T05:26:11.492Z</updated>
+    
+    <summary type="html">
     
     </summary>
     
