@@ -76,11 +76,11 @@
   </entry>
   
   <entry>
-    <title>stylus预处理入门二变量</title>
+    <title>stylus预处理入门(二)--变量</title>
     <link href="https://chanran.github.io/2016/11/01/stylus%E9%A2%84%E5%A4%84%E7%90%86%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8F%98%E9%87%8F/"/>
     <id>https://chanran.github.io/2016/11/01/stylus预处理入门二变量/</id>
     <published>2016-11-01T05:54:34.000Z</published>
-    <updated>2016-11-01T05:58:03.343Z</updated>
+    <updated>2016-11-01T06:14:50.576Z</updated>
     
     <content type="html"><![CDATA[<h1 id="变量-variables"><a href="#变量-variables" class="headerlink" title="变量(variables)"></a>变量(variables)</h1><blockquote>
 <p><strong>变量的标识符可以由$、下划线、字母、数字组成，其中数字不能作为变量的开头。其实这里的变量只是理解为单纯的字符替换</strong></p>
