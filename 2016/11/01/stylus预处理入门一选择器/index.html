@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>stylus预处理入门(一)——选择器 | blue&#39;s blog | coding is funny.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="stylus,预处理器,css,前端">
+  <meta name="description" content="相关网站
+官网：stylus
+中文文档：stylus中文版参考文档 by 张鑫旭
+理解css预处理器：css预处理器初识 by 栓萝卜的棍子
+三种css预处理器语言详解：less|sass|stylus by 开源中国
+
+
+CSS预处理器语言的个人理解
+用另外一种可读性高、语法性强的语言来写CSS。stylus可以使用循环、分支、定义变量和函数结构来写css，这样写起来既方便又快捷。
+通过一种转">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stylus预处理入门(一)——选择器">
+<meta property="og:url" content="https://chanran.github.io/2016/11/01/stylus预处理入门一选择器/index.html">
+<meta property="og:site_name" content="blue's blog">
+<meta property="og:description" content="相关网站
+官网：stylus
+中文文档：stylus中文版参考文档 by 张鑫旭
+理解css预处理器：css预处理器初识 by 栓萝卜的棍子
+三种css预处理器语言详解：less|sass|stylus by 开源中国
+
+
+CSS预处理器语言的个人理解
+用另外一种可读性高、语法性强的语言来写CSS。stylus可以使用循环、分支、定义变量和函数结构来写css，这样写起来既方便又快捷。
+通过一种转">
+<meta property="og:updated_time" content="2016-11-01T05:58:10.455Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="stylus预处理入门(一)——选择器">
+<meta name="twitter:description" content="相关网站
+官网：stylus
+中文文档：stylus中文版参考文档 by 张鑫旭
+理解css预处理器：css预处理器初识 by 栓萝卜的棍子
+三种css预处理器语言详解：less|sass|stylus by 开源中国
+
+
+CSS预处理器语言的个人理解
+用另外一种可读性高、语法性强的语言来写CSS。stylus可以使用循环、分支、定义变量和函数结构来写css，这样写起来既方便又快捷。
+通过一种转">
+  
+    <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
+  
+  <meta name="summary" content="记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客">
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.1.4">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar"><img src="/img/meAndYou.jpg"></a>
+        <hgroup class="introduce">
+          <h5 class="nickname">blue</h5>
+          <a href="mailto:rong650751@163.com" title="rong650751@163.com" class="mail">rong650751@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                成就
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                列表
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Chanran" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2308631120?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/users/1402753fcc6f/latest_articles" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                我的简书
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>blue&#39;s blog &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">stylus预处理入门(一)——选择器</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">stylus预处理入门(一)——选择器</h1>
+        
+        
+
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#相关网站"><span class="post-toc-number">1.</span> <span class="post-toc-text">相关网站</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CSS预处理器语言的个人理解"><span class="post-toc-number">2.</span> <span class="post-toc-text">CSS预处理器语言的个人理解</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#stylus的特点"><span class="post-toc-number">3.</span> <span class="post-toc-text">stylus的特点</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#stylus的优点"><span class="post-toc-number">4.</span> <span class="post-toc-text">stylus的优点</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#stylus的缺点"><span class="post-toc-number">5.</span> <span class="post-toc-text">stylus的缺点</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#stylus语法介绍"><span class="post-toc-number">6.</span> <span class="post-toc-text">stylus语法介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择器-selectors"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">选择器(selectors)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缩进-换行缩进表示语句前进"><span class="post-toc-number">6.1.1.</span> <span class="post-toc-text">缩进(换行缩进表示语句前进)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同级选择器"><span class="post-toc-number">6.1.2.</span> <span class="post-toc-text">同级选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用父级选择器"><span class="post-toc-number">6.1.3.</span> <span class="post-toc-text">引用父级选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#部分引用父级选择器之单层选择器"><span class="post-toc-number">6.1.4.</span> <span class="post-toc-text">部分引用父级选择器之单层选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#部分引用父级选择器之范围选择器"><span class="post-toc-number">6.1.5.</span> <span class="post-toc-text">部分引用父级选择器之范围选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他部分引用父级选择器"><span class="post-toc-number">6.1.6.</span> <span class="post-toc-text">其他部分引用父级选择器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选择器的值"><span class="post-toc-number">6.1.7.</span> <span class="post-toc-text">选择器的值</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-stylus预处理入门一选择器" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">stylus预处理入门(一)——选择器</h1>
+        <div class="post-meta">
+            <time datetime="2016-11-01T05:50:46.000Z" itemprop="datePublished" class="post-time">
+  2016-11-01
+</time>
+
+            
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <hr>
+<h1 id="相关网站"><a href="#相关网站" class="headerlink" title="相关网站"></a>相关网站</h1><ul>
+<li>官网：<a href="http://stylus-lang.com/" target="_blank" rel="external">stylus</a></li>
+<li>中文文档：<a href="http://www.zhangxinxu.com/jq/stylus/" target="_blank" rel="external">stylus中文版参考文档</a> by 张鑫旭</li>
+<li>理解css预处理器：<a href="http://leeluolee.github.io/2013/08/01/mcss-start/" target="_blank" rel="external">css预处理器初识</a> by 栓萝卜的棍子</li>
+<li>三种css预处理器语言详解：<a href="http://www.oschina.net/question/12_44255" target="_blank" rel="external">less|sass|stylus</a> by 开源中国</li>
+</ul>
+<hr>
+<h1 id="CSS预处理器语言的个人理解"><a href="#CSS预处理器语言的个人理解" class="headerlink" title="CSS预处理器语言的个人理解"></a>CSS预处理器语言的个人理解</h1><ul>
+<li>用另外一种可读性高、语法性强的语言来写CSS。stylus可以使用循环、分支、定义变量和函数结构来写css，这样写起来既方便又快捷。</li>
+<li>通过一种转换机制将这种语法转化为原生css。每种语言的转化机制也有很多种，可以使用各种语言官网的方法转化，例如<a href="http://lesscss.org/#using-less" target="_blank" rel="external">less</a>。也可以使用构建工具webpack的<a href="https://github.com/shama/stylus-loader" target="_blank" rel="external">stylus-loader</a>来将stylus语言转化为原生css。</li>
+</ul>
+<hr>
+<h1 id="stylus的特点"><a href="#stylus的特点" class="headerlink" title="stylus的特点"></a>stylus的特点</h1><ul>
+<li>官网可以直接将stylus代码放在官网<a href="http://stylus-lang.com/try.html#?code=body%20%7B%0A%20%20font%3A%2014px%2F1.5%20Helvetica%2C%20arial%2C%20sans-serif%3B%0A%20%20%23logo%20%7B%0A%20%20%20%20border-radius%3A%205px%3B%0A%20%20%7D%0A%7D" target="_blank" rel="external">这一页</a>测试生成原生css（本人硬加上去的特点）</li>
+<li>通过缩进来解释语言（喜欢python的geek应该会比较喜欢）。</li>
+<li>待补充..</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body</div><div class="line">  div</div><div class="line">  	color white</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body div &#123;</div><div class="line">	color:#fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="stylus的优点"><a href="#stylus的优点" class="headerlink" title="stylus的优点"></a>stylus的优点</h1><ul>
+<li>类python语法（官网称stylus为pythonic）。</li>
+<li>语法灵活（可选的括号，冒号，分号等）。</li>
+</ul>
+<hr>
+<h1 id="stylus的缺点"><a href="#stylus的缺点" class="headerlink" title="stylus的缺点"></a>stylus的缺点</h1><ul>
+<li>由于其语法灵活的问题，如果没有团队规范，那么就会带来团队开发混乱，维护起来比较麻烦，各种语法混杂。</li>
+</ul>
+<hr>
+<h1 id="stylus语法介绍"><a href="#stylus语法介绍" class="headerlink" title="stylus语法介绍"></a>stylus语法介绍</h1><h2 id="选择器-selectors"><a href="#选择器-selectors" class="headerlink" title="选择器(selectors)"></a>选择器(selectors)</h2><h3 id="缩进-换行缩进表示语句前进"><a href="#缩进-换行缩进表示语句前进" class="headerlink" title="缩进(换行缩进表示语句前进)"></a><strong>缩进(换行缩进表示语句前进)</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">body</div><div class="line">  color:white;</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">body&#123;</div><div class="line">	color:white;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="同级选择器"><a href="#同级选择器" class="headerlink" title="同级选择器"></a><strong>同级选择器</strong></h3><ul>
+<li>element,element</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div</div><div class="line">p</div><div class="line">	color:white;</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div,p&#123;</div><div class="line">	color:white;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li>element element</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div</div><div class="line">	p</div><div class="line">    	color:white;</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div p&#123;</div><div class="line">	color:white;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li>element &gt;element</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div</div><div class="line">	&gt;p</div><div class="line">      color:white;</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div &gt;p&#123;</div><div class="line">	color:white;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>element +element</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div</div><div class="line">	+p</div><div class="line">    	color:white;</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div +p&#123;</div><div class="line">	color:white;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>例外：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">foo bar baz</div><div class="line">&gt;span</div><div class="line">	color:white;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>注：上面代码的foo bar baz编译器解析有可能是”标签 属性 属性”，有可能是”标签 标签 标签”（有可能是自定义的标签）</strong>（编译器只会识别文档结构而不是标签或者属性）</p>
+</blockquote>
+<hr>
+<p>建议写成下面这样（在最后的选择器后面加一个逗号[comma]）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">foo bar baz,</div><div class="line">&gt;span</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>注：上面的同级选择器是<a href="http://www.w3school.com.cn/cssref/css_selectors.ASP" target="_blank" rel="external">这里</a>的优化，没有提到的其他选择器大多数保留原来的语法，或者与上面的语法类似，当然上面提到的选择器也可以使用原来的语法</strong></p>
+</blockquote>
+<hr>
+<h3 id="引用父级选择器"><a href="#引用父级选择器" class="headerlink" title="引用父级选择器"></a><strong>引用父级选择器</strong></h3><blockquote>
+<p><strong>使用&amp;指向父级选择器，有可能是选择器数组，也有可能是单独的一个选择器。</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">div</div><div class="line">p</div><div class="line">	color:#FFF;</div><div class="line">    &amp;:hover</div><div class="line">    	color:#000;</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">div,</div><div class="line">p &#123;</div><div class="line">  color: #fff;</div><div class="line">&#125;</div><div class="line">div:hover,</div><div class="line">p:hover &#123;</div><div class="line">  color: #000;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<blockquote>
+<p><strong>解释：其实”&amp;”可以理解为代替了上一层的选择器，比如上面例子，”&amp;”的上一层是”div,p”，这样说比较好理解。</strong></p>
+</blockquote>
+<p>下面是引用父级选择器的另一个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">box-shadow()</div><div class="line">  -webkit-box-shadow arguments</div><div class="line">  -moz-box-shadow arguments</div><div class="line">  box-shadow arguments</div><div class="line">  html.ie8 &amp;,</div><div class="line">  html.ie7 &amp;,</div><div class="line">  html.ie6 &amp;</div><div class="line">    border 2px solid arguments[length(arguments) - 1]</div><div class="line"></div><div class="line">body</div><div class="line">  #login</div><div class="line">    box-shadow 1px 1px 3px #eee</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">body #login &#123;</div><div class="line">  -webkit-box-shadow: 1px 1px 3px #eee;</div><div class="line">  -moz-box-shadow: 1px 1px 3px #eee;</div><div class="line">  box-shadow: 1px 1px 3px #eee;</div><div class="line">&#125;</div><div class="line">html.ie8 body #login,</div><div class="line">html.ie7 body #login,</div><div class="line">html.ie6 body #login &#123;</div><div class="line">  border: 2px solid #eee;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<blockquote>
+<p><strong>注：如果想在代码里使用”&amp;”符号而不是stylus的”&amp;”，可以在&amp;字符前加一个反斜杠并加上引号，如下：</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.foo[title*=&apos;\&amp;&apos;]  /*.foo[title*=&apos;&amp;&apos;]*/</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="部分引用父级选择器之单层选择器"><a href="#部分引用父级选择器之单层选择器" class="headerlink" title="部分引用父级选择器之单层选择器"></a><strong>部分引用父级选择器之单层选择器</strong></h3><blockquote>
+<p>使用^ [N] 引用第N层父级选择器。如果N是正数，这里的第N层指的是最上层上层选择器到第N层选择器，如果N是负数，这里的第N层指的是最上层选择器到倒数第|N|层选择器。</p>
+</blockquote>
+<ul>
+<li>有&amp;的情况：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.foo</div><div class="line">  &amp;__bar</div><div class="line">    width: 10px</div><div class="line"></div><div class="line">    ^[0]:hover &amp;</div><div class="line">      width: 20px</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.foo__bar &#123;</div><div class="line">  width: 10px;</div><div class="line">&#125;</div><div class="line">.foo:hover .foo__bar &#123;</div><div class="line">  width: 20px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li>没有&amp;的情况：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.foo</div><div class="line">  .bar</div><div class="line">    width: 10px</div><div class="line"></div><div class="line">    ^[0]:hover &amp;</div><div class="line">      width: 20px</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.foo .bar &#123;</div><div class="line">  width: 10px;</div><div class="line">&#125;</div><div class="line">.foo:hover .foo .bar &#123;</div><div class="line">  width: 20px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li>N为0或者正数则从最上层开始到最下层，N为负数则从最下层开始到最上层。其实第N层的选择器是包含了上一层的选择器的，例如下面的例子，第一层选择器是foo,第二层就是foo bar,第三层是foo bar baz，如此类推（官网说的是嵌套）。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.foo</div><div class="line">  bar</div><div class="line">    baz</div><div class="line">      width: 10px</div><div class="line"></div><div class="line">      ^[-1]:hover &amp;</div><div class="line">        width: 20px</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.foo bar baz &#123;</div><div class="line">  width: 10px;</div><div class="line">&#125;</div><div class="line">.foo bar:hover .foo bar baz &#123;</div><div class="line">  width: 20px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<blockquote>
+<p><strong>注：如果写在mixins里的话，推荐将N写成负数。因为你并不知道你在调用哪一层（ 有可能还有隐藏的上层选择器）</strong></p>
+</blockquote>
+<hr>
+<h3 id="部分引用父级选择器之范围选择器"><a href="#部分引用父级选择器之范围选择器" class="headerlink" title="部分引用父级选择器之范围选择器"></a><strong>部分引用父级选择器之范围选择器</strong></h3><blockquote>
+<p>^ [N..M] 引用第N层选择器到第M层选择器组成的选择器。<br>注：这里有些跟引用单层选择器有点不同，这里的第几层是不包括上层选择器的，具体来看例子感受一下。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.foo</div><div class="line">  bar</div><div class="line">    baz</div><div class="line">      test</div><div class="line">         width: 10px</div><div class="line">         ^[-1]:hover ^[-2..-1]</div><div class="line">             width: 20px</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.foo bar baz test &#123;</div><div class="line">  width: 10px;</div><div class="line">&#125;</div><div class="line">.foo bar baz:hover baz test &#123;</div><div class="line">  width: 20px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="其他部分引用父级选择器"><a href="#其他部分引用父级选择器" class="headerlink" title="其他部分引用父级选择器"></a>其他部分引用父级选择器</h3><ul>
+<li>最上层父级选择器(~/)，相当于^ [0]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.block</div><div class="line">  &amp;__element</div><div class="line">    ~/:hover &amp;</div><div class="line">      color: red</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.block:hover .block__element &#123;</div><div class="line">  color: #f00;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li>相对父级选择器(../)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.foo</div><div class="line">  bar</div><div class="line">    baz</div><div class="line">      test</div><div class="line">         width: 10px</div><div class="line">         ../:hover ^[-1..-2]</div><div class="line">             width: 20px</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.foo .bar .baz .test &#123;</div><div class="line">  width: 10px;</div><div class="line">&#125;</div><div class="line">.foo .bar .baz:hover .baz .test &#123;</div><div class="line">  width: 20px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li>脱离嵌套的选择器(/)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">div</div><div class="line">p</div><div class="line">   span</div><div class="line">      color #A7A7A7</div><div class="line">      &amp;:hover,</div><div class="line">      /.is-hovered</div><div class="line">        color #000</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">div span,</div><div class="line">p span &#123;</div><div class="line">  color: #a7a7a7;</div><div class="line">&#125;</div><div class="line">div span:hover,</div><div class="line">p span:hover,</div><div class="line">.is-hovered &#123;</div><div class="line">  color: #000;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>上面的例子里，转化后的代码.is-hovered已经脱离了嵌套结构了，已经不在任何选择器嵌套里。</strong></p>
+</blockquote>
+<hr>
+<h3 id="选择器的值"><a href="#选择器的值" class="headerlink" title="选择器的值"></a><strong>选择器的值</strong></h3><blockquote>
+<p><strong>selector()获取当前嵌套层的值，selectors()获取从最上层到当前层每一层的选择器的list</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.foo</div><div class="line">  &amp;:hover</div><div class="line">       class selector()</div><div class="line">       color black</div><div class="line">       span</div><div class="line">          color white</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.foo:hover &#123;</div><div class="line">  class: &apos;.foo:hover&apos;; /*这个是selector()的值*/</div><div class="line">  color: #000;</div><div class="line">&#125;</div><div class="line">.foo:hover span &#123;</div><div class="line">  color: #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.a</div><div class="line">  .b</div><div class="line">    &amp;__c</div><div class="line">      content: selectors()</div><div class="line">      span</div><div class="line">            color white</div></pre></td></tr></table></figure>
+<p>转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.a .b__c &#123;</div><div class="line">  content: &apos;.a&apos;, &apos;&amp; .b&apos;, &apos;&amp;__c&apos;;</div><div class="line">&#125;</div><div class="line">.a .b__c span &#123;</div><div class="line">  color: #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<blockquote>
+<p>QUOTE: If you are not moving ahead , you are falling behind.</p>
+</blockquote>
+
+        </div>
+        
+        <blockquote class="post-copyright">
+            <div class="content">
+               转载请注明转自:<a href="/2016/11/01/stylus预处理入门一选择器/" target="_blank" rel="external">https://chanran.github.io/2016/11/01/stylus预处理入门一选择器/index.html</a>
+            </div>
+            <footer>
+                <a href="https://chanran.github.io">
+                    <img src="/img/meAndYou.jpg" alt="blue">
+                    blue
+                </a>
+            </footer>
+        </blockquote>
+
+        
+        <div class="post-reward">
+            <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+        </div>
+        
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stylus/">stylus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/预处理器/">预处理器</a></li></ul>
+
+
+            
+            <div class="post-share-wrap">
+                <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+                <a href="javascript:;" id="share-fab" class="post-share-fab waves-effect waves-circle">
+                    <i class="icon icon-share-alt icon-lg"></i>
+                </a>
+            </div>
+            
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/11/01/stylus预处理入门二变量/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">stylus预处理入门二变量</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/11/01/css3动画笔记/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">css3动画笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo">
+	<div class="ds-thread" data-thread-key="stylus预处理入门一选择器" data-title="stylus预处理入门(一)——选择器" data-url="https://chanran.github.io/2016/11/01/stylus预处理入门一选择器/"></div>
+</div>
+<script src="/js/embed.js?v=1.1.4"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'ysblog', theme: 'none'}
+</script>
+
+
+
+
+</article>
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        如果对你有用...
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechatpay.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+</div>
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "stylus预处理入门(一)——选择器",
+    pic: "/img/meAndYou.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "https://chanran.github.io/2016/11/01/stylus预处理入门一选择器/"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.js?v=1.1.4"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.js?v=1.1.4"></script>
+
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260728730&web_id=1260728730"></script>
+
+
+
+
+
+</body>
+</html>
