@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-11-12T03:44:50.670Z</updated>
+  <updated>2016-11-12T03:46:42.375Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://chanran.github.io/2016/11/11/%E8%BD%AC%E8%BD%BD-web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%9F%B9%E8%AE%AD%E4%B9%8B%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%BF%85%E4%BC%9A%E7%9A%84%E4%BA%8C%E5%8D%81%E4%BA%94%E4%B8%AA%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <id>https://chanran.github.io/2016/11/11/转载-web前端开发培训之前端开发必会的二十五个知识点/</id>
     <published>2016-11-11T14:24:02.000Z</published>
-    <updated>2016-11-12T03:44:50.670Z</updated>
+    <updated>2016-11-12T03:46:42.375Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>转载自 <a href="http://www.cnblogs.com/Ma-lulu/p/5719997.html" target="_blank" rel="external">web前端开发培训之前端开发必会的二十五个知识点</a></p>
@@ -106,6 +106,12 @@
     
     </summary>
     
+      <category term="面试" scheme="https://chanran.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="面试" scheme="https://chanran.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
