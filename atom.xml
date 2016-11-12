@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-11-12T04:04:33.902Z</updated>
+  <updated>2016-11-12T04:06:06.572Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://chanran.github.io/2016/11/11/%E8%BD%AC%E8%BD%BD-web%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%9F%B9%E8%AE%AD%E4%B9%8B%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%BF%85%E4%BC%9A%E7%9A%84%E4%BA%8C%E5%8D%81%E4%BA%94%E4%B8%AA%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <id>https://chanran.github.io/2016/11/11/转载-web前端开发培训之前端开发必会的二十五个知识点/</id>
     <published>2016-11-11T14:24:02.000Z</published>
-    <updated>2016-11-12T04:04:33.902Z</updated>
+    <updated>2016-11-12T04:06:06.572Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>转载自 <a href="http://www.cnblogs.com/Ma-lulu/p/5719997.html" target="_blank" rel="external">web前端开发培训之前端开发必会的二十五个知识点</a></p>
@@ -29,20 +29,129 @@
 <h2 id="2-说下行内元素和块级元素的区别？行内块元素的兼容性使用？（IE8-以下）"><a href="#2-说下行内元素和块级元素的区别？行内块元素的兼容性使用？（IE8-以下）" class="headerlink" title="2. 说下行内元素和块级元素的区别？行内块元素的兼容性使用？（IE8 以下）"></a>2. 说下行内元素和块级元素的区别？行内块元素的兼容性使用？（IE8 以下）</h2><ul>
 <li><p>(Q1) 行内元素：会在水平方向排列，不能包含块级元素，设置width无效，height无效(可以设置line-height)，margin上下无效，padding上下无效。块级元素：各占据一行，垂直方向排列。从新行开始结束接着一个断行。</p>
 </li>
-<li><p>(Q2) 兼容性：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 3. 清除浮动有哪些方式？比较好的方式是哪一种？</div><div class="line"></div><div class="line">  - (Q1)</div><div class="line"></div><div class="line">    - （1）父级div定义height。</div><div class="line"></div><div class="line">    -  （2）结尾处加空div标签clear:both。</div><div class="line"></div><div class="line">    -  （3）父级div定义伪类:after和zoom。</div><div class="line"></div><div class="line">    -  （4）父级div定义overflow:hidden。</div><div class="line"></div><div class="line">    -  （5）父级div定义overflow:auto。</div><div class="line"></div><div class="line">    -  （6）父级div也浮动，需要定义宽度。</div><div class="line"></div><div class="line">    -  （7）父级div定义display:table。</div><div class="line"></div><div class="line">    -  （8）结尾处加br标签clear:both。</div><div class="line"></div><div class="line">  - (Q2) 比较好的是第3种方式，好多网站都这么用。</div><div class="line"></div><div class="line">## 4. box-sizing常用的属性有哪些？分别有什么作用？</div><div class="line"> - (Q1)box-sizing: content-box|border-box|inherit;</div><div class="line"></div><div class="line"> - (Q2)content-box:宽度和高度分别应用到元素的内容框。在宽度和高度之外绘制元素的内边距和边框(元素默认效果)。</div><div class="line">border-box:元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。</div><div class="line"></div><div class="line">## 5. Doctype作用？标准模式与兼容模式各有什么区别?</div><div class="line">  - (Q1) &lt;!DOCTYPE&gt;告知浏览器的解析器用什么文档标准解析这个文档。DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。</div><div class="line"></div><div class="line">  - (Q2) 标准模式的排版和JS运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。</div><div class="line"></div><div class="line">## 6. HTML5 为什么只需要写 &lt;!DOCTYPE HTML&gt;？</div><div class="line">HTML5不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）。而HTML4.01基于SGML,所以需要对DTD进行引用，才能告知浏览器文档所使用的文档类型。</div><div class="line"></div><div class="line">## 7. 页面导入样式时，使用link和@import有什么区别？</div><div class="line">  - （1）link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;</div><div class="line">  - （2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;</div><div class="line">  - （3）import是CSS2.1 提出的，只在IE5以上才能被识别，而link是XHTML标签，无兼容问题。</div><div class="line"></div><div class="line">## 8. 介绍一下你对浏览器内核的理解？</div><div class="line">主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎。</div><div class="line"></div><div class="line"> &gt; 渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、我们组建一大牛裙前面是4七一，整理讯息（例如加入CSS等），中间是零2七，以及计算网页的显示方式，后面是壹武四，是学习的就加，不是学习的请勿打扰。然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。所有网页浏览器、电子邮件客户端以及其它需要编辑、显示网络内容的应用程序都需要内核。</div><div class="line"></div><div class="line"> &gt; JS引擎则：解析和执行javascript来实现网页的动态效果。</div><div class="line"></div><div class="line"> &gt; 最开始渲染引擎和JS引擎并没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎。</div><div class="line"></div><div class="line">## 9. html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</div><div class="line">  - (Q1)</div><div class="line">  &gt;HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。</div><div class="line"></div><div class="line">    - (1)绘画 canvas;</div><div class="line"></div><div class="line">    - (2)用于媒介回放的 video 和 audio 元素;</div><div class="line"></div><div class="line">    - (3)本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失;</div><div class="line">    - (4)sessionStorage 的数据在浏览器关闭后自动删除;</div><div class="line">    - (5)语意化更好的内容元素，比如 article、footer、header、nav、section;</div><div class="line">    - (6)表单控件，calendar、date、time、email、url、search;</div><div class="line">    - (7)新的技术webworker, websocket, Geolocation;</div><div class="line"></div><div class="line"> - (Q2)</div><div class="line"> &gt;IE8/IE7/IE6支持通过document.createElement方法产生的标签，</div><div class="line">可以利用这一特性让这些浏览器支持HTML5新标签，</div><div class="line">浏览器支持新标签后，还需要添加标签默认的样式。</div><div class="line">当然也可以直接使用成熟的框架、比如html5shim，</div></pre></td></tr></table></figure></p>
- <!--[if lt IE 9]>
- <![endif]-->
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 10. 简述一下你对HTML语义化的理解？</div><div class="line"></div><div class="line">&gt; 用正确的标签做正确的事情。</div><div class="line">html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;</div><div class="line">即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;</div><div class="line">搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;</div><div class="line">使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"># JavaScript</div><div class="line"></div><div class="line">## 1. 介绍js的基本数据类型</div><div class="line">&gt;Undefined、Null、Boolean、Number、String</div><div class="line"></div><div class="line">## 2. js有哪些内置对象？</div><div class="line">&gt;数据封装类对象：Object、Array、Boolean、Number 和 String</div><div class="line">其他对象：Function、Arguments、Math、Date、RegExp、Error</div><div class="line"></div><div class="line">## 3. this对象的理解</div><div class="line">&gt;this总是指向函数的直接调用者（而非间接调用者）；</div><div class="line">如果有new关键字，this指向new出来的那个对象；</div><div class="line">在事件中，this指向触发这个事件的对象，特殊的是，IE中的attachEvent中的this总是指向全局对象Window。</div><div class="line"></div><div class="line">## 4. eval是做什么的？</div><div class="line">&gt;它的功能是把对应的字符串解析成JS代码并运行；</div><div class="line">应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。</div><div class="line">由JSON字符串转换为JSON对象的时候可以用eval，var obj =eval(&apos;(&apos;+ str +&apos;)&apos;)。</div><div class="line"></div><div class="line">## 5. DOM怎样添加、移除、移动、复制、创建和查找节点</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<li><p>(Q2) 兼容性：<code>display:inline-block;*display:inline;*zoom:1;</code></p>
 </li>
 </ul>
-<p>// 创建新节点<br>createDocumentFragment()    //创建一个DOM片段<br>createElement()   //创建一个具体的元素<br>createTextNode()   //创建一个文本节点<br>// 添加、移除、替换、插入<br>appendChild()<br>removeChild()<br>replaceChild()<br>insertBefore() //在已有的子节点前插入一个新的子节点<br>// 查找<br>getElementsByTagName()    //通过标签名称<br>getElementsByName()    //通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)<br>getElementById()    //通过元素Id，唯一性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">## 6. null和undefined的区别？</div><div class="line">&gt; null是一个表示&quot;无&quot;的对象，转为数值时为0；undefined是一个表示&quot;无&quot;的原始值，转为数值时为NaN。</div><div class="line">&gt;</div><div class="line">undefined：</div><div class="line"> - （1）变量被声明了，但没有赋值时，就等于undefined。</div><div class="line"> - （2) 调用函数时，应该提供的参数没有提供，该参数等于undefined。</div><div class="line"> - （3）对象没有赋值的属性，该属性的值为undefined。</div><div class="line"> - （4）函数没有返回值时，默认返回undefined。</div><div class="line"></div><div class="line"> &gt; null：</div><div class="line"> - （1） 作为函数的参数，表示该函数的参数不是对象。</div><div class="line"> - （2） 作为对象原型链的终点。</div><div class="line"></div><div class="line">## 7. new操作符具体干了什么呢?</div><div class="line"></div><div class="line"> - （1）创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。</div><div class="line"> - （2）属性和方法被加入到 this 引用的对象中。</div><div class="line"> - （3）新创建的对象由 this 所引用，并且最后隐式的返回 this 。</div><div class="line"></div><div class="line">## 8. JSON 的了解？</div><div class="line">&gt; JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它是基于JavaScript的一个子集。数据格式简单, 易于读写, 占用带宽小。</div><div class="line"></div><div class="line">  &gt;格式：采用键值对，例如：&#123;&apos;age&apos;:&apos;12&apos;, &apos;name&apos;:&apos;back&apos;&#125;</div><div class="line"></div><div class="line">## 9. call() 和 apply() 的区别和作用？</div><div class="line">&gt; apply()函数有两个参数：第一个参数是上下文，第二个参数是参数组成的数组。如果上下文是null，则使用全局对象代替。</div><div class="line"></div><div class="line">  &gt;如：function.apply(this,[1,2,3]);</div><div class="line"></div><div class="line">  &gt;call()的第一个参数是上下文，后续是实例传入的参数序列。</div><div class="line">如：function.call(this,1,2,3);</div><div class="line"></div><div class="line">## 10. 如何获取UA？</div></pre></td></tr></table></figure></p>
-<pre><code>function whatBrowser() {  
-    document.Browser.Name.value=navigator.appName;  
-    document.Browser.Version.value=navigator.appVersion;  
-    document.Browser.Code.value=navigator.appCodeName;  
-    document.Browser.Agent.value=navigator.userAgent;  
-}  
-</code></pre><p>```</p>
+<h2 id="3-清除浮动有哪些方式？比较好的方式是哪一种？"><a href="#3-清除浮动有哪些方式？比较好的方式是哪一种？" class="headerlink" title="3. 清除浮动有哪些方式？比较好的方式是哪一种？"></a>3. 清除浮动有哪些方式？比较好的方式是哪一种？</h2><ul>
+<li><p>(Q1)</p>
+<ul>
+<li><p>（1）父级div定义height。</p>
+</li>
+<li><p>（2）结尾处加空div标签clear:both。</p>
+</li>
+<li><p>（3）父级div定义伪类:after和zoom。</p>
+</li>
+<li><p>（4）父级div定义overflow:hidden。</p>
+</li>
+<li><p>（5）父级div定义overflow:auto。</p>
+</li>
+<li><p>（6）父级div也浮动，需要定义宽度。</p>
+</li>
+<li><p>（7）父级div定义display:table。</p>
+</li>
+<li><p>（8）结尾处加br标签clear:both。</p>
+</li>
+</ul>
+</li>
+<li><p>(Q2) 比较好的是第3种方式，好多网站都这么用。</p>
+</li>
+</ul>
+<h2 id="4-box-sizing常用的属性有哪些？分别有什么作用？"><a href="#4-box-sizing常用的属性有哪些？分别有什么作用？" class="headerlink" title="4. box-sizing常用的属性有哪些？分别有什么作用？"></a>4. box-sizing常用的属性有哪些？分别有什么作用？</h2><ul>
+<li><p>(Q1)box-sizing: content-box|border-box|inherit;</p>
+</li>
+<li><p>(Q2)content-box:宽度和高度分别应用到元素的内容框。在宽度和高度之外绘制元素的内边距和边框(元素默认效果)。<br>border-box:元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。</p>
+</li>
+</ul>
+<h2 id="5-Doctype作用？标准模式与兼容模式各有什么区别"><a href="#5-Doctype作用？标准模式与兼容模式各有什么区别" class="headerlink" title="5. Doctype作用？标准模式与兼容模式各有什么区别?"></a>5. Doctype作用？标准模式与兼容模式各有什么区别?</h2><ul>
+<li><p>(Q1) &lt;!DOCTYPE&gt;告知浏览器的解析器用什么文档标准解析这个文档。DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。</p>
+</li>
+<li><p>(Q2) 标准模式的排版和JS运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。</p>
+</li>
+</ul>
+<h2 id="6-HTML5-为什么只需要写-lt-DOCTYPE-HTML-gt-？"><a href="#6-HTML5-为什么只需要写-lt-DOCTYPE-HTML-gt-？" class="headerlink" title="6. HTML5 为什么只需要写 &lt;!DOCTYPE HTML&gt;？"></a>6. HTML5 为什么只需要写 &lt;!DOCTYPE HTML&gt;？</h2><p>HTML5不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）。而HTML4.01基于SGML,所以需要对DTD进行引用，才能告知浏览器文档所使用的文档类型。</p>
+<h2 id="7-页面导入样式时，使用link和-import有什么区别？"><a href="#7-页面导入样式时，使用link和-import有什么区别？" class="headerlink" title="7. 页面导入样式时，使用link和@import有什么区别？"></a>7. 页面导入样式时，使用link和@import有什么区别？</h2><ul>
+<li>（1）link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;</li>
+<li>（2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;</li>
+<li>（3）import是CSS2.1 提出的，只在IE5以上才能被识别，而link是XHTML标签，无兼容问题。</li>
+</ul>
+<h2 id="8-介绍一下你对浏览器内核的理解？"><a href="#8-介绍一下你对浏览器内核的理解？" class="headerlink" title="8. 介绍一下你对浏览器内核的理解？"></a>8. 介绍一下你对浏览器内核的理解？</h2><p>主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎。</p>
+<blockquote>
+<p>渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、我们组建一大牛裙前面是4七一，整理讯息（例如加入CSS等），中间是零2七，以及计算网页的显示方式，后面是壹武四，是学习的就加，不是学习的请勿打扰。然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。所有网页浏览器、电子邮件客户端以及其它需要编辑、显示网络内容的应用程序都需要内核。</p>
+<p>JS引擎则：解析和执行javascript来实现网页的动态效果。</p>
+<p>最开始渲染引擎和JS引擎并没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎。</p>
+</blockquote>
+<h2 id="9-html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分-HTML-和-HTML5？"><a href="#9-html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分-HTML-和-HTML5？" class="headerlink" title="9. html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？"></a>9. html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</h2><ul>
+<li><p>(Q1)</p>
+<blockquote>
+<p>HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。</p>
+</blockquote>
+<ul>
+<li><p>(1)绘画 canvas;</p>
+</li>
+<li><p>(2)用于媒介回放的 video 和 audio 元素;</p>
+</li>
+<li><p>(3)本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失;</p>
+</li>
+<li>(4)sessionStorage 的数据在浏览器关闭后自动删除;</li>
+<li>(5)语意化更好的内容元素，比如 article、footer、header、nav、section;</li>
+<li>(6)表单控件，calendar、date、time、email、url、search;</li>
+<li><p>(7)新的技术webworker, websocket, Geolocation;</p>
+</li>
+<li><p>(Q2)</p>
+<blockquote>
+<p>IE8/IE7/IE6支持通过document.createElement方法产生的标签，<br>可以利用这一特性让这些浏览器支持HTML5新标签，<br>浏览器支持新标签后，还需要添加标签默认的样式。<br>当然也可以直接使用成熟的框架、比如html5shim，</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!--[if lt IE 9]&gt;</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="10-简述一下你对HTML语义化的理解？"><a href="#10-简述一下你对HTML语义化的理解？" class="headerlink" title="10. 简述一下你对HTML语义化的理解？"></a>10. 简述一下你对HTML语义化的理解？</h2><blockquote>
+<p>用正确的标签做正确的事情。<br>html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;<br>即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;<br>搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;<br>使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。</p>
+</blockquote>
+<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="1-介绍js的基本数据类型"><a href="#1-介绍js的基本数据类型" class="headerlink" title="1. 介绍js的基本数据类型"></a>1. 介绍js的基本数据类型</h2><blockquote>
+<p>Undefined、Null、Boolean、Number、String</p>
+</blockquote>
+<h2 id="2-js有哪些内置对象？"><a href="#2-js有哪些内置对象？" class="headerlink" title="2. js有哪些内置对象？"></a>2. js有哪些内置对象？</h2><blockquote>
+<p>数据封装类对象：Object、Array、Boolean、Number 和 String<br>其他对象：Function、Arguments、Math、Date、RegExp、Error</p>
+</blockquote>
+<h2 id="3-this对象的理解"><a href="#3-this对象的理解" class="headerlink" title="3. this对象的理解"></a>3. this对象的理解</h2><blockquote>
+<p>this总是指向函数的直接调用者（而非间接调用者）；<br>如果有new关键字，this指向new出来的那个对象；<br>在事件中，this指向触发这个事件的对象，特殊的是，IE中的attachEvent中的this总是指向全局对象Window。</p>
+</blockquote>
+<h2 id="4-eval是做什么的？"><a href="#4-eval是做什么的？" class="headerlink" title="4. eval是做什么的？"></a>4. eval是做什么的？</h2><blockquote>
+<p>它的功能是把对应的字符串解析成JS代码并运行；<br>应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。<br>由JSON字符串转换为JSON对象的时候可以用eval，var obj =eval(‘(‘+ str +’)’)。</p>
+</blockquote>
+<h2 id="5-DOM怎样添加、移除、移动、复制、创建和查找节点"><a href="#5-DOM怎样添加、移除、移动、复制、创建和查找节点" class="headerlink" title="5. DOM怎样添加、移除、移动、复制、创建和查找节点"></a>5. DOM怎样添加、移除、移动、复制、创建和查找节点</h2><p>&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// 创建新节点</div><div class="line">createDocumentFragment()    //创建一个DOM片段</div><div class="line">createElement()   //创建一个具体的元素</div><div class="line">createTextNode()   //创建一个文本节点</div><div class="line">// 添加、移除、替换、插入</div><div class="line">appendChild()</div><div class="line">removeChild()</div><div class="line">replaceChild()</div><div class="line">insertBefore() //在已有的子节点前插入一个新的子节点</div><div class="line">// 查找</div><div class="line">getElementsByTagName()    //通过标签名称</div><div class="line">getElementsByName()    //通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)</div><div class="line">getElementById()    //通过元素Id，唯一性</div></pre></td></tr></table></figure></p>
+<h2 id="6-null和undefined的区别？"><a href="#6-null和undefined的区别？" class="headerlink" title="6. null和undefined的区别？"></a>6. null和undefined的区别？</h2><blockquote>
+<p>null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。</p>
+<p>undefined：</p>
+<ul>
+<li>（1）变量被声明了，但没有赋值时，就等于undefined。</li>
+<li>（2) 调用函数时，应该提供的参数没有提供，该参数等于undefined。</li>
+<li>（3）对象没有赋值的属性，该属性的值为undefined。</li>
+<li>（4）函数没有返回值时，默认返回undefined。</li>
+</ul>
+<p>null：</p>
+<ul>
+<li>（1） 作为函数的参数，表示该函数的参数不是对象。</li>
+<li>（2） 作为对象原型链的终点。</li>
+</ul>
+</blockquote>
+<h2 id="7-new操作符具体干了什么呢"><a href="#7-new操作符具体干了什么呢" class="headerlink" title="7. new操作符具体干了什么呢?"></a>7. new操作符具体干了什么呢?</h2><ul>
+<li>（1）创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。</li>
+<li>（2）属性和方法被加入到 this 引用的对象中。</li>
+<li>（3）新创建的对象由 this 所引用，并且最后隐式的返回 this 。</li>
+</ul>
+<h2 id="8-JSON-的了解？"><a href="#8-JSON-的了解？" class="headerlink" title="8. JSON 的了解？"></a>8. JSON 的了解？</h2><blockquote>
+<p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它是基于JavaScript的一个子集。数据格式简单, 易于读写, 占用带宽小。</p>
+<p>格式：采用键值对，例如：{‘age’:’12’, ‘name’:’back’}</p>
+</blockquote>
+<h2 id="9-call-和-apply-的区别和作用？"><a href="#9-call-和-apply-的区别和作用？" class="headerlink" title="9. call() 和 apply() 的区别和作用？"></a>9. call() 和 apply() 的区别和作用？</h2><blockquote>
+<p>apply()函数有两个参数：第一个参数是上下文，第二个参数是参数组成的数组。如果上下文是null，则使用全局对象代替。</p>
+<p>如：function.apply(this,[1,2,3]);</p>
+<p>call()的第一个参数是上下文，后续是实例传入的参数序列。<br>如：function.call(this,1,2,3);</p>
+</blockquote>
+<h2 id="10-如何获取UA？"><a href="#10-如何获取UA？" class="headerlink" title="10. 如何获取UA？"></a>10. 如何获取UA？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function whatBrowser() &#123;  </div><div class="line">    document.Browser.Name.value=navigator.appName;  </div><div class="line">    document.Browser.Version.value=navigator.appVersion;  </div><div class="line">    document.Browser.Code.value=navigator.appCodeName;  </div><div class="line">    document.Browser.Agent.value=navigator.userAgent;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><hr>
 <h2 id="1-HTTP状态码知道哪些？"><a href="#1-HTTP状态码知道哪些？" class="headerlink" title="1. HTTP状态码知道哪些？"></a>1. HTTP状态码知道哪些？</h2><blockquote>
 <p>100  Continue  继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息</p>
