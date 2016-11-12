@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-11-12T07:52:11.567Z</updated>
+  <updated>2016-11-12T08:35:44.302Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>[转载]计算机专业术语</title>
+    <title>[转载]计算机常用英语术语、词汇表</title>
     <link href="https://chanran.github.io/2016/11/12/%E8%BD%AC%E8%BD%BD-%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/"/>
     <id>https://chanran.github.io/2016/11/12/转载-计算机专业术语/</id>
     <published>2016-11-12T07:48:15.000Z</published>
-    <updated>2016-11-12T07:52:11.567Z</updated>
+    <updated>2016-11-12T08:35:44.302Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>转载自<a href="http://www.24en.com/study/words/2006-01-02/373.html" target="_blank" rel="external">计算机常用英语术语、词汇表</a></p>
@@ -44,7 +44,7 @@
       <category term="翻译" scheme="https://chanran.github.io/categories/%E7%BF%BB%E8%AF%91/"/>
     
     
-      <category term="计算机常用英语术语、词汇表" scheme="https://chanran.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E7%94%A8%E8%8B%B1%E8%AF%AD%E6%9C%AF%E8%AF%AD%E3%80%81%E8%AF%8D%E6%B1%87%E8%A1%A8/"/>
+      <category term="计算机术语" scheme="https://chanran.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9C%AF%E8%AF%AD/"/>
     
   </entry>
   
@@ -359,11 +359,11 @@
     
       <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
-      <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -425,11 +425,11 @@
     
       <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
-      <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -603,11 +603,11 @@
     
       <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
-      <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
