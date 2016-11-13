@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-11-12T08:35:44.302Z</updated>
+  <updated>2016-11-13T12:38:37.719Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录读过的有意义的书籍</title>
+    <link href="https://chanran.github.io/2016/11/13/%E8%AE%B0%E5%BD%95%E8%AF%BB%E8%BF%87%E7%9A%84%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E4%B9%A6%E7%B1%8D/"/>
+    <id>https://chanran.github.io/2016/11/13/记录读过的有意义的书籍/</id>
+    <published>2016-11-13T11:50:50.000Z</published>
+    <updated>2016-11-13T12:38:37.719Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>无论书读没读完,都对自己的成长有帮助。</p>
+</blockquote>
+<h1 id="文学类"><a href="#文学类" class="headerlink" title="文学类"></a>文学类</h1><h2 id="《薄暮》"><a href="#《薄暮》" class="headerlink" title="《薄暮》"></a>《薄暮》</h2><h2 id="《三国演义》"><a href="#《三国演义》" class="headerlink" title="《三国演义》"></a>《三国演义》</h2><h2 id="《水浒传》"><a href="#《水浒传》" class="headerlink" title="《水浒传》"></a>《水浒传》</h2><h1 id="技术书籍"><a href="#技术书籍" class="headerlink" title="技术书籍"></a>技术书籍</h1><blockquote>
+<p>技术无分方向,学多了实践多了便会贯通。</p>
+</blockquote>
+<h2 id="《JavaScript高级程序设计-第2版-》"><a href="#《JavaScript高级程序设计-第2版-》" class="headerlink" title="《JavaScript高级程序设计(第2版)》"></a>《JavaScript高级程序设计(第2版)》</h2><h2 id="《Javascript-Dom编程设计-第3版-》"><a href="#《Javascript-Dom编程设计-第3版-》" class="headerlink" title="《Javascript Dom编程设计(第3版)》"></a>《Javascript Dom编程设计(第3版)》</h2><h2 id="《HTTP权威指南》"><a href="#《HTTP权威指南》" class="headerlink" title="《HTTP权威指南》"></a>《HTTP权威指南》</h2><h2 id="《C-Primer-第5版-》"><a href="#《C-Primer-第5版-》" class="headerlink" title="《C++ Primer(第5版)》"></a>《C++ Primer(第5版)》</h2><h2 id="《白帽子讲Web安全-纪念版-》"><a href="#《白帽子讲Web安全-纪念版-》" class="headerlink" title="《白帽子讲Web安全(纪念版)》"></a>《白帽子讲Web安全(纪念版)》</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;无论书读没读完,都对自己的成长有帮助。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;文学类&quot;&gt;&lt;a href=&quot;#文学类&quot; class=&quot;headerlink&quot; title=&quot;文学类&quot;&gt;&lt;/a&gt;文学类&lt;/h1&gt;&lt;h2 id=&quot;《薄暮》&quot;&gt;&lt;
+    
+    </summary>
+    
+      <category term="阅读" scheme="https://chanran.github.io/categories/%E9%98%85%E8%AF%BB/"/>
+    
+    
+      <category term="书籍" scheme="https://chanran.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
+    
+      <category term="阅读" scheme="https://chanran.github.io/tags/%E9%98%85%E8%AF%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>[转载]计算机常用英语术语、词汇表</title>
@@ -297,9 +330,9 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="重构" scheme="https://chanran.github.io/tags/%E9%87%8D%E6%9E%84/"/>
-    
       <category term="css" scheme="https://chanran.github.io/tags/css/"/>
+    
+      <category term="重构" scheme="https://chanran.github.io/tags/%E9%87%8D%E6%9E%84/"/>
     
       <category term="html" scheme="https://chanran.github.io/tags/html/"/>
     
@@ -357,11 +390,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
@@ -423,11 +456,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
@@ -601,11 +634,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
