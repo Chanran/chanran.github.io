@@ -1,16 +1,19 @@
 (function(w, d) {
 
     var body = d.body,
-        root = d.querySelector('html'),
-        gotop = d.getElementById('gotop'),
-        menu = d.getElementById('menu'),
-        header = d.getElementById('header'),
-        mask = d.getElementById('mask'),
-        menuToggle = d.getElementById('menu-toggle'),
-        menuOff = d.getElementById('menu-off'),
-        loading = d.getElementById('loading'),
+        $ = d.querySelector.bind(d),
+        $$ = d.querySelectorAll.bind(d),
+        root = $('html'),
+        gotop = $('#gotop'),
+        menu = $('#menu'),
+        header = $('#header'),
+        mask = $('#mask'),
+        menuToggle = $('#menu-toggle'),
+        menuOff = $('#menu-off'),
+        loading = $('#loading'),
         animate = w.requestAnimationFrame,
-        even = 'ontouchstart' in window ? 'touchstart' : 'click',
+        forEach = Array.prototype.forEach,
+        even = ('ontouchstart' in w && /Mobile|Android|iOS|iPhone|iPad|iPod|Windows Phone|KFAPWI/i.test(navigator.userAgent)) ? 'touchstart' : 'click',
         noop = function() {},
         offset = function(el) {
             var x = el.offsetLeft,
@@ -71,7 +74,7 @@
             }
         },
         fixedToc: (function() {
-            var toc = d.getElementById('post-toc');
+            var toc = $('#post-toc');
 
             if (!toc || !toc.children.length) {
                 return noop;
@@ -80,15 +83,15 @@
             var tocOfs = offset(toc),
                 tocTop = tocOfs.y,
                 headerH = header.clientHeight,
-                titles = d.getElementById('post-content').querySelectorAll('h1, h2, h3, h4, h5, h6');
+                titles = $('#post-content').querySelectorAll('h1, h2, h3, h4, h5, h6');
 
             toc.querySelector('a[href="#' + titles[0].id + '"]').parentNode.classList.add('active');
 
-            [].forEach.call(d.querySelectorAll('a[href^="#"]'), function(el) {
+            forEach.call($$('a[href^="#"]'), function(el) {
 
                 el.addEventListener('click', function(e) {
                     e.preventDefault();
-                    docEl.scrollTop = offset(d.querySelector('[id="' + decodeURIComponent(this.hash).substr(1) + '"]')).y - headerH + 10;
+                    docEl.scrollTop = offset($('[id="' + decodeURIComponent(this.hash).substr(1) + '"]')).y - headerH + 10;
                 })
             });
 
@@ -126,105 +129,84 @@
                 setActive(top);
             };
         })(),
+        modal: function(target) {
+            this.$modal = $(target);
+            this.$off = this.$modal.querySelector('.close');
+
+            var _this = this;
+
+            function hideByBody(e) {
+                if (!_this.$modal.contains(e.target)) {
+                    _this.hide();
+                }
+            }
+
+            this.show = function() {
+                mask.classList.add('in');
+                _this.$modal.classList.add('ready');
+                setTimeout(function() {
+                    _this.$modal.classList.add('in');
+                    d.addEventListener(even, hideByBody);
+                }, 0)
+            }
+
+            this.hide = function() {
+                mask.classList.remove('in');
+                _this.$modal.classList.remove('in');
+                setTimeout(function() {
+                    _this.$modal.classList.remove('ready');
+                    d.removeEventListener(even, hideByBody);
+                }, 300)
+            }
+
+            this.toggle = function() {
+                return _this.$modal.classList.contains('in') ? _this.hide() : _this.show();
+            }
+
+            this.$off && this.$off.addEventListener(even, this.hide);
+        },
         share: function() {
 
-            var share = d.getElementById('global-share'),
-                menuShare = d.getElementById('menu-share'),
-                postShare = d.getElementById('post-share'),
-                fab = d.getElementById('share-fab'),
-                div = d.createElement('div'),
-                sns = d.getElementsByClassName('share-sns'),
-                summary, api;
+            var pageShare = $('#pageShare'),
+                fab = $('#shareFab');
 
-            div.innerHTML = BLOG_SHARE.summary;
-            summary = div.innerText;
-            div = undefined;
+            var shareModal = new this.modal('#globalShare');
 
-            api = 'http://www.jiathis.com/send/?webid={service}&url=' + BLOG_SHARE.url + '&title=' + BLOG_SHARE.title + '&summary=' + summary + '&pic=' + location.protocol + '//' + location.host + BLOG_SHARE.pic;
+            $('#menuShare').addEventListener(even, shareModal.toggle);
 
-            function goShare(service) {
-                w.open(encodeURI(api.replace('{service}', service)));
+            if(fab) {
+                fab.addEventListener(even, function() {
+                    pageShare.classList.toggle('in')
+                }, false)
+
+                d.addEventListener(even, function(e){
+                    !fab.contains(e.target) && pageShare.classList.remove('in')
+                }, false)
             }
 
-            function show() {
-                mask.classList.add('in');
-                share.classList.add('in');
-            }
+            var wxModal = new this.modal('#wxShare');
 
-            function hide() {
-                share.classList.remove('in');
-                mask.classList.remove('in');
-            }
+            forEach.call($$('.wxFab'), function(el){
+                el.addEventListener(even, wxModal.toggle)
+            })
 
-            [].forEach.call(sns, function(el) {
-                el.addEventListener('click', function() {
-                    goShare(this.dataset.service);
-                }, false);
-            });
-
-            menuShare.addEventListener(even, function() {
-                show();
-            }, false);
-
-            mask.addEventListener(even, function() {
-                hide();
-            }, false);
-
-            fab && fab.addEventListener(even, function() {
-                postShare.classList.toggle('in');
-            }, false);
         },
         search: function() {
-            var searchWrap = d.getElementById('search-wrap');
+            var searchWrap = $('#search-wrap');
 
             function toggleSearch() {
                 searchWrap.classList.toggle('in');
             }
 
-            d.getElementById('search').addEventListener(even, toggleSearch);
+            $('#search').addEventListener(even, toggleSearch);
         },
-        reward: (function() {
+        reward: function() {
+            var modal = new this.modal('#reward')
 
-            var reward = d.getElementById('reward');
-            var rewardBtn = d.getElementById('rewardBtn');
-            var rewardOff = d.getElementById('rewardOff');
-
-            if (!reward) {
-                return;
-            }
-
-            function show() {
-                mask.classList.add('in');
-                reward.classList.add('ready');
-                setTimeout(function() {
-                    reward.classList.add('in');
-                    d.addEventListener(even, hideByBody);
-                }, 0)
-            }
-
-            function hide() {
-                mask.classList.remove('in');
-                reward.classList.remove('in');
-                setTimeout(function() {
-                    reward.classList.remove('ready');
-                    d.removeEventListener(even, hideByBody);
-                }, 300)
-            }
-
-            function hideByBody(e) {
-                if (!reward.contains(e.target)) {
-                    hide();
-                }
-            }
-
-            rewardBtn.addEventListener(even, function() {
-                return reward.classList.contains('in') ? hide() : show();
-            });
-            rewardOff.addEventListener(even, hide);
-
-        })(),
+            $('#rewardBtn').addEventListener(even, modal.toggle)
+        },
         fixNavMinH: (function() {
-            var nav = d.querySelector('.nav');
+            var nav = $('.nav');
 
             function calcH() {
                 nav.style.minHeight = (nav.parentNode.clientHeight - nav.nextElementSibling.offsetHeight) + 'px';
@@ -236,24 +218,25 @@
 
             if (w.innerWidth < 760) return;
 
-            var els = [].slice.call(d.querySelectorAll('.waterfall'));
+            var els = $$('.waterfall');
 
-            els.forEach(function(el) {
-                var childs = [].slice.call(el.querySelectorAll('.waterfall-item'));
+            forEach.call(els, function(el) {
+                var childs = el.querySelectorAll('.waterfall-item');
                 var columns = [0, 0];
 
-                childs.forEach(function(item) {
+                forEach.call(childs, function(item) {
                     var i = columns[0] <= columns[1] ? 0 : 1;
                     item.style.cssText = 'top:' + columns[i] + 'px;left:' + (i > 0 ? '50%' : 0);
                     columns[i] += item.offsetHeight;
                 })
 
-                el.style.height = Math.max(columns[0], columns[1]) + 'px'
+                el.style.height = Math.max(columns[0], columns[1]) + 'px';
+                el.classList.add('done')
             })
 
         },
         tabBar: function(el) {
-            el.parentNode.classList.toggle('expand')
+            el.parentNode.parentNode.classList.toggle('expand')
         }
     };
 
@@ -264,6 +247,7 @@
     });
 
     w.addEventListener('resize', function() {
+        w.BLOG.even = even = 'ontouchstart' in w ? 'touchstart' : 'click';
         Blog.fixNavMinH();
         Blog.toggleMenu();
         Blog.waterfall();
@@ -293,14 +277,24 @@
         Blog.fixedToc(top);
     }, false);
 
-    if ('BLOG_SHARE' in w) {
-        Blog.share();
+    if (w.BLOG.SHARE) {
+        Blog.share()
+    }
+
+    if (w.BLOG.REWARD) {
+        Blog.reward()
     }
 
     Blog.docEl = docEl;
     Blog.noop = noop;
     Blog.even = even;
-    w.BLOG = Blog;
+    Blog.$ = $;
+    Blog.$$ = $$;
+
+    Object.keys(Blog).reduce(function(g, e) {
+         g[e] = Blog[e];
+         return g
+    }, w.BLOG);
 
     Waves.init();
     Waves.attach('.global-share li', ['waves-block']);
