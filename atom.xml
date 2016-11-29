@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-11-17T13:17:22.370Z</updated>
+  <updated>2016-11-29T11:36:25.179Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -16,11 +16,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>写nodejs时遇到的坑</title>
+    <link href="https://chanran.github.io/2016/11/29/%E5%86%99nodejs%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/"/>
+    <id>https://chanran.github.io/2016/11/29/写nodejs时遇到的坑/</id>
+    <published>2016-11-29T11:16:45.000Z</published>
+    <updated>2016-11-29T11:36:25.179Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="坑一：模块require"><a href="#坑一：模块require" class="headerlink" title="坑一：模块require"></a>坑一：模块require</h1><h2 id="在html引入的js文件里require的时候是基于该html文件的。"><a href="#在html引入的js文件里require的时候是基于该html文件的。" class="headerlink" title="在html引入的js文件里require的时候是基于该html文件的。"></a>在html引入的js文件里require的时候是基于该html文件的。</h2><p><code>目录结构</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">src/</div><div class="line">   index.html</div><div class="line">   js/</div><div class="line">      index.js</div><div class="line">      test.js</div></pre></td></tr></table></figure>
+<p><code>src/index.html</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">  &lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;script src=&quot;./js/index.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p><code>src/js/index.js</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const test = require(&apos;./test&apos;);</div><div class="line">test();</div></pre></td></tr></table></figure>
+<p><code>src/js/test.js</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">module.exports = function()&#123;</div><div class="line">  console.log(&apos;you are require src/js/test.js&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>用<strong>nodejs</strong>运行上面的代码，打开<strong>index.html</strong>，会报找不到<strong>./test</strong>模块的错误，将<strong>index.js</strong>的代码改成下面的就行了。</p>
+<p><code>src/js/index.js</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const test = require(&apos;./js/test&apos;); //基于index.html所在目录下。</div><div class="line">test();</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;坑一：模块require&quot;&gt;&lt;a href=&quot;#坑一：模块require&quot; class=&quot;headerlink&quot; title=&quot;坑一：模块require&quot;&gt;&lt;/a&gt;坑一：模块require&lt;/h1&gt;&lt;h2 id=&quot;在html引入的js文件里require的时候是基
+    
+    </summary>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
+    
+    
+      <category term="commonjs" scheme="https://chanran.github.io/tags/commonjs/"/>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
+    
+  </entry>
+  
+  <entry>
     <title>记录读过的有意义的书籍</title>
     <link href="https://chanran.github.io/2016/11/13/%E8%AE%B0%E5%BD%95%E8%AF%BB%E8%BF%87%E7%9A%84%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E4%B9%A6%E7%B1%8D/"/>
     <id>https://chanran.github.io/2016/11/13/记录读过的有意义的书籍/</id>
     <published>2016-11-13T11:50:50.000Z</published>
-    <updated>2016-11-17T13:17:22.370Z</updated>
+    <updated>2016-11-27T04:14:27.156Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/img/yuedu.jpg" alt="阅读的猫"></p>
 <blockquote>
@@ -335,9 +370,9 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="重构" scheme="https://chanran.github.io/tags/%E9%87%8D%E6%9E%84/"/>
-    
       <category term="css" scheme="https://chanran.github.io/tags/css/"/>
+    
+      <category term="重构" scheme="https://chanran.github.io/tags/%E9%87%8D%E6%9E%84/"/>
     
       <category term="html" scheme="https://chanran.github.io/tags/html/"/>
     
@@ -395,11 +430,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
@@ -461,11 +496,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
@@ -639,11 +674,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
