@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-11-29T12:29:23.685Z</updated>
+  <updated>2016-11-30T02:17:54.339Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -14,6 +14,87 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ubuntu放wifi(热点)给安卓手机</title>
+    <link href="https://chanran.github.io/2016/11/30/ubuntu%E6%94%BEwifi(%E7%83%AD%E7%82%B9)%E7%BB%99%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA/"/>
+    <id>https://chanran.github.io/2016/11/30/ubuntu放wifi(热点)给安卓手机/</id>
+    <published>2016-11-30T01:19:38.000Z</published>
+    <updated>2016-11-30T02:17:54.339Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/img/ubuntu.png" alt="ubuntu"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于宿舍路由器坏了，手机流量急剧下降（刷twitter…)，所以只能出此下册（个人不太喜欢电脑放wifi）。</p>
+<h1 id="ubuntu16-04lts软件中心安装kde5-nm-connection-editor"><a href="#ubuntu16-04lts软件中心安装kde5-nm-connection-editor" class="headerlink" title="ubuntu16.04lts软件中心安装kde5-nm-connection-editor"></a>ubuntu16.04lts软件中心安装kde5-nm-connection-editor</h1><blockquote>
+<p>注：ubuntu14.04lts该软件为kde5-nm-connection-editor。</p>
+</blockquote>
+<p><img src="/img/kdeInstall.png" alt="install kde"></p>
+<h1 id="在终端打开kde5-nm-connection-editor"><a href="#在终端打开kde5-nm-connection-editor" class="headerlink" title="在终端打开kde5-nm-connection-editor"></a>在终端打开kde5-nm-connection-editor</h1><p><img src="/img/openKde.png" alt="open kde"></p>
+<h1 id="添加无线-共享-连接"><a href="#添加无线-共享-连接" class="headerlink" title="添加无线(共享)连接"></a>添加无线(共享)连接</h1><p><img src="/img/shareWIFI.jpg" alt="add wireless(shared)"></p>
+<h1 id="填写连接信息：连接名称，SSID-模式。设置热点密码"><a href="#填写连接信息：连接名称，SSID-模式。设置热点密码" class="headerlink" title="填写连接信息：连接名称，SSID,模式。设置热点密码"></a>填写连接信息：连接名称，SSID,模式。设置热点密码</h1><p><img src="/img/fillBlank.png" alt="fill blank"></p>
+<p><img src="/img/setPasswd.png" alt="set passwd"></p>
+<h1 id="记得连接有线网络，不然是释放不了wifi-热点的-点击右上角网络连接的icon-选择连接隐藏网络，选择你设置的连接名称"><a href="#记得连接有线网络，不然是释放不了wifi-热点的-点击右上角网络连接的icon-选择连接隐藏网络，选择你设置的连接名称" class="headerlink" title="记得连接有线网络，不然是释放不了wifi(热点的),点击右上角网络连接的icon,选择连接隐藏网络，选择你设置的连接名称"></a><strong>记得连接有线网络</strong>，不然是释放不了wifi(热点的),点击右上角网络连接的icon,选择连接隐藏网络，选择你设置的连接名称</h1><p><img src="/img/connectToWIFI.jpg" alt="connect to wifi"></p>
+<p><img src="/img/connectToBlueWIFI.jpg" alt="connect to blue&#39;wifi"></p>
+<blockquote>
+<p>点击连接</p>
+</blockquote>
+<p><img src="/img/blueWIFI.png" alt="blue&#39;wifi"></p>
+<p><strong>这里有点小问题</strong>：好像不能设置wifi安全性，连不上<strong>blue’wifi</strong>。没关系，我们可以另辟蹊径。</p>
+<p><img src="/img/setWIFI.jpg" alt="set wifi"></p>
+<p><img src="/img/setBlueWIFI.png" alt="set blue&#39;wifi"></p>
+<blockquote>
+<p>打开之后切换到Wi-Fi安全性的tab那里</p>
+</blockquote>
+<p><img src="/img/setWIFISec.png" alt="set wifi security"></p>
+<h1 id="都设置好了之后就拿去你手机连接你设置的热点吧～"><a href="#都设置好了之后就拿去你手机连接你设置的热点吧～" class="headerlink" title="都设置好了之后就拿去你手机连接你设置的热点吧～"></a>都设置好了之后就拿去你手机连接你设置的热点吧～</h1><blockquote>
+<p>可能刚设置完，需要等几分钟才能生效的。</p>
+</blockquote>
+<p><img src="/img/mobileWIFI.jpg" alt="mobile connect to hot point"></p>
+<p><img src="/img/succeedConnect.jpg" alt="success"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/img/ubuntu.png&quot; alt=&quot;ubuntu&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;由于宿舍路由器坏了，手机流量急剧下降（刷tw
+    
+    </summary>
+    
+      <category term="瞎折腾" scheme="https://chanran.github.io/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/"/>
+    
+    
+      <category term="ubuntu" scheme="https://chanran.github.io/tags/ubuntu/"/>
+    
+      <category term="wifi" scheme="https://chanran.github.io/tags/wifi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>electron开发跨平台桌面应用</title>
+    <link href="https://chanran.github.io/2016/11/29/electron%E5%BC%80%E5%8F%91%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%A1%8C%E9%9D%A2%E5%BA%94%E7%94%A8/"/>
+    <id>https://chanran.github.io/2016/11/29/electron开发跨平台桌面应用/</id>
+    <published>2016-11-29T15:49:23.000Z</published>
+    <updated>2016-11-30T01:18:34.379Z</updated>
+    
+    <content type="html"><![CDATA[<p>留坑======</p>
+<h1 id="安装electron"><a href="#安装electron" class="headerlink" title="安装electron"></a>安装electron</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;留坑======&lt;/p&gt;
+&lt;h1 id=&quot;安装electron&quot;&gt;&lt;a href=&quot;#安装electron&quot; class=&quot;headerlink&quot; title=&quot;安装electron&quot;&gt;&lt;/a&gt;安装electron&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
+    
+    
+      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
+    
+      <category term="js" scheme="https://chanran.github.io/tags/js/"/>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
+    
+  </entry>
   
   <entry>
     <title>写nodejs时遇到的坑</title>
@@ -46,9 +127,9 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
-      <category term="commonjs" scheme="https://chanran.github.io/tags/commonjs/"/>
-    
       <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
+    
+      <category term="commonjs" scheme="https://chanran.github.io/tags/commonjs/"/>
     
   </entry>
   
@@ -372,9 +453,9 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="重构" scheme="https://chanran.github.io/tags/%E9%87%8D%E6%9E%84/"/>
-    
       <category term="css" scheme="https://chanran.github.io/tags/css/"/>
+    
+      <category term="重构" scheme="https://chanran.github.io/tags/%E9%87%8D%E6%9E%84/"/>
     
       <category term="html" scheme="https://chanran.github.io/tags/html/"/>
     
@@ -433,11 +514,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
@@ -500,11 +581,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
@@ -680,11 +761,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
