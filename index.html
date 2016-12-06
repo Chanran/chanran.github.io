@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+
+
+  <title>blue&#39;s blog | coding is funny.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="theme-color" content="#3F51B5">
+
+
+  <meta name="keywords" content="SCAU/大三汪/js/node/php/linux">
+  <meta name="description" content="记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="blue's blog">
+<meta property="og:url" content="https://chanran.github.io/index.html">
+<meta property="og:site_name" content="blue's blog">
+<meta property="og:description" content="记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="blue's blog">
+<meta name="twitter:description" content="记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客">
+
+    <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
+
+  <meta name="summary" content="记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客">
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.1.4">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar"><img src="/img/meAndYou.jpg"></a>
+        <hgroup class="introduce">
+          <h5 class="nickname">blue</h5>
+          <a href="mailto:rong650751@163.com" title="rong650751@163.com" class="mail">rong650751@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+
+            <li class="waves-block waves-effect active">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                成就
+              </a>
+            </li>
+
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Chanran" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2308631120?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/users/1402753fcc6f/latest_articles" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                简书
+              </a>
+            </li>
+
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>blue&#39;s blog &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">blue&#39;s blog</div>
+
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+
+
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+
+    </div>
+</header>
+<header class="content-header index-header">
+
+    <div class="container">
+        <h1 class="title">blue&#39;s blog</h1>
+
+
+        <h5 class="subtitle">
+
+
+                coding is funny.
+
+        </h5>
+
+
+    </div>
+
+
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+
+        <li class="post-list-item">
+            <article id="post-stylus预处理入门三插值"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time datetime="2016-11-01T05:56:17.000Z" itemprop="datePublished" class="post-time">
+  2016-11-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+
+
+    </div>
+
+
+
+
+
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/11/01/stylus预处理入门三插值/">stylus预处理入门(三)--插值</a>
+    </h3>
+
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent" >
+
+
+        插值(interporation)
+插值相当于解析表达式或者变量，让它们的值替换插值的位置。注： 不能用于属性值的插值（但属性值可以使用变量替换）。
+
+
+在css属性名中使用插值
+
+1234partOfProp = radiusvalue = 10pxdiv    border-&#123;partOfProp&#125; value  /*切记属性值这里不可以使用插值*/
+转化：123di...
+
+
+        <a href="/2016/11/01/stylus预处理入门三插值/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+
+    <div class="post-footer">
+
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stylus/">stylus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/预处理器/">预处理器</a></li></ul>
+
+    </div>
+
+</article>
+
+        </li>
+
+        <li class="post-list-item">
+            <article id="post-stylus预处理入门二变量"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time datetime="2016-11-01T05:54:34.000Z" itemprop="datePublished" class="post-time">
+  2016-11-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+
+
+    </div>
+
+
+
+
+
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/11/01/stylus预处理入门二变量/">stylus预处理入门(二)--变量</a>
+    </h3>
+
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent" >
+
+
+        变量(variables)
+变量的标识符可以由$、下划线、字母、数字组成，其中数字不能作为变量的开头。其实这里的变量只是理解为单纯的字符替换
+
+外部定义变量：12345_font-size = 14pxfont = _font-size &quot;Lucida Grande&quot;, Arialbody  font font, sans-serif
+转化：123body &#123; ...
+
+
+        <a href="/2016/11/01/stylus预处理入门二变量/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+
+    <div class="post-footer">
+
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stylus/">stylus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/预处理器/">预处理器</a></li></ul>
+
+    </div>
+
+</article>
+
+        </li>
+
+        <li class="post-list-item">
+            <article id="post-stylus预处理入门一选择器"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time datetime="2016-11-01T05:50:46.000Z" itemprop="datePublished" class="post-time">
+  2016-11-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+
+
+    </div>
+
+
+
+
+
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/11/01/stylus预处理入门一选择器/">stylus预处理入门(一)--选择器</a>
+    </h3>
+
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent" >
+
+
+
+相关网站
+官网：stylus
+中文文档：stylus中文版参考文档 by 张鑫旭
+理解css预处理器：css预处理器初识 by 栓萝卜的棍子
+三种css预处理器语言详解：less|sass|stylus by 开源中国
+
+
+CSS预处理器语言的个人理解
+用另外一种可读性高、语法性强的语言来写CSS。stylus可以使用循环、分支、定义变量和函数结构来写css，这样写起来既方便又快捷。
+通过...
+
+
+        <a href="/2016/11/01/stylus预处理入门一选择器/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+
+    <div class="post-footer">
+
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stylus/">stylus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/预处理器/">预处理器</a></li></ul>
+
+    </div>
+
+</article>
+
+        </li>
+
+        <li class="post-list-item">
+            <article id="post-css3动画笔记"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time datetime="2016-11-01T05:34:41.000Z" itemprop="datePublished" class="post-time">
+  2016-11-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+
+
+    </div>
+
+
+
+
+
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/11/01/css3动画笔记/">css3动画笔记</a>
+    </h3>
+
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent" >
+
+
+        some sites
+css3动画文档 by W3CSchool
+css3动画简介 by阮一峰
+css3动画手册 by 腾讯 isux
+css3动画之硬件加速 by w3cplus
+调试css3 动画 keyframe by w3ctech
+css动画的性能优化 by zencode.in
+浏览器是如何渲染页面的 by code.leozhang2018.me (读完了之后会更加懂得如何提升...
+
+
+        <a href="/2016/11/01/css3动画笔记/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+
+    <div class="post-footer">
+
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/animation/">animation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
+
+    </div>
+
+</article>
+
+        </li>
+
+    </ul>
+
+
+
+</div>
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "blue's blog",
+    pic: "/img/meAndYou.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "https://chanran.github.io/"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.1.4"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.1.4"></script>
+
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260728730&web_id=1260728730"></script>
+
+
+
+
+
+</body>
+</html>
+html:

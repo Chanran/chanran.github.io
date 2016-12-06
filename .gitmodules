@@ -1,0 +1,3 @@
+[submodule "themes"]
+    path = themes/raytaylorism
+    url = https://github.com/raytaylorlin/hexo-theme-raytaylorism.git
