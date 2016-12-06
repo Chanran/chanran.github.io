@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-11-30T02:24:15.689Z</updated>
+  <updated>2016-12-06T10:42:48.299Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>写vuejs需要注意的地方</title>
+    <link href="https://chanran.github.io/2016/12/06/%E5%86%99vuejs%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9/"/>
+    <id>https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/</id>
+    <published>2016-12-06T10:36:11.000Z</published>
+    <updated>2016-12-06T10:42:48.299Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Vue的实例嵌套"><a href="#Vue的实例嵌套" class="headerlink" title="Vue的实例嵌套"></a>Vue的实例嵌套</h1><h2 id="最高级的实例为主，低级的实例方法"><a href="#最高级的实例为主，低级的实例方法" class="headerlink" title="最高级的实例为主，低级的实例方法"></a>最高级的实例为主，低级的实例方法</h2><h1 id="Vue的数组更新问题"><a href="#Vue的数组更新问题" class="headerlink" title="Vue的数组更新问题"></a>Vue的数组更新问题</h1><h2 id="不能直接赋值数组，触发不了视图更新"><a href="#不能直接赋值数组，触发不了视图更新" class="headerlink" title="不能直接赋值数组，触发不了视图更新"></a>不能直接赋值数组，触发不了视图更新</h2><h2 id="使用变异方法和非变异方法"><a href="#使用变异方法和非变异方法" class="headerlink" title="使用变异方法和非变异方法"></a>使用变异方法和非变异方法</h2><h1 id="Vue对src属性的处理"><a href="#Vue对src属性的处理" class="headerlink" title="Vue对src属性的处理"></a>Vue对src属性的处理</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Vue的实例嵌套&quot;&gt;&lt;a href=&quot;#Vue的实例嵌套&quot; class=&quot;headerlink&quot; title=&quot;Vue的实例嵌套&quot;&gt;&lt;/a&gt;Vue的实例嵌套&lt;/h1&gt;&lt;h2 id=&quot;最高级的实例为主，低级的实例方法&quot;&gt;&lt;a href=&quot;#最高级的实例为主，低级的实
+    
+    </summary>
+    
+      <category term="javascript" scheme="https://chanran.github.io/categories/javascript/"/>
+    
+    
+      <category term="vuejs" scheme="https://chanran.github.io/tags/vuejs/"/>
+    
+      <category term="MVVM" scheme="https://chanran.github.io/tags/MVVM/"/>
+    
+  </entry>
   
   <entry>
     <title>ubuntu放wifi(热点)给安卓手机</title>
@@ -480,9 +504,9 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="重构" scheme="https://chanran.github.io/tags/%E9%87%8D%E6%9E%84/"/>
-    
       <category term="css" scheme="https://chanran.github.io/tags/css/"/>
+    
+      <category term="重构" scheme="https://chanran.github.io/tags/%E9%87%8D%E6%9E%84/"/>
     
       <category term="html" scheme="https://chanran.github.io/tags/html/"/>
     
@@ -541,11 +565,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
@@ -608,11 +632,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
@@ -788,11 +812,11 @@
       <category term="css" scheme="https://chanran.github.io/categories/css/"/>
     
     
-      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
-    
       <category term="stylus" scheme="https://chanran.github.io/tags/stylus/"/>
     
       <category term="预处理器" scheme="https://chanran.github.io/tags/%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/"/>
+    
+      <category term="css" scheme="https://chanran.github.io/tags/css/"/>
     
       <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
