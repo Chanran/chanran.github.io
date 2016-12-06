@@ -25,7 +25,7 @@ src/index.html
 src/index.html
 12345678910&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;&amp;lt;head&amp;gt;">
 <meta property="og:image" content="http://p1.bqimg.com/567571/aada741cacad2114.jpg">
-<meta property="og:updated_time" content="2016-11-29T12:29:23.685Z">
+<meta property="og:updated_time" content="2016-12-06T01:28:17.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="写nodejs时遇到的坑">
 <meta name="twitter:description" content="坑一：模块require在html引入的js文件里require的时候是基于该html文件的。目录结构
@@ -177,7 +177,7 @@ src/index.html
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#坑一：模块require"><span class="post-toc-number">1.</span> <span class="post-toc-text">坑一：模块require</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在html引入的js文件里require的时候是基于该html文件的。"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">在html引入的js文件里require的时候是基于该html文件的。</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#坑一：模块require"><span class="post-toc-number">1.</span> <span class="post-toc-text">坑一：模块require</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在html引入的js文件里require的时候是基于该html文件的。"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">在html引入的js文件里require的时候是基于该html文件的。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nodejs循环依赖（每种情况不同解决方法）。"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">nodejs循环依赖（每种情况不同解决方法）。</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解决方案1"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">解决方案1</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -210,7 +210,25 @@ src/index.html
 <p>用<strong>nodejs</strong>运行上面的代码，打开<strong>index.html</strong>，会报找不到<strong>./test</strong>模块的错误，将<strong>index.js</strong>的代码改成下面的就行了。</p>
 <p><code>src/js/index.js</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const test = require(&apos;./js/test&apos;); //基于index.html所在目录下。</div><div class="line">test();</div></pre></td></tr></table></figure>
-
+<h2 id="nodejs循环依赖（每种情况不同解决方法）。"><a href="#nodejs循环依赖（每种情况不同解决方法）。" class="headerlink" title="nodejs循环依赖（每种情况不同解决方法）。"></a>nodejs循环依赖（每种情况不同解决方法）。</h2><blockquote>
+<p>定义： 当有require()模块循环时，模块返回的时候还没有执行完。<br>即： a模块 require b模块，b模块也 require a模块。</p>
+<p>官网例子:</p>
+</blockquote>
+<p>1.当<strong>main.js先require a.js</strong>时，此时程序进入a.js执行require b.js，然后程序又进入b.js之后b.js尝试require a.js，此时就发现有问题,<strong> a.js返回了没有执行完的模块</strong>给b.js,即a.js执行到<code>exports.done =false</code>就返回给b.js了，所以在b.js里的<strong>a.js是没有执行完</strong>的。而如果是另一种情况，a.js是用module.exports出来的，那么b.js得到的是一个空对象object{}。（这里有点绕，有空画一张图出来比较好理解）</p>
+<p><code>a.js</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;a starting&apos;);</div><div class="line">exports.done = false;</div><div class="line">const b = require(&apos;./b.js&apos;);</div><div class="line">console.log(&apos;in a, b.done = %j&apos;, b.done);</div><div class="line">exports.done = true;</div><div class="line">console.log(&apos;a done&apos;);</div></pre></td></tr></table></figure>
+<p><code>b.js</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;b starting&apos;);</div><div class="line">exports.done = false;</div><div class="line">const a = require(&apos;./a.js&apos;);</div><div class="line">console.log(&apos;in b, a.done = %j&apos;, a.done);</div><div class="line">exports.done = true;</div><div class="line">console.log(&apos;b done&apos;);</div></pre></td></tr></table></figure>
+<p><code>main.js</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;main starting&apos;);</div><div class="line">const a = require(&apos;./a.js&apos;);</div><div class="line">const b = require(&apos;./b.js&apos;);</div><div class="line">console.log(&apos;in main, a.done=%j, b.done=%j&apos;, a.done, b.done);</div></pre></td></tr></table></figure>
+<p><code>执行结果</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">main starting</div><div class="line">a starting</div><div class="line">b starting</div><div class="line">in b, a.done = false</div><div class="line">b done</div><div class="line">in a, b.done = true</div><div class="line">a done</div><div class="line">in main, a.done=true, b.done=true</div></pre></td></tr></table></figure>
+<p>2.基本同上，但是main.js有所改动。这里main.js先调用b.js。对比上面main.js先调用a.js。程序入口不一样，程序的执行顺序也不一样，结果也反过来了。</p>
+<p><code>main.js</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;main starting&apos;);</div><div class="line">const b = require(&apos;./b.js&apos;);     //对比之前的main.js，这里先调用b.js</div><div class="line">const a = require(&apos;./a.js&apos;);</div><div class="line">console.log(&apos;in main, a.done=%j, b.done=%j&apos;, a.done, b.done);</div></pre></td></tr></table></figure>
+<p><code>执行结果</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">main starting</div><div class="line">b starting</div><div class="line">a starting</div><div class="line">in a, b.done = false</div><div class="line">a done</div><div class="line">in b, a.done = true</div><div class="line">b done</div><div class="line">in main, a.done=true, b.done=true</div></pre></td></tr></table></figure>
+<h3 id="解决方案1"><a href="#解决方案1" class="headerlink" title="解决方案1"></a>解决方案1</h3>
         </div>
         
         <blockquote class="post-copyright">
