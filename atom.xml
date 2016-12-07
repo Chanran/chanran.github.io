@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-12-06T10:42:48.299Z</updated>
+  <updated>2016-12-07T16:45:20.410Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>写electron遇到的坑</title>
+    <link href="https://chanran.github.io/2016/12/08/%E5%86%99electron%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/"/>
+    <id>https://chanran.github.io/2016/12/08/写electron遇到的坑/</id>
+    <published>2016-12-07T16:37:28.000Z</published>
+    <updated>2016-12-07T16:45:20.410Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="electron进程之间的通信"><a href="#electron进程之间的通信" class="headerlink" title="electron进程之间的通信"></a>electron进程之间的通信</h1><h2 id="渲染进程和主进程之间的通信"><a href="#渲染进程和主进程之间的通信" class="headerlink" title="渲染进程和主进程之间的通信"></a>渲染进程和主进程之间的通信</h2><ol>
+<li>渲染进程和主进程之间通过ipc通信，渲染进程使用的是ipcRenderer,而主进程使用的是ipcMain。</li>
+</ol>
+<h2 id="渲染进程和渲染进程之间的通信"><a href="#渲染进程和渲染进程之间的通信" class="headerlink" title="渲染进程和渲染进程之间的通信"></a>渲染进程和渲染进程之间的通信</h2><ol>
+<li>渲染进程和渲染进程之间的通信：渲染进程1-&gt;主进程-&gt;渲染进程2。</li>
+</ol>
+<h2 id="进程之间数据不能共享"><a href="#进程之间数据不能共享" class="headerlink" title="进程之间数据不能共享"></a>进程之间数据不能共享</h2><ol>
+<li>比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只能得到进程1改变类1的静态属性之前的值。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;electron进程之间的通信&quot;&gt;&lt;a href=&quot;#electron进程之间的通信&quot; class=&quot;headerlink&quot; title=&quot;electron进程之间的通信&quot;&gt;&lt;/a&gt;electron进程之间的通信&lt;/h1&gt;&lt;h2 id=&quot;渲染进程和主进程之间的通信
+    
+    </summary>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
+    
+    
+      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
+    
+      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>写vuejs需要注意的地方</title>

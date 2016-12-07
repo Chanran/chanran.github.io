@@ -5,23 +5,44 @@
   
   
   
-  <title>写vuejs需要注意的地方 | blue&#39;s blog | coding is funny.</title>
+  <title>写electron遇到的坑 | blue&#39;s blog | coding is funny.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="vuejs,MVVM">
-  <meta name="description" content="Vue的实例嵌套最高级的实例为主，低级的实例方法Vue的数组更新问题不能直接赋值数组，触发不了视图更新使用变异方法和非变异方法Vue对src属性的处理">
+  <meta name="keywords" content="electron,nodejs,javascript">
+  <meta name="description" content="electron进程之间的通信渲染进程和主进程之间的通信
+渲染进程和主进程之间通过ipc通信，渲染进程使用的是ipcRenderer,而主进程使用的是ipcMain。
+
+渲染进程和渲染进程之间的通信
+渲染进程和渲染进程之间的通信：渲染进程1-&amp;gt;主进程-&amp;gt;渲染进程2。
+
+进程之间数据不能共享
+比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写vuejs需要注意的地方">
-<meta property="og:url" content="https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/index.html">
+<meta property="og:title" content="写electron遇到的坑">
+<meta property="og:url" content="https://chanran.github.io/2016/12/08/写electron遇到的坑/index.html">
 <meta property="og:site_name" content="blue's blog">
-<meta property="og:description" content="Vue的实例嵌套最高级的实例为主，低级的实例方法Vue的数组更新问题不能直接赋值数组，触发不了视图更新使用变异方法和非变异方法Vue对src属性的处理">
-<meta property="og:updated_time" content="2016-12-06T10:42:48.299Z">
+<meta property="og:description" content="electron进程之间的通信渲染进程和主进程之间的通信
+渲染进程和主进程之间通过ipc通信，渲染进程使用的是ipcRenderer,而主进程使用的是ipcMain。
+
+渲染进程和渲染进程之间的通信
+渲染进程和渲染进程之间的通信：渲染进程1-&amp;gt;主进程-&amp;gt;渲染进程2。
+
+进程之间数据不能共享
+比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只">
+<meta property="og:updated_time" content="2016-12-07T16:45:20.410Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写vuejs需要注意的地方">
-<meta name="twitter:description" content="Vue的实例嵌套最高级的实例为主，低级的实例方法Vue的数组更新问题不能直接赋值数组，触发不了视图更新使用变异方法和非变异方法Vue对src属性的处理">
+<meta name="twitter:title" content="写electron遇到的坑">
+<meta name="twitter:description" content="electron进程之间的通信渲染进程和主进程之间的通信
+渲染进程和主进程之间通过ipc通信，渲染进程使用的是ipcRenderer,而主进程使用的是ipcMain。
+
+渲染进程和渲染进程之间的通信
+渲染进程和渲染进程之间的通信：渲染进程1-&amp;gt;主进程-&amp;gt;渲染进程2。
+
+进程之间数据不能共享
+比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只">
   
     <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
   
@@ -120,7 +141,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">写vuejs需要注意的地方</div>
+        <div class="flex-col header-title ellipsis">写electron遇到的坑</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -142,15 +163,15 @@
 <header class="content-header post-header">
 
     <div class="container">
-        <h1 class="title">写vuejs需要注意的地方</h1>
+        <h1 class="title">写electron遇到的坑</h1>
         <h5 class="subtitle">
             
-                <time datetime="2016-12-06T10:36:11.000Z" itemprop="datePublished" class="page-time">
-  2016-12-06
+                <time datetime="2016-12-07T16:37:28.000Z" itemprop="datePublished" class="page-time">
+  2016-12-08
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/javascript/">javascript</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
 
             
         </h5>
@@ -166,33 +187,42 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Vue的实例嵌套"><span class="post-toc-number">1.</span> <span class="post-toc-text">Vue的实例嵌套</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最高级的实例为主，低级的实例方法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">最高级的实例为主，低级的实例方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Vue的数组更新问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">Vue的数组更新问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不能直接赋值数组，触发不了视图更新"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">不能直接赋值数组，触发不了视图更新</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用变异方法和非变异方法"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">使用变异方法和非变异方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Vue对src属性的处理"><span class="post-toc-number">3.</span> <span class="post-toc-text">Vue对src属性的处理</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#electron进程之间的通信"><span class="post-toc-number">1.</span> <span class="post-toc-text">electron进程之间的通信</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#渲染进程和主进程之间的通信"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">渲染进程和主进程之间的通信</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#渲染进程和渲染进程之间的通信"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">渲染进程和渲染进程之间的通信</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进程之间数据不能共享"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">进程之间数据不能共享</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
-<article id="post-写vuejs需要注意的地方" 
+<article id="post-写electron遇到的坑" 
   class="post-article article-type-post" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">写vuejs需要注意的地方</h1>
+        <h1 class="post-card-title">写electron遇到的坑</h1>
         <div class="post-meta">
-            <time datetime="2016-12-06T10:36:11.000Z" itemprop="datePublished" class="post-time">
-  2016-12-06
+            <time datetime="2016-12-07T16:37:28.000Z" itemprop="datePublished" class="post-time">
+  2016-12-08
 </time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/javascript/">javascript</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
 
 
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="Vue的实例嵌套"><a href="#Vue的实例嵌套" class="headerlink" title="Vue的实例嵌套"></a>Vue的实例嵌套</h1><h2 id="最高级的实例为主，低级的实例方法"><a href="#最高级的实例为主，低级的实例方法" class="headerlink" title="最高级的实例为主，低级的实例方法"></a>最高级的实例为主，低级的实例方法</h2><h1 id="Vue的数组更新问题"><a href="#Vue的数组更新问题" class="headerlink" title="Vue的数组更新问题"></a>Vue的数组更新问题</h1><h2 id="不能直接赋值数组，触发不了视图更新"><a href="#不能直接赋值数组，触发不了视图更新" class="headerlink" title="不能直接赋值数组，触发不了视图更新"></a>不能直接赋值数组，触发不了视图更新</h2><h2 id="使用变异方法和非变异方法"><a href="#使用变异方法和非变异方法" class="headerlink" title="使用变异方法和非变异方法"></a>使用变异方法和非变异方法</h2><h1 id="Vue对src属性的处理"><a href="#Vue对src属性的处理" class="headerlink" title="Vue对src属性的处理"></a>Vue对src属性的处理</h1>
+            <h1 id="electron进程之间的通信"><a href="#electron进程之间的通信" class="headerlink" title="electron进程之间的通信"></a>electron进程之间的通信</h1><h2 id="渲染进程和主进程之间的通信"><a href="#渲染进程和主进程之间的通信" class="headerlink" title="渲染进程和主进程之间的通信"></a>渲染进程和主进程之间的通信</h2><ol>
+<li>渲染进程和主进程之间通过ipc通信，渲染进程使用的是ipcRenderer,而主进程使用的是ipcMain。</li>
+</ol>
+<h2 id="渲染进程和渲染进程之间的通信"><a href="#渲染进程和渲染进程之间的通信" class="headerlink" title="渲染进程和渲染进程之间的通信"></a>渲染进程和渲染进程之间的通信</h2><ol>
+<li>渲染进程和渲染进程之间的通信：渲染进程1-&gt;主进程-&gt;渲染进程2。</li>
+</ol>
+<h2 id="进程之间数据不能共享"><a href="#进程之间数据不能共享" class="headerlink" title="进程之间数据不能共享"></a>进程之间数据不能共享</h2><ol>
+<li>比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只能得到进程1改变类1的静态属性之前的值。</li>
+</ol>
+
         </div>
         
         <blockquote class="post-copyright">
     <div class="content">
-        转载请注明转自:<a href="/2016/12/06/写vuejs需要注意的地方/" target="_blank" rel="external">https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/index.html</a>
+        转载请注明转自:<a href="/2016/12/08/写electron遇到的坑/" target="_blank" rel="external">https://chanran.github.io/2016/12/08/写electron遇到的坑/index.html</a>
     </div>
     <footer>
         <a href="https://chanran.github.io">
@@ -210,7 +240,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuejs/">vuejs</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/electron/">electron</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
 
 
             
@@ -221,7 +251,7 @@
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/&title=《写vuejs需要注意的地方》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/08/写electron遇到的坑/&title=《写electron遇到的坑》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -231,22 +261,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/&title=《写vuejs需要注意的地方》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/08/写electron遇到的坑/&title=《写electron遇到的坑》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/08/写electron遇到的坑/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《写vuejs需要注意的地方》 — blue's blog&url=https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/&via=https://chanran.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《写electron遇到的坑》 — blue's blog&url=https://chanran.github.io/2016/12/08/写electron遇到的坑/&via=https://chanran.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/08/写electron遇到的坑/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -266,21 +296,14 @@
     </div>   
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2016/12/08/写electron遇到的坑/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">写electron遇到的坑</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2016/11/30/ubuntu放wifi(热点)给安卓手机/" id="post-next" class="post-nav-link">
+      <a href="/2016/12/06/写vuejs需要注意的地方/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">ubuntu放wifi(热点)给安卓手机</h4>
+        <h4 class="title">写vuejs需要注意的地方</h4>
       </a>
     </div>
   
@@ -290,7 +313,7 @@
             
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="写vuejs需要注意的地方" data-title="写vuejs需要注意的地方" data-url="https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/"></div>
+	<div class="ds-thread" data-thread-key="写electron遇到的坑" data-title="写electron遇到的坑" data-url="https://chanran.github.io/2016/12/08/写electron遇到的坑/"></div>
 </div>
 <script src="/js/embed.min.js?v=1.2"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -344,7 +367,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/&title=《写vuejs需要注意的地方》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/08/写electron遇到的坑/&title=《写electron遇到的坑》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -354,22 +377,22 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/&title=《写vuejs需要注意的地方》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/08/写electron遇到的坑/&title=《写electron遇到的坑》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/08/写electron遇到的坑/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《写vuejs需要注意的地方》 — blue's blog&url=https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/&via=https://chanran.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《写electron遇到的坑》 — blue's blog&url=https://chanran.github.io/2016/12/08/写electron遇到的坑/&via=https://chanran.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/08/写electron遇到的坑/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -380,7 +403,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="http://s.jiathis.com/qrcode.php?url=https://chanran.github.io/2016/12/06/写vuejs需要注意的地方/" alt="微信分享二维码">
+    <img src="http://s.jiathis.com/qrcode.php?url=https://chanran.github.io/2016/12/08/写electron遇到的坑/" alt="微信分享二维码">
 </div>
 
 
