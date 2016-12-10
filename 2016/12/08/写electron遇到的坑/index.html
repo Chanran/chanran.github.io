@@ -18,8 +18,7 @@
 渲染进程和渲染进程之间的通信
 渲染进程和渲染进程之间的通信：渲染进程1-&amp;gt;主进程-&amp;gt;渲染进程2。
 
-进程之间数据不能共享
-比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只">
+进程之间数据共享：IPC，HTML5 API(Storage API,IndexedDB)等注意不要犯的错:比如在进程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="写electron遇到的坑">
 <meta property="og:url" content="https://chanran.github.io/2016/12/08/写electron遇到的坑/index.html">
@@ -30,9 +29,8 @@
 渲染进程和渲染进程之间的通信
 渲染进程和渲染进程之间的通信：渲染进程1-&amp;gt;主进程-&amp;gt;渲染进程2。
 
-进程之间数据不能共享
-比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只">
-<meta property="og:updated_time" content="2016-12-07T16:45:20.410Z">
+进程之间数据共享：IPC，HTML5 API(Storage API,IndexedDB)等注意不要犯的错:比如在进程">
+<meta property="og:updated_time" content="2016-12-07T17:20:02.508Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="写electron遇到的坑">
 <meta name="twitter:description" content="electron进程之间的通信渲染进程和主进程之间的通信
@@ -41,8 +39,7 @@
 渲染进程和渲染进程之间的通信
 渲染进程和渲染进程之间的通信：渲染进程1-&amp;gt;主进程-&amp;gt;渲染进程2。
 
-进程之间数据不能共享
-比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只">
+进程之间数据共享：IPC，HTML5 API(Storage API,IndexedDB)等注意不要犯的错:比如在进程">
   
     <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
   
@@ -187,7 +184,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#electron进程之间的通信"><span class="post-toc-number">1.</span> <span class="post-toc-text">electron进程之间的通信</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#渲染进程和主进程之间的通信"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">渲染进程和主进程之间的通信</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#渲染进程和渲染进程之间的通信"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">渲染进程和渲染进程之间的通信</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进程之间数据不能共享"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">进程之间数据不能共享</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#electron进程之间的通信"><span class="post-toc-number">1.</span> <span class="post-toc-text">electron进程之间的通信</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#渲染进程和主进程之间的通信"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">渲染进程和主进程之间的通信</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#渲染进程和渲染进程之间的通信"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">渲染进程和渲染进程之间的通信</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进程之间数据共享：IPC，HTML5-API-Storage-API-IndexedDB-等"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">进程之间数据共享：IPC，HTML5 API(Storage API,IndexedDB)等</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -214,9 +211,11 @@
 <h2 id="渲染进程和渲染进程之间的通信"><a href="#渲染进程和渲染进程之间的通信" class="headerlink" title="渲染进程和渲染进程之间的通信"></a>渲染进程和渲染进程之间的通信</h2><ol>
 <li>渲染进程和渲染进程之间的通信：渲染进程1-&gt;主进程-&gt;渲染进程2。</li>
 </ol>
-<h2 id="进程之间数据不能共享"><a href="#进程之间数据不能共享" class="headerlink" title="进程之间数据不能共享"></a>进程之间数据不能共享</h2><ol>
-<li>比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只能得到进程1改变类1的静态属性之前的值。</li>
-</ol>
+<h2 id="进程之间数据共享：IPC，HTML5-API-Storage-API-IndexedDB-等"><a href="#进程之间数据共享：IPC，HTML5-API-Storage-API-IndexedDB-等" class="headerlink" title="进程之间数据共享：IPC，HTML5 API(Storage API,IndexedDB)等"></a>进程之间数据共享：IPC，HTML5 API(Storage API,IndexedDB)等</h2><p><strong>注意不要犯的错</strong>:比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只能得到进程1改变类1的静态属性之前的值。</p>
+<ul>
+<li>IPC通信:可以使用Electron中提供的IPC系统。它在主进程中将一个对象储存为全局变量，然后可以通过remote模块操作它们</li>
+<li>HTML5 API</li>
+</ul>
 
         </div>
         
@@ -296,7 +295,14 @@
     </div>   
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/12/11/eslint-react-xxx-is-assigned-a-value-but-never-used-solution/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">eslint react xxx is assigned a value but never used 的解决办法</h4>
+      </a>
+    </div>
   
 
   

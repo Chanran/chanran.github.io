@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-12-07T16:45:20.410Z</updated>
+  <updated>2016-12-10T16:28:17.238Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -16,11 +16,44 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>eslint react xxx is assigned a value but never used 的解决办法</title>
+    <link href="https://chanran.github.io/2016/12/11/eslint-react-xxx-is-assigned-a-value-but-never-used-solution/"/>
+    <id>https://chanran.github.io/2016/12/11/eslint-react-xxx-is-assigned-a-value-but-never-used-solution/</id>
+    <published>2016-12-10T16:09:15.000Z</published>
+    <updated>2016-12-10T16:28:17.238Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ESLint中文翻译"><a href="#ESLint中文翻译" class="headerlink" title="ESLint中文翻译"></a>ESLint中文翻译</h1><ul>
+<li><a href="http://eslint.cn/" target="_blank" rel="external">ESLint</a></li>
+</ul>
+<h1 id="问题重现-定义了变量并使用了，但是eslint还是报定义过了但是未使用的错误"><a href="#问题重现-定义了变量并使用了，但是eslint还是报定义过了但是未使用的错误" class="headerlink" title="问题重现(定义了变量并使用了，但是eslint还是报定义过了但是未使用的错误)"></a>问题重现(定义了变量并使用了，但是eslint还是报定义过了但是未使用的错误)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import ReactDOM from &apos;react-dom&apos;;</div><div class="line"></div><div class="line">let Form = React.createClass(&#123;</div><div class="line">	render: () =&gt; &#123; &lt; div className = &quot;form&quot; &gt; &lt; div className = &quot;form-title&quot; &gt; Simple Login Form &lt; /div&gt;</div><div class="line">              &lt;div className=&quot;name-div&quot;&gt;&lt;label htmlFor=&quot;username&quot; className=&quot;name-label&quot;&gt;Name:&lt;/label &gt; &lt;input id=&quot;username&quot; className=&quot;name-input&quot; name=&quot;username&quot; type=&quot;text&quot;/&gt; &lt; /div&gt;</div><div class="line">              &lt;div className=&quot;pwd-div&quot;&gt;&lt;label htmlFor=&quot;password&quot; className=&quot;pwd-label&quot;&gt;Password:&lt;/label &gt; &lt;input id=&quot;password&quot; className=&quot;pwd-input&quot; name=&quot;password&quot; type=&quot;password&quot;/&gt; &lt; /div&gt;</div><div class="line">        &lt;/div &gt;;</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">ReactDOM.render(&lt;Form /&gt;,document.getElementById(&apos;loginForm&apos;));</div></pre></td></tr></table></figure>
+<p>然后atom 的eslint报了<code>no-unused-vars &#39;Form&#39; is assigned a value but never used.at line 4 col 5</code>的错误。</p>
+<h1 id="比较麻烦的解决办法–每一行报错的地方都加一行注释"><a href="#比较麻烦的解决办法–每一行报错的地方都加一行注释" class="headerlink" title="比较麻烦的解决办法–每一行报错的地方都加一行注释"></a>比较麻烦的解决办法–每一行报错的地方都加一行注释</h1><p>在声明变量的当前行加上一条注释 <code>// eslint-disable-line no-unused-vars</code></p>
+<p>即是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import ReactDOM from &apos;react-dom&apos;;</div><div class="line"></div><div class="line">let Form = React.createClass(&#123; // eslint-disable-line no-unused-vars</div><div class="line">	render: () =&gt; &#123; &lt; div className = &quot;form&quot; &gt; &lt; div className = &quot;form-title&quot; &gt; Simple Login Form &lt; /div&gt;</div><div class="line">              &lt;div className=&quot;name-div&quot;&gt;&lt;label htmlFor=&quot;username&quot; className=&quot;name-label&quot;&gt;Name:&lt;/label &gt; &lt;input id=&quot;username&quot; className=&quot;name-input&quot; name=&quot;username&quot; type=&quot;text&quot;/&gt; &lt; /div&gt;</div><div class="line">              &lt;div className=&quot;pwd-div&quot;&gt;&lt;label htmlFor=&quot;password&quot; className=&quot;pwd-label&quot;&gt;Password:&lt;/label &gt; &lt;input id=&quot;password&quot; className=&quot;pwd-input&quot; name=&quot;password&quot; type=&quot;password&quot;/&gt; &lt; /div&gt;</div><div class="line">        &lt;/div &gt;;</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">ReactDOM.render(&lt;Form /&gt;,document.getElementById(&apos;loginForm&apos;));</div></pre></td></tr></table></figure></p>
+<h1 id="比较暴力的解决方法–直接禁用变量声明但未使用的提示-但是也比较省心，不用加一堆注释"><a href="#比较暴力的解决方法–直接禁用变量声明但未使用的提示-但是也比较省心，不用加一堆注释" class="headerlink" title="比较暴力的解决方法–直接禁用变量声明但未使用的提示,但是也比较省心，不用加一堆注释"></a>比较暴力的解决方法–直接禁用变量声明但未使用的提示,但是也比较省心，不用加一堆注释</h1><p>设置.eslint.json(或者是yaml等)的”no-unused-vars”规则为禁用(0为禁用)。具体可以看<a href="http://eslint.cn/docs/rules/no-unused-vars" target="_blank" rel="external">这里</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;rules&quot;:&#123;</div><div class="line">    &quot;no-unused-vars&quot;:0</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;ESLint中文翻译&quot;&gt;&lt;a href=&quot;#ESLint中文翻译&quot; class=&quot;headerlink&quot; title=&quot;ESLint中文翻译&quot;&gt;&lt;/a&gt;ESLint中文翻译&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://eslint.cn/&quot; targ
+    
+    </summary>
+    
+      <category term="react" scheme="https://chanran.github.io/categories/react/"/>
+    
+    
+      <category term="react" scheme="https://chanran.github.io/tags/react/"/>
+    
+      <category term="eslint" scheme="https://chanran.github.io/tags/eslint/"/>
+    
+  </entry>
+  
+  <entry>
     <title>写electron遇到的坑</title>
     <link href="https://chanran.github.io/2016/12/08/%E5%86%99electron%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/"/>
     <id>https://chanran.github.io/2016/12/08/写electron遇到的坑/</id>
     <published>2016-12-07T16:37:28.000Z</published>
-    <updated>2016-12-07T16:45:20.410Z</updated>
+    <updated>2016-12-07T17:20:02.508Z</updated>
     
     <content type="html"><![CDATA[<h1 id="electron进程之间的通信"><a href="#electron进程之间的通信" class="headerlink" title="electron进程之间的通信"></a>electron进程之间的通信</h1><h2 id="渲染进程和主进程之间的通信"><a href="#渲染进程和主进程之间的通信" class="headerlink" title="渲染进程和主进程之间的通信"></a>渲染进程和主进程之间的通信</h2><ol>
 <li>渲染进程和主进程之间通过ipc通信，渲染进程使用的是ipcRenderer,而主进程使用的是ipcMain。</li>
@@ -28,9 +61,11 @@
 <h2 id="渲染进程和渲染进程之间的通信"><a href="#渲染进程和渲染进程之间的通信" class="headerlink" title="渲染进程和渲染进程之间的通信"></a>渲染进程和渲染进程之间的通信</h2><ol>
 <li>渲染进程和渲染进程之间的通信：渲染进程1-&gt;主进程-&gt;渲染进程2。</li>
 </ol>
-<h2 id="进程之间数据不能共享"><a href="#进程之间数据不能共享" class="headerlink" title="进程之间数据不能共享"></a>进程之间数据不能共享</h2><ol>
-<li>比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只能得到进程1改变类1的静态属性之前的值。</li>
-</ol>
+<h2 id="进程之间数据共享：IPC，HTML5-API-Storage-API-IndexedDB-等"><a href="#进程之间数据共享：IPC，HTML5-API-Storage-API-IndexedDB-等" class="headerlink" title="进程之间数据共享：IPC，HTML5 API(Storage API,IndexedDB)等"></a>进程之间数据共享：IPC，HTML5 API(Storage API,IndexedDB)等</h2><p><strong>注意不要犯的错</strong>:比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进程2只能得到进程1改变类1的静态属性之前的值。</p>
+<ul>
+<li>IPC通信:可以使用Electron中提供的IPC系统。它在主进程中将一个对象储存为全局变量，然后可以通过remote模块操作它们</li>
+<li>HTML5 API</li>
+</ul>
 ]]></content>
     
     <summary type="html">

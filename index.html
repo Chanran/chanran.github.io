@@ -158,6 +158,58 @@
     <ul class="post-list">
     
         <li class="post-list-item">
+            <article id="post-eslint-react-xxx-is-assigned-a-value-but-never-used-solution"
+  class="article-card article-type-post" itemprop="blogPost">
+     
+    <div class="post-meta">
+        <time datetime="2016-12-10T16:09:15.000Z" itemprop="datePublished" class="post-time">
+  2016-12-11
+</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2016/12/11/eslint-react-xxx-is-assigned-a-value-but-never-used-solution/">eslint react xxx is assigned a value but never used 的解决办法</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent" >
+
+    
+        ESLint中文翻译
+ESLint
+
+问题重现(定义了变量并使用了，但是eslint还是报定义过了但是未使用的错误)123456789101112import React from &apos;react&apos;;import ReactDOM from &apos;react-dom&apos;;let Form = React.createClass(&#123;	render: (...
+    
+    
+        <a href="/2016/12/11/eslint-react-xxx-is-assigned-a-value-but-never-used-solution/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/eslint/">eslint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item">
             <article id="post-写electron遇到的坑"
   class="article-card article-type-post" itemprop="blogPost">
      
@@ -194,8 +246,7 @@
 渲染进程和渲染进程之间的通信
 渲染进程和渲染进程之间的通信：渲染进程1-&gt;主进程-&gt;渲染进程2。
 
-进程之间数据不能共享
-比如在进程1中改变过了ES6类1的静态属性，如果在进程2中require了这个类1，那么进...
+进程之间数据共享：IPC，HTML5 API(Storage API,IndexedDB)等注意不要犯的错:比如...
     
     
         <a href="/2016/12/08/写electron遇到的坑/" class="post-more waves-effect waves-button">
@@ -633,63 +684,6 @@ textarea
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重构/">重构</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item">
-            <article id="post-stylus预处理入门三插值"
-  class="article-card article-type-post" itemprop="blogPost">
-     
-    <div class="post-meta">
-        <time datetime="2016-11-01T05:56:17.000Z" itemprop="datePublished" class="post-time">
-  2016-11-01
-</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/11/01/stylus预处理入门三插值/">stylus预处理入门(三)--插值</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent" >
-
-    
-        
-插值(interporation)
-插值相当于解析表达式或者变量，让它们的值替换插值的位置。注： 不能用于属性值的插值（但属性值可以使用变量替换）。
-
-
-在css属性名中使用插值
-
-1234partOfProp = radiusvalue = 10pxdiv    border-&#123;partOfProp&#125; value  /*切记属性值这里不可以使用插值*/
-转化：123d...
-    
-    
-        <a href="/2016/11/01/stylus预处理入门三插值/" class="post-more waves-effect waves-button">
-            阅读全文...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stylus/">stylus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/预处理器/">预处理器</a></li></ul>
 
     </div>
     
