@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>模拟银行账户 | blue&#39;s blog | coding is funny.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="C++">
+  <meta name="description" content="题目描述前面创建了Account类来建模银行账户：
+（1）一个名为id的int型数据域，表示账户的身份号。
+（2）一个名为balance的double型的数据域，表示账面余额。
+（3）一个名为annualInterestRate的double型数据域，保存当前年利率。
+（4）一个无参的构造函数，创建一个缺省的账户，其数据域id为0，balance为0，annualInterestRate为0。
+（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模拟银行账户">
+<meta property="og:url" content="https://chanran.github.io/2016/12/16/simulate-bank-account/index.html">
+<meta property="og:site_name" content="blue's blog">
+<meta property="og:description" content="题目描述前面创建了Account类来建模银行账户：
+（1）一个名为id的int型数据域，表示账户的身份号。
+（2）一个名为balance的double型的数据域，表示账面余额。
+（3）一个名为annualInterestRate的double型数据域，保存当前年利率。
+（4）一个无参的构造函数，创建一个缺省的账户，其数据域id为0，balance为0，annualInterestRate为0。
+（">
+<meta property="og:updated_time" content="2016-12-16T08:12:52.515Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模拟银行账户">
+<meta name="twitter:description" content="题目描述前面创建了Account类来建模银行账户：
+（1）一个名为id的int型数据域，表示账户的身份号。
+（2）一个名为balance的double型的数据域，表示账面余额。
+（3）一个名为annualInterestRate的double型数据域，保存当前年利率。
+（4）一个无参的构造函数，创建一个缺省的账户，其数据域id为0，balance为0，annualInterestRate为0。
+（">
+  
+    <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/meAndYou.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">blue</h5>
+          <a href="mailto:rong650751@163.com" title="rong650751@163.com" class="mail">rong650751@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                成就
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Chanran" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2308631120?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/users/1402753fcc6f/latest_articles" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                简书
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>blue&#39;s blog &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">模拟银行账户</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">模拟银行账户</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-16T08:08:06.000Z" itemprop="datePublished" class="page-time">
+  2016-12-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#C-代码"><span class="post-toc-number">2.</span> <span class="post-toc-text">C++代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Account-h"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Account.h</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#account-cpp"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">account.cpp</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SavingsAccount-h"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">SavingsAccount.h</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SavingsAccount-cpp"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">SavingsAccount.cpp</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CheckingAccount-h"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">CheckingAccount.h</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CheckingAccount-cpp"><span class="post-toc-number">3.</span> <span class="post-toc-text">CheckingAccount.cpp</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Date-h"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Date.h</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#main-cpp"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">main.cpp</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-simulate-bank-account" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">模拟银行账户</h1>
+        <div class="post-meta">
+            <time datetime="2016-12-16T08:08:06.000Z" itemprop="datePublished" class="post-time">
+  2016-12-16
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>前面创建了Account类来建模银行账户：</p>
+<p>（1）一个名为id的int型数据域，表示账户的身份号。</p>
+<p>（2）一个名为balance的double型的数据域，表示账面余额。</p>
+<p>（3）一个名为annualInterestRate的double型数据域，保存当前年利率。</p>
+<p>（4）一个无参的构造函数，创建一个缺省的账户，其数据域id为0，balance为0，annualInterestRate为0。</p>
+<p>（5）id、balance和annualInterestRate的访问器和更改器函数。</p>
+<p>一个账户有账号、余额、年利率和账户创建时间等属性，还有存款和取款函数。创建它的两个派生类——支票账户和储蓄账户，前者有一个透支额度，后者不允许透支。定义Account类的一个常量虚函数toString（），并在派生类覆盖它，用来以字符串形式返回账号的余额。</p>
+<p>画出这些类的UML图，实现该类，并编写一个测试程序，它创建一个Account、一个SavingsAccount和一个CheckingAccount账户，并调用它们的toString（）函数。</p>
+<h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><h3 id="Account-h"><a href="#Account-h" class="headerlink" title="Account.h"></a>Account.h</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">// Created by blue on 16-12-8.</div><div class="line">//</div><div class="line"></div><div class="line">#ifndef CHECKINGACCOUNTCLASS_ACCOUNT_H</div><div class="line">#define CHECKINGACCOUNTCLASS_ACCOUNT_H</div><div class="line"></div><div class="line">#include&lt;string&gt;</div><div class="line"></div><div class="line">class Account &#123;</div><div class="line"></div><div class="line">private:</div><div class="line">    int id;</div><div class="line">    double balance;</div><div class="line">    double annualInterestRate;</div><div class="line">public:</div><div class="line">    Account();</div><div class="line">    virtual std::string toString();</div><div class="line"></div><div class="line">public:</div><div class="line">    int getId();</div><div class="line"></div><div class="line">    void setId(int id);</div><div class="line"></div><div class="line">    double getBalance();</div><div class="line"></div><div class="line">    void setBalance(double balance);</div><div class="line"></div><div class="line">    double getAnnualInterestRate();</div><div class="line"></div><div class="line">    void setAnnualInterestRate(double annualInterestRate);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">#endif //CHECKINGACCOUNTCLASS_ACCOUNT_H</div></pre></td></tr></table></figure>
+<h3 id="account-cpp"><a href="#account-cpp" class="headerlink" title="account.cpp"></a>account.cpp</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">// Created by blue on 16-12-8.</div><div class="line">//</div><div class="line"></div><div class="line">#include &quot;iostream&quot;</div><div class="line">#include &quot;sstream&quot;</div><div class="line">#include &quot;Account.h&quot;</div><div class="line"></div><div class="line">Account::Account() &#123;</div><div class="line">    Account::id = 0;</div><div class="line">    Account::balance = 0;</div><div class="line">    Account::annualInterestRate = 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int Account::getId() &#123;</div><div class="line">    return id;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Account::setId(int id) &#123;</div><div class="line">    Account::id = id;</div><div class="line">&#125;</div><div class="line"></div><div class="line">double Account::getBalance() &#123;</div><div class="line">    return balance;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Account::setBalance(double balance) &#123;</div><div class="line">    Account::balance = balance;</div><div class="line">&#125;</div><div class="line"></div><div class="line">double Account::getAnnualInterestRate() &#123;</div><div class="line">    return annualInterestRate;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Account::setAnnualInterestRate(double annualInterestRate) &#123;</div><div class="line">    Account::annualInterestRate = annualInterestRate;</div><div class="line">&#125;</div><div class="line"></div><div class="line">std::string Account:: toString()&#123;</div><div class="line"></div><div class="line">    std::ostringstream ostring;</div><div class="line">    ostring &lt;&lt;  &quot;Account:&quot; &lt;&lt; Account::getId() &lt;&lt; &quot; balance:&quot; &lt;&lt; Account::getBalance();</div><div class="line"></div><div class="line">    return ostring.str();</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="SavingsAccount-h"><a href="#SavingsAccount-h" class="headerlink" title="SavingsAccount.h"></a>SavingsAccount.h</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">// Created by blue on 16-12-8.</div><div class="line">//</div><div class="line"></div><div class="line">#ifndef CHECKINGACCOUNTCLASS_SAVINGSACCOUNT_H</div><div class="line">#define CHECKINGACCOUNTCLASS_SAVINGSACCOUNT_H</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &quot;Account.h&quot;</div><div class="line">class SavingsAccount : public Account &#123;</div><div class="line">private:</div><div class="line">    bool allowedOverdraft;</div><div class="line">    std::string createAt;</div><div class="line">public:</div><div class="line">    std::string toString() override;</div><div class="line">    bool deposit(int id,double money);</div><div class="line">    bool withdrawal(int id,double money);</div><div class="line">public:</div><div class="line">    SavingsAccount();</div><div class="line">    const std::string &amp;getCreateAt() const;</div><div class="line">    bool isAllowedOverdraft() const;</div><div class="line">&#125;;</div><div class="line">#endif //CHECKINGACCOUNTCLASS_SAVINGSACCOUNT_H</div></pre></td></tr></table></figure>
+<h3 id="SavingsAccount-cpp"><a href="#SavingsAccount-cpp" class="headerlink" title="SavingsAccount.cpp"></a>SavingsAccount.cpp</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">// Created by blue on 16-12-8.</div><div class="line">//</div><div class="line">#include &quot;iostream&quot;</div><div class="line">#include &quot;sstream&quot;</div><div class="line">#include &quot;SavingsAccount.h&quot;</div><div class="line">#include &quot;Date.h&quot;</div><div class="line">bool SavingsAccount::deposit(int id,double money)&#123;</div><div class="line">    if (id == SavingsAccount::getId())&#123;</div><div class="line">        SavingsAccount::setBalance(SavingsAccount::getBalance()+money);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line">bool SavingsAccount::withdrawal(int id,double money)&#123;</div><div class="line">    if (id == SavingsAccount::getId())&#123;</div><div class="line">        if (SavingsAccount::getBalance() &lt; money)&#123;</div><div class="line">            return false;</div><div class="line">        &#125;else&#123;</div><div class="line">            SavingsAccount::setBalance(SavingsAccount::getBalance()-money);</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line">const std::string &amp;SavingsAccount::getCreateAt() const &#123;</div><div class="line">    return createAt;</div><div class="line">&#125;</div><div class="line">SavingsAccount::SavingsAccount() &#123;</div><div class="line">    SavingsAccount::createAt = DateTime::currentTime();</div><div class="line">&#125;</div><div class="line">bool SavingsAccount::isAllowedOverdraft() const &#123;</div><div class="line">    return allowedOverdraft;</div><div class="line">&#125;</div><div class="line">std::string SavingsAccount:: toString()&#123;</div><div class="line">    std::ostringstream ostring;</div><div class="line">    ostring &lt;&lt;  &quot;Account:&quot; &lt;&lt; SavingsAccount::getId() &lt;&lt; &quot; balance:&quot; &lt;&lt; SavingsAccount::getBalance() &lt;&lt; &quot; CreateAt:&quot; &lt;&lt; SavingsAccount::getCreateAt();</div><div class="line">    return ostring.str();</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="CheckingAccount-h"><a href="#CheckingAccount-h" class="headerlink" title="CheckingAccount.h"></a>CheckingAccount.h</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">// Created by blue on 16-12-8.</div><div class="line">//</div><div class="line"></div><div class="line">#ifndef CHECKINGACCOUNTCLASS_CHECKINGACCOUNT_H</div><div class="line">#define CHECKINGACCOUNTCLASS_CHECKINGACCOUNT_H</div><div class="line">#include &quot;Account.h&quot;</div><div class="line">class CheckingAccount : public Account &#123;</div><div class="line">private:</div><div class="line">    bool allowedOverdraft;</div><div class="line">    double overdraft;</div><div class="line">    std::string createAt;</div><div class="line">public:</div><div class="line">    std::string toString() override;</div><div class="line">    bool deposit(int id,double money);</div><div class="line">    bool withdrawal(int id,double money);</div><div class="line">public:</div><div class="line">    CheckingAccount();</div><div class="line">    const std::string &amp;getCreateAt() const;</div><div class="line">    bool isAllowedOverdraft() const;</div><div class="line">    double getOverdraft() const;</div><div class="line">    void setOverdraft(double overdraft);</div><div class="line">&#125;;</div><div class="line">#endif //CHECKINGACCOUNTCLASS_CHECKINGACCOUNT_H</div></pre></td></tr></table></figure>
+<h2 id="CheckingAccount-cpp"><a href="#CheckingAccount-cpp" class="headerlink" title="CheckingAccount.cpp"></a>CheckingAccount.cpp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">// Created by blue on 16-12-8.</div><div class="line">//</div><div class="line"></div><div class="line">#include &quot;iostream&quot;</div><div class="line">#include &quot;sstream&quot;</div><div class="line">#include &quot;CheckingAccount.h&quot;</div><div class="line">#include &quot;Date.h&quot;</div><div class="line">bool CheckingAccount::deposit(int id,double money)&#123;</div><div class="line">    if (id == CheckingAccount::getId())&#123;</div><div class="line">        CheckingAccount::setBalance(CheckingAccount::getBalance()+money);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line">bool CheckingAccount::withdrawal(int id,double money)&#123;</div><div class="line">    if (id == CheckingAccount::getId())&#123;</div><div class="line">        if (CheckingAccount::getBalance()-money &lt;= (-CheckingAccount::getOverdraft()))&#123;</div><div class="line">            return false;</div><div class="line">        &#125;else&#123;</div><div class="line">            CheckingAccount::setBalance(CheckingAccount::getBalance()-money);</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div><div class="line">const std::string &amp;CheckingAccount::getCreateAt() const &#123;</div><div class="line">    return createAt;</div><div class="line">&#125;</div><div class="line">CheckingAccount::CheckingAccount() &#123;</div><div class="line">    CheckingAccount::overdraft = 10000;</div><div class="line">    CheckingAccount::createAt = DateTime::currentTime();</div><div class="line">&#125;</div><div class="line">bool CheckingAccount::isAllowedOverdraft() const &#123;</div><div class="line">    return allowedOverdraft;</div><div class="line">&#125;</div><div class="line">double CheckingAccount::getOverdraft() const &#123;</div><div class="line">    return CheckingAccount::overdraft;</div><div class="line">&#125;</div><div class="line">void CheckingAccount::setOverdraft(double overdraft) &#123;</div><div class="line">    CheckingAccount::overdraft = overdraft;</div><div class="line">&#125;</div><div class="line">std::string CheckingAccount:: toString()&#123;</div><div class="line">    std::ostringstream ostring;</div><div class="line">    ostring &lt;&lt; &quot;Account:&quot; &lt;&lt; CheckingAccount::getId() &lt;&lt; &quot; balance:&quot; &lt;&lt; CheckingAccount::getBalance() &lt;&lt; &quot; CreateAt:&quot; &lt;&lt; CheckingAccount::getCreateAt();</div><div class="line">    return ostring.str();</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="Date-h"><a href="#Date-h" class="headerlink" title="Date.h"></a>Date.h</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">// Created by blue on 16-12-8.</div><div class="line">//</div><div class="line"></div><div class="line">#ifndef CHECKINGACCOUNTCLASS_DATE_H</div><div class="line">#define CHECKINGACCOUNTCLASS_DATE_H</div><div class="line">#include &lt;ctime&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;type_traits&gt;</div><div class="line">class DateTime &#123;</div><div class="line">public:</div><div class="line">    template&lt;typename T&gt;</div><div class="line">    static std::string convert(time_t t) &#123;</div><div class="line">        return time2string(t);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    template&lt;typename T&gt;</div><div class="line">    static time_t convert(const std::string&amp; timeStr) &#123;</div><div class="line">        return string2time(timeStr);</div><div class="line">    &#125;</div><div class="line">    static std::string currentTime() &#123;</div><div class="line">        return time2string(time(nullptr));</div><div class="line">    &#125;</div><div class="line">private:</div><div class="line">    static std::string time2string(time_t t) &#123;</div><div class="line">        struct tm* tmNow = localtime(&amp;t);</div><div class="line">        char timeStr[sizeof(&quot;yyyy-mm-dd hh:mm:ss&quot;)] = &#123;&apos;\0&apos;&#125;;</div><div class="line">        std::strftime(timeStr, sizeof(timeStr), &quot;%Y-%m-%d %H:%M:%S&quot;, tmNow);</div><div class="line">        return timeStr;</div><div class="line">    &#125;</div><div class="line">    static time_t string2time(const std::string&amp; timeStr) &#123;</div><div class="line">        struct tm stTm;</div><div class="line">        sscanf(timeStr.c_str(), &quot;%d-%d-%d %d:%d:%d&quot;,</div><div class="line">               &amp;(stTm.tm_year),</div><div class="line">               &amp;(stTm.tm_mon),</div><div class="line">               &amp;(stTm.tm_mday),</div><div class="line">               &amp;(stTm.tm_hour),</div><div class="line">               &amp;(stTm.tm_min),</div><div class="line">               &amp;(stTm.tm_sec));</div><div class="line">        stTm.tm_year -= 1900;</div><div class="line">        stTm.tm_mon--;</div><div class="line">        stTm.tm_isdst = -1;</div><div class="line">        return mktime(&amp;stTm);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">#endif //CHECKINGACCOUNTCLASS_DATE_H</div></pre></td></tr></table></figure>
+<h3 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &quot;CheckingAccount.h&quot;</div><div class="line">#include &quot;SavingsAccount.h&quot;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">int main() &#123;</div><div class="line"></div><div class="line">    SavingsAccount savingsAccount;</div><div class="line">    CheckingAccount checkingAccount;</div><div class="line"></div><div class="line">    cout &lt;&lt; &quot;SavingsAccount:&quot; &lt;&lt; savingsAccount.toString() &lt;&lt; endl;</div><div class="line">    cout &lt;&lt; &quot;CheckingAccount&quot; &lt;&lt; checkingAccount.toString() &lt;&lt; endl;</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        转载请注明转自:<a href="/2016/12/16/simulate-bank-account/" target="_blank" rel="external">https://chanran.github.io/2016/12/16/simulate-bank-account/index.html</a>
+    </div>
+    <footer>
+        <a href="https://chanran.github.io">
+            <img src="/img/meAndYou.jpg" alt="blue">
+            blue
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/16/simulate-bank-account/&title=《模拟银行账户》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/16/simulate-bank-account/&title=《模拟银行账户》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/16/simulate-bank-account/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《模拟银行账户》 — blue's blog&url=https://chanran.github.io/2016/12/16/simulate-bank-account/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/16/simulate-bank-account/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/16/split-and-merge-file/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">分割和合并文件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="simulate-bank-account" data-title="模拟银行账户" data-url="https://chanran.github.io/2016/12/16/simulate-bank-account/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'chanran', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        如果对你有用...
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechatpay.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/16/simulate-bank-account/&title=《模拟银行账户》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/16/simulate-bank-account/&title=《模拟银行账户》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/16/simulate-bank-account/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《模拟银行账户》 — blue's blog&url=https://chanran.github.io/2016/12/16/simulate-bank-account/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/16/simulate-bank-account/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="http://s.jiathis.com/qrcode.php?url=https://chanran.github.io/2016/12/16/simulate-bank-account/" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.2"></script>
+
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260728730&web_id=1260728730"></script>
+
+
+
+
+
+</body>
+</html>

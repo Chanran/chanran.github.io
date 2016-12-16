@@ -5,23 +5,23 @@
   
   
   
-  <title>split-and-merge-file | blue&#39;s blog | coding is funny.</title>
+  <title>分割和合并文件 | blue&#39;s blog | coding is funny.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="">
-  <meta name="description" content="记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客">
+  <meta name="keywords" content="C++">
+  <meta name="description" content="题目描述假设要备份一个巨大的文件（比如10GB AVI文件）到CD-R，可以把文件分割成几个小的文件，然后逐个备份。编写一个实用程序，它能将大文件分割成小文件。程序提示用户输入原文件名和每个小文件的字节数。下面是样例运行：1234567Enter a source file name: c:\exercise.zip  ~EnterEnter the number of bytes in each">
 <meta property="og:type" content="article">
-<meta property="og:title" content="split-and-merge-file">
+<meta property="og:title" content="分割和合并文件">
 <meta property="og:url" content="https://chanran.github.io/2016/12/16/split-and-merge-file/index.html">
 <meta property="og:site_name" content="blue's blog">
-<meta property="og:description" content="记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客">
-<meta property="og:updated_time" content="2016-12-16T08:04:24.943Z">
+<meta property="og:description" content="题目描述假设要备份一个巨大的文件（比如10GB AVI文件）到CD-R，可以把文件分割成几个小的文件，然后逐个备份。编写一个实用程序，它能将大文件分割成小文件。程序提示用户输入原文件名和每个小文件的字节数。下面是样例运行：1234567Enter a source file name: c:\exercise.zip  ~EnterEnter the number of bytes in each">
+<meta property="og:updated_time" content="2016-12-16T08:12:53.643Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="split-and-merge-file">
-<meta name="twitter:description" content="记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客">
+<meta name="twitter:title" content="分割和合并文件">
+<meta name="twitter:description" content="题目描述假设要备份一个巨大的文件（比如10GB AVI文件）到CD-R，可以把文件分割成几个小的文件，然后逐个备份。编写一个实用程序，它能将大文件分割成小文件。程序提示用户输入原文件名和每个小文件的字节数。下面是样例运行：1234567Enter a source file name: c:\exercise.zip  ~EnterEnter the number of bytes in each">
   
     <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
   
@@ -120,7 +120,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">split-and-merge-file</div>
+        <div class="flex-col header-title ellipsis">分割和合并文件</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -142,13 +142,15 @@
 <header class="content-header post-header">
 
     <div class="container">
-        <h1 class="title">split-and-merge-file</h1>
+        <h1 class="title">分割和合并文件</h1>
         <h5 class="subtitle">
             
                 <time datetime="2016-12-16T08:04:24.000Z" itemprop="datePublished" class="page-time">
   2016-12-16
 </time>
 
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
 
             
         </h5>
@@ -161,22 +163,34 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#C-代码"><span class="post-toc-number">2.</span> <span class="post-toc-text">C++代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#main-cpp"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">main.cpp</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
 <article id="post-split-and-merge-file" 
   class="post-article article-type-post" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">split-and-merge-file</h1>
+        <h1 class="post-card-title">分割和合并文件</h1>
         <div class="post-meta">
             <time datetime="2016-12-16T08:04:24.000Z" itemprop="datePublished" class="post-time">
   2016-12-16
 </time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
+
 
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>假设要备份一个巨大的文件（比如10GB AVI文件）到CD-R，可以把文件分割成几个小的文件，然后逐个备份。编写一个实用程序，它能将大文件分割成小文件。程序提示用户输入原文件名和每个小文件的字节数。下面是样例运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Enter a source file name: c:\exercise.zip  ~Enter</div><div class="line">Enter the number of bytes in each smaller file: 9343400  ~Enter</div><div class="line">File c:\exercise.zip.0 produced</div><div class="line">File c:\exercise.zip.1 produced</div><div class="line">File c:\exercise.zip.2 produced</div><div class="line">File c:\exercise.zip.3 produced</div><div class="line">Split Done</div></pre></td></tr></table></figure></p>
+<p>编写一个实用程序，合并文件到一个新的文件。程序提示用户输入源文件的个数、每个源文件的名字及目标文件名字。下面是样例运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Enter the number of source files: 4  ~Enter</div><div class="line">Enter a source file:   c:\exercise.zip.0  ~Enter</div><div class="line">Enter a source file:   c:\exercise.zip.1  ~Enter</div><div class="line">Enter a source file:   c:\exercise.zip.2  ~Enter</div><div class="line">Enter a source file:   c:\exercise.zip.3  ~Enter</div><div class="line">Enter a target file:   c:\temp.zip  ~Enter</div><div class="line">Combine Done</div></pre></td></tr></table></figure></p>
+<h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><h3 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;fstream&gt;</div><div class="line">#include &lt;sstream&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void splitFile(string path,long long smallFileBytes)&#123;</div><div class="line">    fstream sourceFile(path.c_str(),ios::in|ios::binary);</div><div class="line">    if (sourceFile.fail())&#123;</div><div class="line">        cout &lt;&lt; &quot;打开文件失败！&quot; &lt;&lt; endl;</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line">    int numberOfFile = 0;</div><div class="line">    char readBuffer[smallFileBytes];</div><div class="line">    while(!sourceFile.eof())&#123;</div><div class="line">        string smallFileName = path;    //应该需要分割/才对，可是没时间弄了</div><div class="line">        if (sourceFile.good())&#123;</div><div class="line">            numberOfFile++;</div><div class="line">            sourceFile.read(readBuffer,smallFileBytes);</div><div class="line">            readBuffer[sourceFile.gcount()] = &apos;\0&apos;; //可能没有写完整个readBuffer数组</div><div class="line"></div><div class="line">            ostringstream ostring;</div><div class="line">            ostring &lt;&lt; smallFileName &lt;&lt; numberOfFile;</div><div class="line">            smallFileName = ostring.str();</div><div class="line"></div><div class="line">            fstream resultFile(smallFileName.c_str(),ios::out | ios::binary);</div><div class="line">            resultFile.write(readBuffer,sourceFile.gcount());</div><div class="line">            cout &lt;&lt; &quot;File &quot; &lt;&lt; smallFileName &lt;&lt; &quot; produced.&quot; &lt;&lt; endl;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; &quot;Split Done.&quot; &lt;&lt; endl;</div><div class="line">    sourceFile.close();</div><div class="line">&#125;</div><div class="line"></div><div class="line">void mergeFile(int numOfFiles,string* fileArr,string resultFileName)&#123;</div><div class="line"></div><div class="line">    fstream resultFile(resultFileName.c_str(), ios::out | ios::binary | ios::app);</div><div class="line">    char* readBuffer;</div><div class="line">    for (int i = 0; i &lt; numOfFiles; i++)&#123;</div><div class="line">        fstream sourceFile(fileArr[i].c_str(),ios::in | ios::binary);</div><div class="line">        sourceFile.seekg(0,ios::end);</div><div class="line">        long smallFileLength = sourceFile.tellg();</div><div class="line">        sourceFile.seekg(0,ios::beg);</div><div class="line">        readBuffer = new char[smallFileLength];</div><div class="line"></div><div class="line">        sourceFile.read(readBuffer,smallFileLength);</div><div class="line">        sourceFile.close();</div><div class="line"></div><div class="line">        resultFile.write(readBuffer,smallFileLength);</div><div class="line">    &#125;</div><div class="line">    resultFile.close();</div><div class="line">    cout &lt;&lt; &quot;Combine Done&quot; &lt;&lt; endl;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main() &#123;</div><div class="line">    string path = &quot;&quot;;</div><div class="line">    long long smallFileBytes;</div><div class="line">    cout &lt;&lt; &quot;Enter a source file name: &quot;;</div><div class="line">    cin &gt;&gt; path;</div><div class="line">    cout &lt;&lt; &quot;Enter the number of bytes in each smaller file: &quot;;</div><div class="line">    cin &gt;&gt; smallFileBytes;</div><div class="line">    splitFile(path,smallFileBytes);</div><div class="line"></div><div class="line">    int numOfFiles = 0;</div><div class="line">    cout &lt;&lt; &quot;Enter the number of source files:&quot;;</div><div class="line">    cin &gt;&gt; numOfFiles;</div><div class="line">    string fileArr[numOfFiles];</div><div class="line">    cout &lt;&lt; &quot;Enter the name of each source file:&quot;;</div><div class="line">    for (int i = 0; i &lt; numOfFiles; i++)&#123;</div><div class="line">        cin &gt;&gt; fileArr[i];</div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; &quot;Enter the name of merged file:&quot;;</div><div class="line">    string resultFileName = &quot;&quot;;</div><div class="line">    cin &gt;&gt; resultFileName;</div><div class="line">    mergeFile(numOfFiles,fileArr,resultFileName);</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
         </div>
         
         <blockquote class="post-copyright">
@@ -199,6 +213,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
 
             
 <div class="page-share-wrap">
@@ -208,7 +224,7 @@
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/16/split-and-merge-file/&title=《split-and-merge-file》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/16/split-and-merge-file/&title=《分割和合并文件》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -218,7 +234,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/16/split-and-merge-file/&title=《split-and-merge-file》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/16/split-and-merge-file/&title=《分割和合并文件》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -228,7 +244,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《split-and-merge-file》 — blue's blog&url=https://chanran.github.io/2016/12/16/split-and-merge-file/&via=https://chanran.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《分割和合并文件》 — blue's blog&url=https://chanran.github.io/2016/12/16/split-and-merge-file/&via=https://chanran.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -253,7 +269,14 @@
     </div>   
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/12/16/simulate-bank-account/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">模拟银行账户</h4>
+      </a>
+    </div>
   
 
   
@@ -270,7 +293,7 @@
             
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="split-and-merge-file" data-title="split-and-merge-file" data-url="https://chanran.github.io/2016/12/16/split-and-merge-file/"></div>
+	<div class="ds-thread" data-thread-key="split-and-merge-file" data-title="分割和合并文件" data-url="https://chanran.github.io/2016/12/16/split-and-merge-file/"></div>
 </div>
 <script src="/js/embed.min.js?v=1.2"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -324,7 +347,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/16/split-and-merge-file/&title=《split-and-merge-file》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/16/split-and-merge-file/&title=《分割和合并文件》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -334,7 +357,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/16/split-and-merge-file/&title=《split-and-merge-file》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/16/split-and-merge-file/&title=《分割和合并文件》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -344,7 +367,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《split-and-merge-file》 — blue's blog&url=https://chanran.github.io/2016/12/16/split-and-merge-file/&via=https://chanran.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《分割和合并文件》 — blue's blog&url=https://chanran.github.io/2016/12/16/split-and-merge-file/&via=https://chanran.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
