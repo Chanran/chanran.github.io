@@ -70,7 +70,7 @@ test();
 
 > 官网例子:
 
-1. 当**main.js先require a.js**时，此时程序进入a.js执行require b.js，然后程序又进入b.js之后b.js尝试require a.js，此时就发现有问题,a.js返回了没有执行完的模块给b.js,即a.js执行到`exports.done =false`就返回给b.js了，所以在b.js里的a.js是没有执行完的。而如果是另一种情况，a.js是用module.exports出来的，那么b.js得到的是一个空对象object{}。（这里有点绕，有空画一张图出来比较好理解）
+1.当**main.js先require a.js**时，此时程序进入a.js执行require b.js，然后程序又进入b.js之后b.js尝试require a.js，此时就发现有问题,** a.js返回了没有执行完的模块**给b.js,即a.js执行到`exports.done =false`就返回给b.js了，所以在b.js里的**a.js是没有执行完**的。而如果是另一种情况，a.js是用module.exports出来的，那么b.js得到的是一个空对象object{}。（这里有点绕，有空画一张图出来比较好理解）
 
 `a.js`
 
@@ -116,7 +116,7 @@ a done
 in main, a.done=true, b.done=true
 ```
 
-2. 基本同上，但是main.js有所改动。这里main.js先调用b.js。对比上面main.js先调用a.js。程序入口不一样，程序的执行顺序也不一样，结果也反过来了。
+2.基本同上，但是main.js有所改动。这里main.js先调用b.js。对比上面main.js先调用a.js。程序入口不一样，程序的执行顺序也不一样，结果也反过来了。
 
 `main.js`
 
