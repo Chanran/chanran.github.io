@@ -153,7 +153,7 @@
     <link href="https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/"/>
     <id>https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/</id>
     <published>2016-12-11T07:39:25.000Z</published>
-    <updated>2016-12-11T08:06:03.304Z</updated>
+    <updated>2016-12-16T08:21:04.488Z</updated>
     
     <content type="html"><![CDATA[<h1 id="在浏览器上报错Uncaught-TypeError-react2-default-render-is-not-a-function"><a href="#在浏览器上报错Uncaught-TypeError-react2-default-render-is-not-a-function" class="headerlink" title="在浏览器上报错Uncaught TypeError: _react2.default.render is not a function"></a>在浏览器上报错<code>Uncaught TypeError: _react2.default.render is not a function</code></h1><h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><blockquote>
 <p>React版本过高，不支持React.render()方法。</p>
@@ -166,7 +166,7 @@
 <h1 id="其实有关DOM操作的时候，都需要用ReactDOM来代替React。"><a href="#其实有关DOM操作的时候，都需要用ReactDOM来代替React。" class="headerlink" title="其实有关DOM操作的时候，都需要用ReactDOM来代替React。"></a>其实有关DOM操作的时候，都需要用ReactDOM来代替React。</h1><p>例如：这里也会报同样的错误</p>
 <p><code>React.findDOMNode(this).style.background = &#39;#eee&#39;;</code></p>
 <p>改成这样就好了</p>
-<p><code>ReactDOM.findDOMNode(this).style.background = &#39;#eee&#39;;</code> </p>
+<p><code>ReactDOM.findDOMNode(this).style.background = &#39;#eee&#39;;</code></p>
 ]]></content>
     
     <summary type="html">
@@ -217,7 +217,7 @@
     <link href="https://chanran.github.io/2016/12/11/eslint-react-xxx-is-assigned-a-value-but-never-used-solution/"/>
     <id>https://chanran.github.io/2016/12/11/eslint-react-xxx-is-assigned-a-value-but-never-used-solution/</id>
     <published>2016-12-10T16:09:15.000Z</published>
-    <updated>2016-12-10T16:28:17.238Z</updated>
+    <updated>2016-12-16T08:20:58.030Z</updated>
     
     <content type="html"><![CDATA[<h1 id="ESLint中文翻译"><a href="#ESLint中文翻译" class="headerlink" title="ESLint中文翻译"></a>ESLint中文翻译</h1><ul>
 <li><a href="http://eslint.cn/" target="_blank" rel="external">ESLint</a></li>
@@ -456,7 +456,7 @@
     <link href="https://chanran.github.io/2016/11/13/%E8%AE%B0%E5%BD%95%E8%AF%BB%E8%BF%87%E7%9A%84%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E4%B9%A6%E7%B1%8D/"/>
     <id>https://chanran.github.io/2016/11/13/记录读过的有意义的书籍/</id>
     <published>2016-11-13T11:50:50.000Z</published>
-    <updated>2016-11-29T12:29:14.021Z</updated>
+    <updated>2016-12-16T08:27:07.952Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/img/yuedu.jpg" alt="阅读的猫"></p>
 <blockquote>
@@ -465,7 +465,7 @@
 <h1 id="文学类"><a href="#文学类" class="headerlink" title="文学类"></a>文学类</h1><h2 id="《薄暮》"><a href="#《薄暮》" class="headerlink" title="《薄暮》"></a>《薄暮》</h2><h2 id="《三国演义》"><a href="#《三国演义》" class="headerlink" title="《三国演义》"></a>《三国演义》</h2><h2 id="《水浒传》"><a href="#《水浒传》" class="headerlink" title="《水浒传》"></a>《水浒传》</h2><h1 id="杂志类"><a href="#杂志类" class="headerlink" title="杂志类"></a>杂志类</h1><h2 id="《青年文摘》"><a href="#《青年文摘》" class="headerlink" title="《青年文摘》"></a>《青年文摘》</h2><h2 id="《读者》"><a href="#《读者》" class="headerlink" title="《读者》"></a>《读者》</h2><h2 id="《哲思》"><a href="#《哲思》" class="headerlink" title="《哲思》"></a>《哲思》</h2><h1 id="技术书籍"><a href="#技术书籍" class="headerlink" title="技术书籍"></a>技术书籍</h1><blockquote>
 <p>技术无分方向,学多了实践多了便会贯通。</p>
 </blockquote>
-<h2 id="《JavaScript高级程序设计-第2版-》"><a href="#《JavaScript高级程序设计-第2版-》" class="headerlink" title="《JavaScript高级程序设计(第2版)》"></a>《JavaScript高级程序设计(第2版)》</h2><h2 id="《JavaScript权威指南》"><a href="#《JavaScript权威指南》" class="headerlink" title="《JavaScript权威指南》"></a>《JavaScript权威指南》</h2><h2 id="《Javascript-Dom编程设计-第3版-》"><a href="#《Javascript-Dom编程设计-第3版-》" class="headerlink" title="《Javascript Dom编程设计(第3版)》"></a>《Javascript Dom编程设计(第3版)》</h2><h2 id="《HTTP权威指南》"><a href="#《HTTP权威指南》" class="headerlink" title="《HTTP权威指南》"></a>《HTTP权威指南》</h2><h2 id="《Node-js权威指南》"><a href="#《Node-js权威指南》" class="headerlink" title="《Node.js权威指南》"></a>《Node.js权威指南》</h2><h2 id="《C-Primer-第5版-》"><a href="#《C-Primer-第5版-》" class="headerlink" title="《C++ Primer(第5版)》"></a>《C++ Primer(第5版)》</h2><h2 id="《白帽子讲Web安全-纪念版-》"><a href="#《白帽子讲Web安全-纪念版-》" class="headerlink" title="《白帽子讲Web安全(纪念版)》"></a>《白帽子讲Web安全(纪念版)》</h2><h2 id="《数据库系统概念》"><a href="#《数据库系统概念》" class="headerlink" title="《数据库系统概念》"></a>《数据库系统概念》</h2><h2 id="《Linux指令范例速查手册》-当做字典查指令"><a href="#《Linux指令范例速查手册》-当做字典查指令" class="headerlink" title="《Linux指令范例速查手册》(当做字典查指令)"></a>《Linux指令范例速查手册》(当做字典查指令)</h2>]]></content>
+<h2 id="《HTML5-Canvas核心技术-图形、动画与游戏开发》"><a href="#《HTML5-Canvas核心技术-图形、动画与游戏开发》" class="headerlink" title="《HTML5 Canvas核心技术 图形、动画与游戏开发》"></a>《HTML5 Canvas核心技术 图形、动画与游戏开发》</h2><h2 id="《深入React技术栈》"><a href="#《深入React技术栈》" class="headerlink" title="《深入React技术栈》"></a>《深入React技术栈》</h2><h2 id="《React精髓》"><a href="#《React精髓》" class="headerlink" title="《React精髓》"></a>《React精髓》</h2><h2 id="《JavaScript高级程序设计-第2版-》"><a href="#《JavaScript高级程序设计-第2版-》" class="headerlink" title="《JavaScript高级程序设计(第2版)》"></a>《JavaScript高级程序设计(第2版)》</h2><h2 id="《JavaScript权威指南》"><a href="#《JavaScript权威指南》" class="headerlink" title="《JavaScript权威指南》"></a>《JavaScript权威指南》</h2><h2 id="《Javascript-Dom编程设计-第3版-》"><a href="#《Javascript-Dom编程设计-第3版-》" class="headerlink" title="《Javascript Dom编程设计(第3版)》"></a>《Javascript Dom编程设计(第3版)》</h2><h2 id="《HTTP权威指南》"><a href="#《HTTP权威指南》" class="headerlink" title="《HTTP权威指南》"></a>《HTTP权威指南》</h2><h2 id="《Node-js权威指南》"><a href="#《Node-js权威指南》" class="headerlink" title="《Node.js权威指南》"></a>《Node.js权威指南》</h2><h2 id="《C-Primer-第5版-》"><a href="#《C-Primer-第5版-》" class="headerlink" title="《C++ Primer(第5版)》"></a>《C++ Primer(第5版)》</h2><h2 id="《白帽子讲Web安全-纪念版-》"><a href="#《白帽子讲Web安全-纪念版-》" class="headerlink" title="《白帽子讲Web安全(纪念版)》"></a>《白帽子讲Web安全(纪念版)》</h2><h2 id="《数据库系统概念》"><a href="#《数据库系统概念》" class="headerlink" title="《数据库系统概念》"></a>《数据库系统概念》</h2><h2 id="《Linux指令范例速查手册》-当做字典查指令"><a href="#《Linux指令范例速查手册》-当做字典查指令" class="headerlink" title="《Linux指令范例速查手册》(当做字典查指令)"></a>《Linux指令范例速查手册》(当做字典查指令)</h2>]]></content>
     
     <summary type="html">
     
