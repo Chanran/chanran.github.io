@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>Uncaught TypeError: _react2.default.render is not a function 解决方法 | blue&#39;s blog | coding is funny.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="react">
+  <meta name="description" content="在浏览器上报错Uncaught TypeError: _react2.default.render is not a function原因
+React版本过高，不支持React.render()方法。
+
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Uncaught TypeError: _react2.default.render is not a function 解决方法">
+<meta property="og:url" content="https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/index.html">
+<meta property="og:site_name" content="blue's blog">
+<meta property="og:description" content="在浏览器上报错Uncaught TypeError: _react2.default.render is not a function原因
+React版本过高，不支持React.render()方法。
+
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
+<meta property="og:updated_time" content="2016-12-11T08:06:03.304Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Uncaught TypeError: _react2.default.render is not a function 解决方法">
+<meta name="twitter:description" content="在浏览器上报错Uncaught TypeError: _react2.default.render is not a function原因
+React版本过高，不支持React.render()方法。
+
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
+  
+    <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/meAndYou.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">blue</h5>
+          <a href="mailto:rong650751@163.com" title="rong650751@163.com" class="mail">rong650751@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                成就
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Chanran" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2308631120?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/users/1402753fcc6f/latest_articles" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                简书
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>blue&#39;s blog &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Uncaught TypeError: _react2.default.render is not a function 解决方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">Uncaught TypeError: _react2.default.render is not a function 解决方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-11T07:39:25.000Z" itemprop="datePublished" class="page-time">
+  2016-12-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在浏览器上报错Uncaught-TypeError-react2-default-render-is-not-a-function"><span class="post-toc-number">1.</span> <span class="post-toc-text">在浏览器上报错Uncaught TypeError: _react2.default.render is not a function</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#原因"><span class="post-toc-number">2.</span> <span class="post-toc-text">原因</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解决方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">解决方法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#其实有关DOM操作的时候，都需要用ReactDOM来代替React。"><span class="post-toc-number">4.</span> <span class="post-toc-text">其实有关DOM操作的时候，都需要用ReactDOM来代替React。</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Uncaught-TypeError-react2-default-render-is-not-a-function" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Uncaught TypeError: _react2.default.render is not a function 解决方法</h1>
+        <div class="post-meta">
+            <time datetime="2016-12-11T07:39:25.000Z" itemprop="datePublished" class="post-time">
+  2016-12-11
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/react/">react</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="在浏览器上报错Uncaught-TypeError-react2-default-render-is-not-a-function"><a href="#在浏览器上报错Uncaught-TypeError-react2-default-render-is-not-a-function" class="headerlink" title="在浏览器上报错Uncaught TypeError: _react2.default.render is not a function"></a>在浏览器上报错<code>Uncaught TypeError: _react2.default.render is not a function</code></h1><h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><blockquote>
+<p>React版本过高，不支持React.render()方法。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">import React from &apos;react&apos;;</div><div class="line">import ReactDOM from &apos;react-dom&apos;;</div><div class="line">import LocalDb from &apos;localDb&apos;;</div><div class="line">import TodoHeader from &apos;./TodoHeader&apos;;</div><div class="line">import TodoMain from &apos;./TodoMain&apos;;</div><div class="line">import TodoFooter from &apos;./TodoFooter&apos;;</div><div class="line"></div><div class="line"></div><div class="line">/**</div><div class="line"> * 从上面的渲染（render）方法可以看出，组件的结构分为三部分，就是上中下。</div><div class="line"> * 上面的TodoHeader是用来输入任务的地方，中间的TodoMain是用来展示任务列表的,</div><div class="line"> * 下面的TodoFooter提供一些特殊的方法，比如全选、删除等。</div><div class="line"> */</div><div class="line"></div><div class="line">class App extends React.Component&#123;</div><div class="line">    constructor()&#123;</div><div class="line">        super();</div><div class="line">        this.db = new LocalDb(&apos;ReactDemo&apos;);</div><div class="line">        //定义组件状态</div><div class="line">        this.state  =&#123;</div><div class="line">            todos:this.db.get(&apos;todos&apos;) || [],</div><div class="line">            isAllChecked:false</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">// 判断是否所有任务的状态都完成，同步底部的全选框</div><div class="line">    allChecked()&#123;</div><div class="line">        let isAllChecked = false;</div><div class="line">        if (this.state.todos.every(todo  =&gt; todo.isDone))&#123;</div><div class="line">            isAllChecked = true;</div><div class="line">        &#125;</div><div class="line">        this.setState(&#123;</div><div class="line">            todos:this.state.todos,</div><div class="line">            isAllChecked:isAllChecked</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">// 添加任务，是传递给Header组件的方法</div><div class="line">    addTodo(todoItem)&#123;</div><div class="line">        this.state.todos.push(todoItem);</div><div class="line">        this.db.set(&apos;todos&apos;,this.state.todos);</div><div class="line">        this.allChecked();</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">// 删除当前的任务，传递给TodoItem的方法</div><div class="line">    deleteTodo(index)&#123;</div><div class="line">        this.state.todos.splice(index,1);</div><div class="line">        this.setState(&#123;todos:this.state.todos&#125;);</div><div class="line">        this.db.set(&apos;todos&apos;,this.state.todos);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">// 清除已完成的任务，传递给Footer组件的方法</div><div class="line">    clearDone()&#123;</div><div class="line">        let todos = this.state.todos.filter(todo =&gt; !todo.isDone);</div><div class="line">        this.setState(&#123;</div><div class="line">            todos:todos,</div><div class="line">            isAllChecked:false</div><div class="line">        &#125;);</div><div class="line">        this.db.set(&apos;todos&apos;,todos);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">// 改变任务状态，传递给TodoItem和Footer组件的方法</div><div class="line">    changeTodoState(index,isDone,isChangeAll=false)&#123;</div><div class="line">        if(isChangeAll)&#123;</div><div class="line">            this.setState(&#123;</div><div class="line">                todos:this.state.todos.map( (todo) =&gt; &#123;</div><div class="line">                    todo.isDone = isDone;</div><div class="line">                    return todo;</div><div class="line">                &#125;),</div><div class="line">                isAllChecked:isDone</div><div class="line">            &#125;);</div><div class="line">        &#125;else&#123;</div><div class="line">            this.state.todos[index].isDone = isDone;</div><div class="line">            this.allChecked();</div><div class="line">        &#125;</div><div class="line">        this.db.set(&apos;todos&apos;,this.state.todos);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">//组件渲染方法</div><div class="line">    render()&#123;</div><div class="line">        let info = &#123;</div><div class="line">            isAllChecked:this.state.isAllChecked,</div><div class="line">            todoCount:this.state.todos.length || 0,</div><div class="line">            todoDoneCount:(this.state.todos &amp;&amp; this.state.todos.filter((todo)=&gt;todo.isDone)).length || 0</div><div class="line">        &#125;;</div><div class="line">        return (</div><div class="line">        &lt;div className=&quot;todo-wrap&quot;&gt;</div><div class="line">            &lt;TodoHeader addTodo=&#123;this.addTodo.bind(this)&#125; /&gt;</div><div class="line">            &lt;TodoMain todos=&#123;this.state.todos&#125; deleteTodo=&#123;this.deleteTodo.bind(this)&#125; changeTodoState=&#123;this.changeTodoState.bind(this)&#125; /&gt;</div><div class="line">            &lt;TodoFooter &#123;...info&#125; changeTodoState=&#123;this.changeTodoState.bind(this)&#125; clearDone=&#123;this.clearDone.bind(this)&#125; /&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">React.render(&lt;App/&gt;,document.getElementById(&apos;app&apos;));   //这句的问题</div></pre></td></tr></table></figure>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ol>
+<li>降低React版本（不推荐）</li>
+<li>将最后一句<code>React.render(&lt;App/&gt;,document.getElementById(&#39;app&#39;));</code>改成<code>ReactDOM.render(&lt;App/&gt;,document.getElementById(&#39;app&#39;));</code> （如果没有引入react-dom是会报找不到ReactDOM方法的）</li>
+</ol>
+<h1 id="其实有关DOM操作的时候，都需要用ReactDOM来代替React。"><a href="#其实有关DOM操作的时候，都需要用ReactDOM来代替React。" class="headerlink" title="其实有关DOM操作的时候，都需要用ReactDOM来代替React。"></a>其实有关DOM操作的时候，都需要用ReactDOM来代替React。</h1><p>例如：这里也会报同样的错误</p>
+<p><code>React.findDOMNode(this).style.background = &#39;#eee&#39;;</code></p>
+<p>改成这样就好了</p>
+<p><code>ReactDOM.findDOMNode(this).style.background = &#39;#eee&#39;;</code> </p>
+
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        转载请注明转自:<a href="/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/" target="_blank" rel="external">https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/index.html</a>
+    </div>
+    <footer>
+        <a href="https://chanran.github.io">
+            <img src="/img/meAndYou.jpg" alt="blue">
+            blue
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/&title=《Uncaught TypeError: _react2.default.render is not a function 解决方法》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/&title=《Uncaught TypeError: _react2.default.render is not a function 解决方法》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Uncaught TypeError: _react2.default.render is not a function 解决方法》 — blue's blog&url=https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/12/16/find-largest-matrix-block/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">寻找最大子方阵</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/11/webpack-react-error-Uncaught-ReferenceError-React-is-not-defined/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">webpack react 在浏览器报错:Uncaught ReferenceError: React is not defined</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="Uncaught-TypeError-react2-default-render-is-not-a-function" data-title="Uncaught TypeError: _react2.default.render is not a function 解决方法" data-url="https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'chanran', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        如果对你有用...
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechatpay.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/&title=《Uncaught TypeError: _react2.default.render is not a function 解决方法》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/&title=《Uncaught TypeError: _react2.default.render is not a function 解决方法》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Uncaught TypeError: _react2.default.render is not a function 解决方法》 — blue's blog&url=https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="http://s.jiathis.com/qrcode.php?url=https://chanran.github.io/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.2"></script>
+
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260728730&web_id=1260728730"></script>
+
+
+
+
+
+</body>
+</html>

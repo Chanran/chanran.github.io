@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>寻找最大子方阵 | blue&#39;s blog | coding is funny.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="C++">
+  <meta name="description" content="题目描述给定一个元素为0或1的方阵，编写一个程序，找出其中最大的子方阵，使得该子方阵的元素都是1。程序先提示用户输入矩阵的行数，然后提示用户输入矩阵内容，打印输出最大子方阵的第一个元素的位置以及最大子方阵的行数。假定矩阵最多有100行。下面是样例运行：
+C++代码
+没用什么优化算法，暴力解题。
+
+123456789101112131415161718192021222324252627282930">
+<meta property="og:type" content="article">
+<meta property="og:title" content="寻找最大子方阵">
+<meta property="og:url" content="https://chanran.github.io/2016/12/16/find-largest-matrix-block/index.html">
+<meta property="og:site_name" content="blue's blog">
+<meta property="og:description" content="题目描述给定一个元素为0或1的方阵，编写一个程序，找出其中最大的子方阵，使得该子方阵的元素都是1。程序先提示用户输入矩阵的行数，然后提示用户输入矩阵内容，打印输出最大子方阵的第一个元素的位置以及最大子方阵的行数。假定矩阵最多有100行。下面是样例运行：
+C++代码
+没用什么优化算法，暴力解题。
+
+123456789101112131415161718192021222324252627282930">
+<meta property="og:updated_time" content="2016-12-16T07:48:38.754Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="寻找最大子方阵">
+<meta name="twitter:description" content="题目描述给定一个元素为0或1的方阵，编写一个程序，找出其中最大的子方阵，使得该子方阵的元素都是1。程序先提示用户输入矩阵的行数，然后提示用户输入矩阵内容，打印输出最大子方阵的第一个元素的位置以及最大子方阵的行数。假定矩阵最多有100行。下面是样例运行：
+C++代码
+没用什么优化算法，暴力解题。
+
+123456789101112131415161718192021222324252627282930">
+  
+    <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/meAndYou.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">blue</h5>
+          <a href="mailto:rong650751@163.com" title="rong650751@163.com" class="mail">rong650751@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                成就
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Chanran" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2308631120?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/users/1402753fcc6f/latest_articles" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                简书
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>blue&#39;s blog &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">寻找最大子方阵</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">寻找最大子方阵</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-16T07:46:00.000Z" itemprop="datePublished" class="page-time">
+  2016-12-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#C-代码"><span class="post-toc-number">2.</span> <span class="post-toc-text">C++代码</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-find-largest-matrix-block" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">寻找最大子方阵</h1>
+        <div class="post-meta">
+            <time datetime="2016-12-16T07:46:00.000Z" itemprop="datePublished" class="post-time">
+  2016-12-16
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个元素为0或1的方阵，编写一个程序，找出其中最大的子方阵，使得该子方阵的元素都是1。程序先提示用户输入矩阵的行数，然后提示用户输入矩阵内容，打印输出最大子方阵的第一个元素的位置以及最大子方阵的行数。假定矩阵最多有100行。下面是样例运行：</p>
+<h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><blockquote>
+<p>没用什么优化算法，暴力解题。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">vector &lt;int&gt; findLargestBlock (const vector &lt;vector &lt;int&gt; &gt; &amp;m,int n)&#123;</div><div class="line">    int t = 1;</div><div class="line">    int i = 0,j = 0,l = 0;</div><div class="line">    int x = 0,y = 0;</div><div class="line">    vector&lt;int&gt; result(3,0);</div><div class="line"></div><div class="line">    for(l=n;l&gt;=1;l--)&#123; //矩阵维数，从最大开始</div><div class="line">        for(i=0;i&lt;=n-l;i++)&#123;</div><div class="line">            for(j=0;j&lt;=n-l;j++)&#123;</div><div class="line">                t=1;</div><div class="line">                for(x=i;x&lt;i+l;x++)&#123;</div><div class="line">                    for(y=j;y&lt;j+l;y++)&#123;</div><div class="line">                        if(m[x][y]!=1)&#123;    //不为1退出此轮循环</div><div class="line">                            t=0;</div><div class="line">                            break;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                    if(t==0) break;</div><div class="line">                &#125;</div><div class="line">                if(t==1) break;</div><div class="line">            &#125;</div><div class="line">            if(t==1) break;</div><div class="line">        &#125;</div><div class="line">        if(t==1) break;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    result[0] = i;</div><div class="line">    result[1] = j;</div><div class="line">    result[2] = l;</div><div class="line"></div><div class="line">    return result;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main() &#123;</div><div class="line"></div><div class="line">    int n;</div><div class="line">    vector&lt;vector &lt;int&gt; &gt; m(100,vector&lt;int&gt;(100,0));</div><div class="line">    cout &lt;&lt; &quot;Enter the number of rows for the matrix:&quot;;</div><div class="line">    cin &gt;&gt; n;</div><div class="line">    cout &lt;&lt; &quot;Enter the matrix row by row:&quot; &lt;&lt; endl;</div><div class="line">    int numOfOne = 0;</div><div class="line">    for (int i = 0; i &lt; n; i++)&#123;</div><div class="line">        for (int j = 0; j &lt; n; j++)&#123;</div><div class="line">            cin &gt;&gt; m[i][j];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    vector&lt;int&gt; result =  findLargestBlock(m,n);</div><div class="line"></div><div class="line">    cout &lt;&lt; &quot;横坐标：&quot; &lt;&lt; result[0] &lt;&lt; &quot; 纵坐标：&quot; &lt;&lt; result[1] &lt;&lt; &quot; 最大子方阵的行数：&quot; &lt;&lt; result[2] &lt;&lt; endl;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        转载请注明转自:<a href="/2016/12/16/find-largest-matrix-block/" target="_blank" rel="external">https://chanran.github.io/2016/12/16/find-largest-matrix-block/index.html</a>
+    </div>
+    <footer>
+        <a href="https://chanran.github.io">
+            <img src="/img/meAndYou.jpg" alt="blue">
+            blue
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/16/find-largest-matrix-block/&title=《寻找最大子方阵》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/16/find-largest-matrix-block/&title=《寻找最大子方阵》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/16/find-largest-matrix-block/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《寻找最大子方阵》 — blue's blog&url=https://chanran.github.io/2016/12/16/find-largest-matrix-block/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/16/find-largest-matrix-block/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/11/Uncaught-TypeError-react2-default-render-is-not-a-function/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Uncaught TypeError: _react2.default.render is not a function 解决方法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="find-largest-matrix-block" data-title="寻找最大子方阵" data-url="https://chanran.github.io/2016/12/16/find-largest-matrix-block/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'chanran', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        如果对你有用...
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechatpay.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/16/find-largest-matrix-block/&title=《寻找最大子方阵》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/16/find-largest-matrix-block/&title=《寻找最大子方阵》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/16/find-largest-matrix-block/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《寻找最大子方阵》 — blue's blog&url=https://chanran.github.io/2016/12/16/find-largest-matrix-block/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/16/find-largest-matrix-block/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="http://s.jiathis.com/qrcode.php?url=https://chanran.github.io/2016/12/16/find-largest-matrix-block/" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.2"></script>
+
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260728730&web_id=1260728730"></script>
+
+
+
+
+
+</body>
+</html>
