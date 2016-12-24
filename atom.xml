@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-12-24T07:14:27.019Z</updated>
+  <updated>2016-12-24T07:15:52.050Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://chanran.github.io/2016/12/24/baseStation/"/>
     <id>https://chanran.github.io/2016/12/24/baseStation/</id>
     <published>2016-12-24T07:09:55.000Z</published>
-    <updated>2016-12-24T07:14:27.019Z</updated>
+    <updated>2016-12-24T07:15:52.050Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>一条很长的乡村公路（我们可以想象这条公路是一条长线段，有一个西端点和一个东端点），公路旁稀疏的分布着一些房子。<br>我们把公路的西端点固定在坐标0上，东端点为某远处。</p>
 <p>假设这些房子的居民都使用蜂窝移动电话，现在需要把移动电话基站放在这条路旁的某些点上，使得每个房子都在其中一个<br>基站4公里之内。</p>
@@ -42,6 +42,10 @@
     
     </summary>
     
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
     
   </entry>
   
