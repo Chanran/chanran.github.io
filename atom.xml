@@ -100,7 +100,7 @@
     <link href="https://chanran.github.io/2016/12/23/sectionIntersect/"/>
     <id>https://chanran.github.io/2016/12/23/sectionIntersect/</id>
     <published>2016-12-23T07:30:10.000Z</published>
-    <updated>2016-12-23T07:39:05.735Z</updated>
+    <updated>2016-12-24T07:20:04.563Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>给定x轴上n个闭区间，去掉尽可能少的闭区间，使剩下的闭区间都不相交。</p>
 <p>注意：这里，若区间与另一区间之间仅有端点是相同的，不算做区间相交。</p>
@@ -124,7 +124,9 @@
     </summary>
     
     
-      <category term="算法，C++" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95%EF%BC%8CC/"/>
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
     
   </entry>
   
