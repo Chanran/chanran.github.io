@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2016-12-24T07:15:52.050Z</updated>
+  <updated>2016-12-30T10:10:16.863Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++ ifstream.eof()的一个小问题</title>
+    <link href="https://chanran.github.io/2016/12/30/C-ifstream-eof/"/>
+    <id>https://chanran.github.io/2016/12/30/C-ifstream-eof/</id>
+    <published>2016-12-30T09:40:24.000Z</published>
+    <updated>2016-12-30T10:10:16.863Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">while(!in.eof())&#123;</div><div class="line">    in &gt;&gt; tmp; //in是ifstream的对象</div><div class="line">    cout &lt;&lt; &quot;temp:&quot; &lt;&lt; tmp &lt;&lt; endl;</div><div class="line">    if(count % 2 != 0)&#123;</div><div class="line">        w[wIndex] = tmp;</div><div class="line">        wIndex++;</div><div class="line">    &#125;else&#123;</div><div class="line">        v[vIndex] = tmp;</div><div class="line">        vIndex++;</div><div class="line">    &#125;</div><div class="line">    count++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里出来的结果是这样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">temp:26</div><div class="line">...</div><div class="line">...</div><div class="line">temp:83</div><div class="line">temp:17</div><div class="line">temp:48  //这个是文件结尾最后一个数</div><div class="line">temp:48  //但是这里却出现了两次，证明有错（有些编译器会报错）</div></pre></td></tr></table></figure>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ol>
+<li>在循环之前先读入一个数据</li>
+<li>把读取数据的操作放在循环的最后</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">in &gt;&gt; tmp;</div><div class="line">while(!in.eof())&#123;</div><div class="line">    cout &lt;&lt; &quot;temp:&quot; &lt;&lt; tmp &lt;&lt; endl;</div><div class="line">    if(count % 2 != 0)&#123;</div><div class="line">        w[wIndex] = tmp;</div><div class="line">        wIndex++;</div><div class="line">    &#125;else&#123;</div><div class="line">        v[vIndex] = tmp;</div><div class="line">        vIndex++;</div><div class="line">    &#125;</div><div class="line">    count++;</div><div class="line">    in &gt;&gt; tmp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>这是因为判断文件是否结束的eof()函数是根据读入的字符判断的</p>
+<p>比如：假定文件后面是<code>17 48 文件结束标志</code> 3个数据（假设是最后的三个数据），现在已经读到48（<code>in &gt;&gt; tmp</code>已经执行），到<code>!in.eof()</code>的时候，因为读入的不是文件结束标志，所以循环继续，再一次执行<code>in &gt;&gt; tmp</code>，读取的时候文件结束标记，如果后面还有一些操作包含这个<strong>tmp</strong>的话，有可能会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">while(!in.eof())&#123;</div><div class="line">    in &gt;&gt; tmp;</div><div class="line">    //这里下面还有各种操作blabla</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>优化为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">in &gt;&gt; tmp;</div><div class="line">while(!in.eof())&#123;</div><div class="line">    //这里下面还有各种操作blabla</div><div class="line">    in &gt;&gt; tmp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样最后执行<code>in &gt;&gt; tmp</code>的时候就会读到文件结束标记，然后刚好有<code>!in.eof()</code>判断。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div c
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>17103 基站建设</title>
