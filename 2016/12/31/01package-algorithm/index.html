@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>01背包的三种算法(动态规划，贪心，回溯) | blue&#39;s blog | coding is funny.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="C++,算法">
+  <meta name="description" content="目标对比01背包三种算法的执行时间，找出最优解或者更优解。
+动态规划1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01背包的三种算法(动态规划，贪心，回溯)">
+<meta property="og:url" content="https://chanran.github.io/2016/12/31/01package-algorithm/index.html">
+<meta property="og:site_name" content="blue's blog">
+<meta property="og:description" content="目标对比01背包三种算法的执行时间，找出最优解或者更优解。
+动态规划1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878">
+<meta property="og:updated_time" content="2016-12-31T14:21:39.855Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="01背包的三种算法(动态规划，贪心，回溯)">
+<meta name="twitter:description" content="目标对比01背包三种算法的执行时间，找出最优解或者更优解。
+动态规划1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878">
+  
+    <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/meAndYou.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">blue</h5>
+          <a href="mailto:rong650751@163.com" title="rong650751@163.com" class="mail">rong650751@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                成就
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Chanran" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2308631120?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/users/1402753fcc6f/latest_articles" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                简书
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>blue&#39;s blog &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">01背包的三种算法(动态规划，贪心，回溯)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">01背包的三种算法(动态规划，贪心，回溯)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-31T14:16:23.000Z" itemprop="datePublished" class="page-time">
+  2016-12-31
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#目标"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#动态规划"><span class="post-toc-number">2.</span> <span class="post-toc-text">动态规划</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#贪心"><span class="post-toc-number">3.</span> <span class="post-toc-text">贪心</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#回溯"><span class="post-toc-number">4.</span> <span class="post-toc-text">回溯</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-01package-algorithm" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">01背包的三种算法(动态规划，贪心，回溯)</h1>
+        <div class="post-meta">
+            <time datetime="2016-12-31T14:16:23.000Z" itemprop="datePublished" class="post-time">
+  2016-12-31
+</time>
+
+            
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>对比01背包三种算法的执行时间，找出最优解或者更优解。</p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 01背包动态规划</div><div class="line"> */</div><div class="line"></div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;fstream&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">long max(long a,long b)  &#123;</div><div class="line">    if(a&gt;b)&#123;</div><div class="line">        return a;</div><div class="line">    &#125;</div><div class="line">    return b;</div><div class="line">&#125;</div><div class="line">long min(long a,long b)  &#123;</div><div class="line">    if(a&lt;b)&#123;</div><div class="line">        return a;</div><div class="line">    &#125;</div><div class="line">    return b;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Traceback(long w[],long n,long C,long** m)&#123;</div><div class="line">    long* x = new long[n+1];</div><div class="line">    for (long i = 1; i &lt; n; i++)&#123;</div><div class="line">        if (m[i][C] == m[i+1][C])&#123;</div><div class="line">            x[i] = 0;</div><div class="line">        &#125;else&#123;</div><div class="line">            x[i] = 1;</div><div class="line">            C-= w[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    x[n] = (m[n][C])?1:0;</div><div class="line">    cout &lt;&lt; &quot;最优解：&quot; &lt;&lt; endl;</div><div class="line">    for (long i = 1; i &lt;= n; i++)&#123;</div><div class="line">        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; x[i] &lt;&lt; endl;</div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; &quot;========== 结束 ============&quot; &lt;&lt; endl;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void knapsack(long w[],long v[],long n,long C,long** m)&#123;  //01背包，动态规划</div><div class="line">    cout &lt;&lt; &quot;========== 01背包的动态规划方法 ============&quot; &lt;&lt; endl;</div><div class="line">    long jMax = min(w[n]-1,C);</div><div class="line">    for (long j = 0;j &lt;= jMax; j++)&#123;</div><div class="line">        m[n][j] = 0;</div><div class="line">    &#125;</div><div class="line">    for (long j = w[n];j &lt;= C; j++)&#123;</div><div class="line">        m[n][j] = v[n];</div><div class="line">    &#125;</div><div class="line">    for (long i = n - 1; i &gt; 1; i--)&#123;</div><div class="line">        jMax = min(w[i]-1,C);</div><div class="line">        for (long j = 0; j &lt;= jMax; j++)&#123;</div><div class="line">            m[i][j] = m[i+1][j];</div><div class="line">        &#125;</div><div class="line">        for (long j = w[i]; j &lt;= C; j++)&#123;</div><div class="line">            m[i][j] = max(m[i+1][j],m[i+1][j-w[i]]+v[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    m[1][C] = m[2][C];</div><div class="line">    if (C &gt;= w[1])&#123;</div><div class="line">        m[1][C] = max(m[1][C],m[2][C-w[1]]+v[1]);</div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; &quot;背包可以装的最大价值为：&quot; &lt;&lt; m[1][C] &lt;&lt; endl;</div><div class="line">    Traceback(w,n,C,m); //打印最优解</div><div class="line">    delete[] m;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, char *argv[]) &#123;</div><div class="line">    clock_t start, finish; /* 精确到 ms(毫秒)级的时间*/</div><div class="line">    double duration; /*测量一个事件持续的时间*/</div><div class="line">    start = clock();</div><div class="line">    long i,n,C,count;</div><div class="line">    ifstream in;</div><div class="line">    long *w,*v; //物品重量和价值数组</div><div class="line">    long wIndex,vIndex; //物品重量和价值数组的下标</div><div class="line"></div><div class="line">    long tmp; //读取用的暂存变量</div><div class="line">    in.open(&quot;test.txt&quot;,ios::in|ios::binary);</div><div class="line">    if (!in.is_open())&#123;</div><div class="line">        cout &lt;&lt; &quot;open file error&quot; &lt;&lt; endl;</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    in &gt;&gt; tmp;  //每次读入一个long型数据</div><div class="line">    C = tmp;    //背包容量</div><div class="line"></div><div class="line">    in &gt;&gt; tmp;  //每次读入一个long型数据</div><div class="line">    n = tmp;    //物品个数</div><div class="line">    w = new long[n+1]; //物品重量数组</div><div class="line">    v = new long[n+1]; //物品价值数组</div><div class="line"></div><div class="line">    wIndex = 1;</div><div class="line">    vIndex = 1;</div><div class="line">    count =  1;</div><div class="line">    in &gt;&gt; tmp;</div><div class="line">    while(!in.eof())&#123;</div><div class="line">        if(count % 2 != 0)&#123;</div><div class="line">            w[wIndex] = tmp;</div><div class="line">            wIndex++;</div><div class="line">        &#125;else&#123;</div><div class="line">            v[vIndex] = tmp;</div><div class="line">            vIndex++;</div><div class="line">        &#125;</div><div class="line">        count++;</div><div class="line">        in &gt;&gt; tmp;</div><div class="line">    &#125;</div><div class="line">    v[vIndex] = tmp;</div><div class="line"></div><div class="line">    long** m  = new long*[n+1];</div><div class="line">    for (i = 0; i &lt;= n; i++)&#123;</div><div class="line">        m[i] = new long[C+1];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    knapsack(w,v,n,C,m); //调用动态规划法求最优值和最优解</div><div class="line"></div><div class="line">    in.close();</div><div class="line">    delete []w;</div><div class="line">    delete []v;</div><div class="line"></div><div class="line">    /*程序运行时间*/</div><div class="line">    finish = clock();</div><div class="line">    duration = (double)(finish - start) / CLOCKS_PER_SEC;</div><div class="line">    printf( &quot;%f seconds\n&quot;, duration ); /*此 duration 单位为秒*/</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 01背包贪心法</div><div class="line"> */</div><div class="line"></div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;fstream&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void Traceback(long* index,long ww[],long vv[],long n,long C)&#123;</div><div class="line">    long cw = 0; //当前重量</div><div class="line">    long cv = 0; //当前价值</div><div class="line">    long maxv = 0; //最大价值</div><div class="line">    long i = 0;</div><div class="line">    long* indexindex = new long[n]; //物品是否放入背包</div><div class="line"></div><div class="line">    while(i &gt;= 0)&#123;</div><div class="line">        indexindex[i] = 0;</div><div class="line">        if(cw + ww[i] &lt; C)&#123;</div><div class="line">            cw += ww[i];</div><div class="line">            cv += vv[i];</div><div class="line">            indexindex[index[i]] = 1;</div><div class="line">            i++;</div><div class="line">        &#125;else&#123;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; &quot;========= 01背包贪心法 ==========&quot; &lt;&lt; endl;</div><div class="line">    if(i &lt; n)&#123;</div><div class="line">        maxv = cv;</div><div class="line">        cout &lt;&lt; &quot;最优值：&quot; &lt;&lt; maxv &lt;&lt; endl;</div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; &quot;最优解：&quot;&lt;&lt; endl;</div><div class="line">    for(i = 0; i &lt; n; i++)&#123;</div><div class="line">        cout &lt;&lt; i+1 &lt;&lt; &quot; &quot; &lt;&lt; indexindex[i] &lt;&lt; endl;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    cout &lt;&lt; &quot;======== END =============&quot; &lt;&lt; endl;</div><div class="line">    delete[] indexindex;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Knapsack(long n,long C,long v[],long w[])&#123;</div><div class="line">    double* r = new double[n];</div><div class="line">    long* index = new long[n];</div><div class="line"></div><div class="line">    for(int i = 0; i &lt; n; i++)&#123;</div><div class="line">        r[i] = (double)v[i]/(double)w[i];</div><div class="line">        index[i] = i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //单位重量价值r[i] = v[i]/w[i]降序排序</div><div class="line">    for(long i = 0; i &lt;= n; i++)&#123;</div><div class="line">        for(long j = i</div><div class="line">                     + 1; j &lt; n; j++)&#123;</div><div class="line">            if(r[i] &lt; r[j])&#123;</div><div class="line">                swap(r[i],r[j]);</div><div class="line">                swap(index[i],index[j]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    long* ww = new long[n];</div><div class="line">    long* vv = new long[n];</div><div class="line">    for (long i = 0; i &lt; n; i++)&#123;</div><div class="line">        ww[i] = w[index[i]];</div><div class="line">        vv[i] = v[index[i]];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Traceback(index,ww,vv,n,C);</div><div class="line"></div><div class="line">    delete[] r;</div><div class="line">    delete[] index;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, char *argv[]) &#123;</div><div class="line">    clock_t start, finish; /* 精确到 ms(毫秒)级的时间*/</div><div class="line">    double duration; /*测量一个事件持续的时间*/</div><div class="line">    start = clock();</div><div class="line">    long i,n,C,count;</div><div class="line">    ifstream in;</div><div class="line">    long *w,*v; //物品重量和价值数组</div><div class="line">    long wIndex,vIndex; //物品重量和价值数组的下标</div><div class="line"></div><div class="line">    long tmp; //读取用的暂存变量</div><div class="line">    in.open(&quot;test.txt&quot;,ios::in|ios::binary);</div><div class="line">    if (!in.is_open())&#123;</div><div class="line">        cout &lt;&lt; &quot;open file error&quot; &lt;&lt; endl;</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    in &gt;&gt; tmp;  //每次读入一个long型数据</div><div class="line">    C = tmp;    //背包容量</div><div class="line"></div><div class="line">    in &gt;&gt; tmp;  //每次读入一个long型数据</div><div class="line">    n = tmp;    //物品个数</div><div class="line">    w = new long[n+1]; //物品重量数组</div><div class="line">    v = new long[n+1]; //物品价值数组</div><div class="line"></div><div class="line">    wIndex = 1;</div><div class="line">    vIndex = 1;</div><div class="line">    count =  1;</div><div class="line">    in &gt;&gt; tmp;</div><div class="line">    while(!in.eof())&#123;</div><div class="line">        if(count % 2 != 0)&#123;</div><div class="line">            w[wIndex] = tmp;</div><div class="line">            wIndex++;</div><div class="line">        &#125;else&#123;</div><div class="line">            v[vIndex] = tmp;</div><div class="line">            vIndex++;</div><div class="line">        &#125;</div><div class="line">        count++;</div><div class="line">        in &gt;&gt; tmp;</div><div class="line">    &#125;</div><div class="line">    v[vIndex] = tmp;</div><div class="line"></div><div class="line">    long** m  = new long*[n+1];</div><div class="line">    for (i = 0; i &lt;= n; i++)&#123;</div><div class="line">        m[i] = new long[C+1];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Knapsack(n,C,v,w);</div><div class="line"></div><div class="line">    in.close(); //关闭文件</div><div class="line">    delete []w; //释放w</div><div class="line">    delete []v; //释放v</div><div class="line"></div><div class="line">    /*程序运行时间*/</div><div class="line">    finish = clock();</div><div class="line">    duration = (double)(finish - start) / CLOCKS_PER_SEC;</div><div class="line">    printf( &quot;%f seconds\n&quot;, duration ); /*此 duration 单位为秒*/</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 01背包贪心法</div><div class="line"> */</div><div class="line"></div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;fstream&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">class Knap &#123;</div><div class="line">    friend long Knapsack(long v[], long w[], long c, long n);</div><div class="line">public:</div><div class="line"></div><div class="line">    void print() &#123;</div><div class="line">        long* indexindex = new long[n];</div><div class="line">        cout &lt;&lt;  &quot;最优解:&quot; &lt;&lt; endl;</div><div class="line">        for (long j = 1; j &lt;= n; j++) &#123;</div><div class="line">            indexindex[j-1] = 0;</div><div class="line">            if (bestx[j] == 1)&#123;</div><div class="line">                indexindex[index[j-1]] = 1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        for (long j = 0; j &lt; n; j++)&#123;</div><div class="line">            cout &lt;&lt; j+1 &lt;&lt; &quot; &quot; &lt;&lt; indexindex[j] &lt;&lt; endl;</div><div class="line">        &#125;</div><div class="line">        cout &lt;&lt; endl;</div><div class="line">        cout &lt;&lt; &quot;最优值：&quot;;</div><div class="line">    &#125;;</div><div class="line">private:</div><div class="line"></div><div class="line">    long Bound(long i);</div><div class="line">    void Backtrack(long i);</div><div class="line">    long c;//背包容量</div><div class="line">    long n; //物品数</div><div class="line">    long *w;//物品重量数组</div><div class="line">    long *v;//物品价值数组</div><div class="line">    long cw;//当前重量</div><div class="line">    long cv;//当前价值</div><div class="line">    long bestv;//当前最优值</div><div class="line">    long *bestx;//当前最优解</div><div class="line">    long *index;//坐标变换数组</div><div class="line">    long *x;//当前解</div><div class="line">&#125;;</div><div class="line"></div><div class="line">long Knap::Bound(long i) &#123;</div><div class="line">    //计算上界</div><div class="line">    long cleft = c - cw;//剩余容量</div><div class="line">    long b = cv;</div><div class="line">    //以物品单位重量价值递减序装入物品</div><div class="line">    while (i &lt;= n &amp;&amp; w[i] &lt;= cleft) &#123;</div><div class="line">        cleft -= w[i];</div><div class="line">        b += v[i];</div><div class="line">        i++;</div><div class="line">    &#125;</div><div class="line">    //装满背包</div><div class="line">    if (i &lt;= n)</div><div class="line">        b += v[i] * cleft / w[i];</div><div class="line">    return b;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Knap::Backtrack(long i) &#123;</div><div class="line">    if (i &gt; n) &#123; //到达叶子节点</div><div class="line">        if (bestv &lt; cv) &#123;</div><div class="line">            for (long j = 1; j &lt;= n; j++)</div><div class="line">                bestx[j] = x[j];</div><div class="line">            bestv = cv;</div><div class="line">        &#125;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    if (cw + w[i] &lt;= c) &#123;   //搜索左子树</div><div class="line">        x[i] = 1;</div><div class="line">        cw += w[i];</div><div class="line">        cv += v[i];</div><div class="line">        Backtrack(i + 1);</div><div class="line">        cw -= w[i];</div><div class="line">        cv -= v[i];</div><div class="line">    &#125;</div><div class="line">    if (Bound(i + 1) &gt; bestv)&#123;  //搜索右子树</div><div class="line">        x[i] = 0;</div><div class="line">        Backtrack(i + 1);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">class Object &#123;</div><div class="line"></div><div class="line">    friend long Knapsack(long* v, long* w, long C, long n);</div><div class="line"></div><div class="line">public:</div><div class="line"></div><div class="line">    long operator&lt;=(Object a) const &#123;</div><div class="line">        return (d &gt;= a.d);</div><div class="line">    &#125;</div><div class="line">private:</div><div class="line">    long ID;</div><div class="line">    double d;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">void Sort(Object *Q,long len,long *index) &#123;</div><div class="line">    for(long i=0;i&lt;len;i++)</div><div class="line">        for(long j=0;j&lt;len;j++)</div><div class="line">            if(Q[i]&lt;=Q[j]) &#123;</div><div class="line">                Object temp=Q[i];</div><div class="line">                Q[i]=Q[j];</div><div class="line">                Q[j]=temp;</div><div class="line"></div><div class="line">                long tmp = index[i];</div><div class="line">                index[i] = index[j];</div><div class="line">                index[j] = tmp;</div><div class="line">            &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">long Knapsack(long* v, long* w, long C, long n) &#123;</div><div class="line">    //为Knap::Backtrack初始化</div><div class="line">    long W = 0;</div><div class="line">    long V = 0;</div><div class="line">    long i = 1;</div><div class="line">    Object *Q = new Object[n];</div><div class="line">    for (i = 1; i &lt;= n; i++) &#123;</div><div class="line">        Q[i - 1].ID = i;</div><div class="line">        Q[i - 1].d = 1.0 * v[i] / w[i];</div><div class="line">        V += v[i];</div><div class="line">        W += w[i];</div><div class="line">    &#125;</div><div class="line">    if (W &lt;= C)</div><div class="line">        return V;//装入所有物品</div><div class="line"></div><div class="line">    Knap K; //实例化Knap</div><div class="line"></div><div class="line">    //依物品单位重量排序</div><div class="line">    K.index = new long[n];</div><div class="line">    for(long j = 0; j &lt; n; j++)&#123;   //初始化下标数组，交换的时候记录坐标变换</div><div class="line">        K.index[j] = j;</div><div class="line">    &#125;</div><div class="line">    Sort(Q,n,K.index);  //排序</div><div class="line"></div><div class="line">    K.v = new long[n + 1];</div><div class="line">    K.w = new long[n + 1];</div><div class="line">    K.x = new long[n + 1];</div><div class="line">    K.bestx = new long[n + 1];</div><div class="line">    K.x[0] = 0;</div><div class="line">    K.bestx[0] = 0;</div><div class="line">    for (i = 1; i &lt;= n; i++) &#123;</div><div class="line">        K.v[i] = v[Q[i - 1].ID];</div><div class="line">        K.w[i] = w[Q[i - 1].ID];</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    K.cv = 0;</div><div class="line">    K.cw = 0;</div><div class="line">    K.c = C;</div><div class="line">    K.n = n;</div><div class="line">    K.bestv = 0;</div><div class="line">    //回溯搜索</div><div class="line">    K.Backtrack(1);</div><div class="line">    K.print();</div><div class="line">    delete[] Q;</div><div class="line">    delete[] K.w;</div><div class="line">    delete[] K.v;</div><div class="line">    return K.bestv;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main(int argc, char *argv[]) &#123;</div><div class="line">    clock_t start, finish; /* 精确到 ms(毫秒)级的时间*/</div><div class="line">    double duration; /*测量一个事件持续的时间*/</div><div class="line">    start = clock();</div><div class="line">    long i, n, C, count;</div><div class="line">    ifstream in;</div><div class="line">    long *w, *v; //物品重量和价值数组</div><div class="line">    long wIndex, vIndex; //物品重量和价值数组的下标</div><div class="line"></div><div class="line">    long tmp; //读取用的暂存变量</div><div class="line">    in.open(&quot;test.txt&quot;, ios::in | ios::binary);</div><div class="line">    if (!in.is_open()) &#123;</div><div class="line">        cout &lt;&lt; &quot;open file error&quot; &lt;&lt; endl;</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    in &gt;&gt; tmp;  //每次读入一个long型数据</div><div class="line">    C = tmp;    //背包容量</div><div class="line"></div><div class="line">    in &gt;&gt; tmp;  //每次读入一个long型数据</div><div class="line">    n = tmp;    //物品个数</div><div class="line">    w = new long[n + 1]; //物品重量数组</div><div class="line">    v = new long[n + 1]; //物品价值数组</div><div class="line"></div><div class="line">    wIndex = 1;</div><div class="line">    vIndex = 1;</div><div class="line">    count = 1;</div><div class="line">    in &gt;&gt; tmp;</div><div class="line">    while (!in.eof()) &#123;</div><div class="line">        if (count % 2 != 0) &#123;</div><div class="line">            w[wIndex] = tmp;</div><div class="line">            wIndex++;</div><div class="line">        &#125; else &#123;</div><div class="line">            v[vIndex] = tmp;</div><div class="line">            vIndex++;</div><div class="line">        &#125;</div><div class="line">        count++;</div><div class="line">        in &gt;&gt; tmp;</div><div class="line">    &#125;</div><div class="line">    v[vIndex] = tmp;</div><div class="line"></div><div class="line">    long **m = new long *[n + 1];</div><div class="line">    for (i = 0; i &lt;= n; i++) &#123;</div><div class="line">        m[i] = new long[C + 1];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    cout &lt;&lt; Knapsack(v, w, C, n) &lt;&lt; endl;</div><div class="line"></div><div class="line">    in.close(); //关闭文件</div><div class="line">    delete[]w; //释放w</div><div class="line">    delete[]v; //释放v</div><div class="line"></div><div class="line">    /*程序运行时间*/</div><div class="line">    finish = clock();</div><div class="line">    duration = (double) (finish - start) / CLOCKS_PER_SEC;</div><div class="line">    printf(&quot;%f seconds\n&quot;, duration); /*此 duration 单位为秒*/</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        转载请注明转自:<a href="/2016/12/31/01package-algorithm/" target="_blank" rel="external">https://chanran.github.io/2016/12/31/01package-algorithm/index.html</a>
+    </div>
+    <footer>
+        <a href="https://chanran.github.io">
+            <img src="/img/meAndYou.jpg" alt="blue">
+            blue
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/31/01package-algorithm/&title=《01背包的三种算法(动态规划，贪心，回溯)》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/31/01package-algorithm/&title=《01背包的三种算法(动态规划，贪心，回溯)》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/31/01package-algorithm/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《01背包的三种算法(动态规划，贪心，回溯)》 — blue's blog&url=https://chanran.github.io/2016/12/31/01package-algorithm/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/31/01package-algorithm/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/30/C-ifstream-eof/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">C++ ifstream.eof()的一个小问题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="01package-algorithm" data-title="01背包的三种算法(动态规划，贪心，回溯)" data-url="https://chanran.github.io/2016/12/31/01package-algorithm/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'chanran', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        如果对你有用...
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechatpay.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2016/12/31/01package-algorithm/&title=《01背包的三种算法(动态规划，贪心，回溯)》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2016/12/31/01package-algorithm/&title=《01背包的三种算法(动态规划，贪心，回溯)》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2016/12/31/01package-algorithm/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《01背包的三种算法(动态规划，贪心，回溯)》 — blue's blog&url=https://chanran.github.io/2016/12/31/01package-algorithm/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2016/12/31/01package-algorithm/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="http://s.jiathis.com/qrcode.php?url=https://chanran.github.io/2016/12/31/01package-algorithm/" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.2"></script>
+
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260728730&web_id=1260728730"></script>
+
+
+
+
+
+</body>
+</html>
