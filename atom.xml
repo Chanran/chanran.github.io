@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-01-05T11:49:11.645Z</updated>
+  <updated>2017-01-05T11:54:09.438Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://chanran.github.io/2017/01/05/holiday-plan/"/>
     <id>https://chanran.github.io/2017/01/05/holiday-plan/</id>
     <published>2017-01-05T09:44:45.000Z</published>
-    <updated>2017-01-05T11:49:11.645Z</updated>
+    <updated>2017-01-05T11:54:09.438Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>经过一次实习，两次面试，一次UC RED前端实习，一次UC头条的笔试+面试（被刷了），一次杭州手机淘宝的电话面试（目前等待消息），都是说明了我自己的一个弊端，没有静下心来学习和研读书籍，实战能力必然重要，但是基础也不可忽视。我对此的看法是，一个没有基础的实战能力强的工程师A和一个基础很扎实但是实战能力不怎么样的工程师B，做1个项目的时候，大多情况下都是实战能力强的A完成得更出色；但是对于做100个项目的时候，不重视基础的工程A会吃大亏，由于基础不牢，走的弯路多，开发时间延长，造成项目延期，项目规划不当，而基础很扎实的工程师在100个项目的前几个项目里虽然碰了壁，但是由于基础扎实，学习起来也很快，于是很快地获得了强悍的实战能力，之后的项目也就游刃有余。</p>
 <p>其实在这里我只是针对在校学生来说，毕竟外面公司还是干活的时间多，学习的时间少。基础不扎实出去工作之后就得用业余时间拼命补基础。在校学生时间多，可以又更多时间来打基础，研究新东西。</p>
@@ -38,6 +38,8 @@
 <li><p>nodejs(express,koajs)</p>
 </li>
 <li><p>React全家桶+nodejs项目经验</p>
+</li>
+<li><p>前端安全(csrf,xss)</p>
 </li>
 <li><p>算法基础</p>
 </li>
@@ -57,6 +59,12 @@
 <li><p>每天2个小时来读《图解css3》《javascript高级程序设计》等书（看html,css,javascript文档也算）</p>
 </li>
 <li><p>每天0.5个小时来编码</p>
+</li>
+</ol>
+<h2 id="每天懂一点前端安全"><a href="#每天懂一点前端安全" class="headerlink" title="每天懂一点前端安全"></a>每天懂一点前端安全</h2><ol>
+<li><p>《白帽子将Web安全》xss的内容</p>
+</li>
+<li><p>实战csrf,xss</p>
 </li>
 </ol>
 <h2 id="每三天1道算法题-华农OJ"><a href="#每三天1道算法题-华农OJ" class="headerlink" title="每三天1道算法题(华农OJ)"></a>每三天1道算法题(华农OJ)</h2><h2 id="每天刷10道笔试题-牛客网的APP等"><a href="#每天刷10道笔试题-牛客网的APP等" class="headerlink" title="每天刷10道笔试题(牛客网的APP等)"></a>每天刷10道笔试题(牛客网的APP等)</h2><h2 id="5天-ES6"><a href="#5天-ES6" class="headerlink" title="5天 ES6"></a>5天 ES6</h2><blockquote>
@@ -145,9 +153,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -213,9 +221,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -259,9 +267,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -294,9 +302,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
