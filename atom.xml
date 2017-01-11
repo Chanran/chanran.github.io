@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-01-05T11:54:09.438Z</updated>
+  <updated>2017-01-11T09:19:34.030Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -16,11 +16,62 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ES6(一)--let和const</title>
+    <link href="https://chanran.github.io/2017/01/11/ES6-let-const/"/>
+    <id>https://chanran.github.io/2017/01/11/ES6-let-const/</id>
+    <published>2017-01-11T03:44:13.000Z</published>
+    <updated>2017-01-11T09:19:34.030Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="使用let，不会造成变量提升"><a href="#使用let，不会造成变量提升" class="headerlink" title="使用let，不会造成变量提升"></a>使用let，不会造成变量提升</h1><h2 id="ES5"><a href="#ES5" class="headerlink" title="ES5"></a>ES5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(test); //结果是undefined</div><div class="line">var test = &apos;test&apos;;</div></pre></td></tr></table></figure>
+<p>可以理解为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var test;</div><div class="line">console.log(test); //结果是undefined</div><div class="line">test = &apos;test&apos;;</div></pre></td></tr></table></figure></p>
+<h2 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(test); //结果是ReferenceError:test is not defined</div><div class="line">let test = &apos;test&apos;;</div></pre></td></tr></table></figure>
+<p>因为不存在变量提升，可以理解为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(test);</div><div class="line">let test; //上不去哩，所以报错了。</div><div class="line">test = &apos;test&apos;;</div></pre></td></tr></table></figure>
+<h1 id="作用在块级作用域"><a href="#作用在块级作用域" class="headerlink" title="作用在块级作用域"></a>作用在块级作用域</h1><p>首先要科普一下块级作用域：</p>
+<blockquote>
+<p>在ES6之前javascript是用函数function来划分作用域，于是定义的变量作用在各个函数里，单独或者嵌套，也造成了函数作用域链。</p>
+<p>现在ES6定义了块级作用域，用{}(if、for等使用了{}才具备块级作用域的条件)划分块级作用域，let在块级作用域定义的变量在离开块级作用域的时候会被销毁，所以在块级作用域内定义的变量在块级作用域外访问的话会报引用错误(ReferenceError)</p>
+</blockquote>
+<h2 id="ES5-1"><a href="#ES5-1" class="headerlink" title="ES5"></a>ES5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    var a = 1;</div><div class="line">&#125;</div><div class="line">console.log(a); //结果为1</div></pre></td></tr></table></figure>
+<h2 id="ES6-1"><a href="#ES6-1" class="headerlink" title="ES6"></a>ES6</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    let a = 1;</div><div class="line">&#125;</div><div class="line">console.log(a) //结果是ReferenceError: a is not defined</div></pre></td></tr></table></figure>
+<h1 id="不允许重复声明变量"><a href="#不允许重复声明变量" class="headerlink" title="不允许重复声明变量"></a>不允许重复声明变量</h1><h2 id="ES5-2"><a href="#ES5-2" class="headerlink" title="ES5"></a>ES5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    var a = 1;</div><div class="line">    var a = 2; //我照样过得好好的～</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ES6-2"><a href="#ES6-2" class="headerlink" title="ES6"></a>ES6</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    let a = 1;</div><div class="line">    let a = 2; //出错啦～,SyntaxError: Identifier &apos;a&apos; has already been declared</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="暂时性死区-temporal-dead-zone，简称-TDZ"><a href="#暂时性死区-temporal-dead-zone，简称-TDZ" class="headerlink" title="暂时性死区(temporal dead zone，简称 TDZ)"></a>暂时性死区(temporal dead zone，简称 TDZ)</h1><blockquote>
+<p>ES6明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。</p>
+</blockquote>
+<h2 id="没有let的区块-无论是es5还是es6"><a href="#没有let的区块-无论是es5还是es6" class="headerlink" title="没有let的区块(无论是es5还是es6)"></a>没有let的区块(无论是es5还是es6)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  tmp = &apos;abc&apos;;</div><div class="line">  console.log(tmp); //结果为abc</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  tmp = &apos;abc&apos;;</div><div class="line">  console.log(tmp); //结果为abc</div><div class="line">  var tmp; //这里定义的tmp将会变量提升，相当于移动这个语句在tmp = &apos;abc&apos;上面。</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="有let的区块"><a href="#有let的区块" class="headerlink" title="有let的区块"></a>有let的区块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  // TDZ开始，因为下面出现了let tmp，所以let以上的语句出现暂时性死区</div><div class="line">  tmp = &apos;abc&apos;; // ReferenceError</div><div class="line">  console.log(tmp); // ReferenceError</div><div class="line"></div><div class="line">  let tmp; // TDZ结束，let tmp以下的语句没有暂时性死区，因为这里let tmp没有赋值，所以下面报undefined的错</div><div class="line">  console.log(tmp); // undefined</div><div class="line"></div><div class="line">  tmp = 123;</div><div class="line">  console.log(tmp); // 123</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p>typeof也会报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  typeof test; //ReferenceError: test is not defined</div><div class="line">  let test = 2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="隐蔽的暂时性死区"><a href="#隐蔽的暂时性死区" class="headerlink" title="隐蔽的暂时性死区"></a>隐蔽的暂时性死区</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function bar(x = y,y = 2)&#123;</div><div class="line">    return [x,y]</div><div class="line">&#125;</div><div class="line">bar(); //ReferenceError: y is not defined</div></pre></td></tr></table></figure>
+<h1 id="在块级作用域里声明函数"><a href="#在块级作用域里声明函数" class="headerlink" title="在块级作用域里声明函数"></a>在块级作用域里声明函数</h1><h2 id="ES5严格模式下-非严格模式下不会报错"><a href="#ES5严格模式下-非严格模式下不会报错" class="headerlink" title="ES5严格模式下(非严格模式下不会报错)"></a>ES5严格模式下(非严格模式下不会报错)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">if (true)&#123;</div><div class="line">    function test()&#123;console.log(&apos;test&apos;)&#125;</div><div class="line">&#125;</div><div class="line">test();  //ReferenceError:test is not defined</div></pre></td></tr></table></figure>
+<h2 id="ES6允许在块级作用域声明函数"><a href="#ES6允许在块级作用域声明函数" class="headerlink" title="ES6允许在块级作用域声明函数"></a>ES6允许在块级作用域声明函数</h2><h3 id="非严格模式"><a href="#非严格模式" class="headerlink" title="非严格模式"></a>非严格模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (true) &#123;</div><div class="line">  function test() &#123;console.log(&apos;test&apos;)&#125;</div><div class="line">&#125;</div><div class="line">test(); //结果为test</div></pre></td></tr></table></figure>
+<h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><p>不用var、let、const定义:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">if (true) &#123;</div><div class="line">  function test() &#123;console.log(&apos;test&apos;)&#125; //由于function没有加var、let、const定义，所以此函数的作用域是全局的</div><div class="line">&#125;</div><div class="line">test() //结果为test</div></pre></td></tr></table></figure></p>
+<p>var:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">if (true)&#123;</div><div class="line">    var test = function()&#123;console.log(&apos;test&apos;)&#125; //由于function是用var定义的，所以此函数是当前function作用域，此处为global</div><div class="line">&#125;</div><div class="line">test() //结果为test</div></pre></td></tr></table></figure></p>
+<p>let或者const：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">if (true)&#123;</div><div class="line">    let test = function()&#123;console.log(&apos;test&apos;)&#125; //由于function是用let定义的，所以此函数是当前块级作用域，即是&#123;&#125;包括的区域，离开之后变量被销毁</div><div class="line">&#125;</div><div class="line">test() //结果为ReferenceError: test is not defined</div></pre></td></tr></table></figure></p>
+<h1 id="const定义常量"><a href="#const定义常量" class="headerlink" title="const定义常量"></a>const定义常量</h1><h2 id="不可以重新赋值"><a href="#不可以重新赋值" class="headerlink" title="不可以重新赋值"></a>不可以重新赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const test = 1;</div><div class="line">test = 0; //TypeError: Assignment to constant variable.</div></pre></td></tr></table></figure>
+<h2 id="一旦定义就必须初始化"><a href="#一旦定义就必须初始化" class="headerlink" title="一旦定义就必须初始化"></a>一旦定义就必须初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const test; //SyntaxError: Missing initializer in const declaration</div></pre></td></tr></table></figure>
+<h2 id="const定义的地址不能改变，但是内容可以改变"><a href="#const定义的地址不能改变，但是内容可以改变" class="headerlink" title="const定义的地址不能改变，但是内容可以改变"></a>const定义的地址不能改变，但是内容可以改变</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const test = [];</div><div class="line">test.push(&apos;test&apos;);</div><div class="line">console.log(test); //[&apos;test&apos;]</div></pre></td></tr></table></figure>
+<h2 id="不存在变量提升"><a href="#不存在变量提升" class="headerlink" title="不存在变量提升"></a>不存在变量提升</h2><h2 id="有暂时性死区"><a href="#有暂时性死区" class="headerlink" title="有暂时性死区"></a>有暂时性死区</h2><h2 id="作用在块级作用域-1"><a href="#作用在块级作用域-1" class="headerlink" title="作用在块级作用域"></a>作用在块级作用域</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;使用let，不会造成变量提升&quot;&gt;&lt;a href=&quot;#使用let，不会造成变量提升&quot; class=&quot;headerlink&quot; title=&quot;使用let，不会造成变量提升&quot;&gt;&lt;/a&gt;使用let，不会造成变量提升&lt;/h1&gt;&lt;h2 id=&quot;ES5&quot;&gt;&lt;a href=&quot;#ES
+    
+    </summary>
+    
+    
+      <category term="ES6" scheme="https://chanran.github.io/tags/ES6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2017年初寒假学习计划</title>
     <link href="https://chanran.github.io/2017/01/05/holiday-plan/"/>
     <id>https://chanran.github.io/2017/01/05/holiday-plan/</id>
     <published>2017-01-05T09:44:45.000Z</published>
-    <updated>2017-01-05T11:54:09.438Z</updated>
+    <updated>2017-01-05T13:25:43.458Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>经过一次实习，两次面试，一次UC RED前端实习，一次UC头条的笔试+面试（被刷了），一次杭州手机淘宝的电话面试（目前等待消息），都是说明了我自己的一个弊端，没有静下心来学习和研读书籍，实战能力必然重要，但是基础也不可忽视。我对此的看法是，一个没有基础的实战能力强的工程师A和一个基础很扎实但是实战能力不怎么样的工程师B，做1个项目的时候，大多情况下都是实战能力强的A完成得更出色；但是对于做100个项目的时候，不重视基础的工程A会吃大亏，由于基础不牢，走的弯路多，开发时间延长，造成项目延期，项目规划不当，而基础很扎实的工程师在100个项目的前几个项目里虽然碰了壁，但是由于基础扎实，学习起来也很快，于是很快地获得了强悍的实战能力，之后的项目也就游刃有余。</p>
 <p>其实在这里我只是针对在校学生来说，毕竟外面公司还是干活的时间多，学习的时间少。基础不扎实出去工作之后就得用业余时间拼命补基础。在校学生时间多，可以又更多时间来打基础，研究新东西。</p>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>ES6(一)--let和const | blue&#39;s blog | coding is funny.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="ES6">
+  <meta name="description" content="使用let，不会造成变量提升ES512console.log(test); //结果是undefinedvar test = &amp;apos;test&amp;apos;;
+可以理解为:123var test;console.log(test); //结果是undefinedtest = &amp;apos;test&amp;apos;;
+ES612console.log(test); //结果是ReferenceError">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6(一)--let和const">
+<meta property="og:url" content="https://chanran.github.io/2017/01/11/ES6-let-const/index.html">
+<meta property="og:site_name" content="blue's blog">
+<meta property="og:description" content="使用let，不会造成变量提升ES512console.log(test); //结果是undefinedvar test = &amp;apos;test&amp;apos;;
+可以理解为:123var test;console.log(test); //结果是undefinedtest = &amp;apos;test&amp;apos;;
+ES612console.log(test); //结果是ReferenceError">
+<meta property="og:updated_time" content="2017-01-11T09:19:34.030Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6(一)--let和const">
+<meta name="twitter:description" content="使用let，不会造成变量提升ES512console.log(test); //结果是undefinedvar test = &amp;apos;test&amp;apos;;
+可以理解为:123var test;console.log(test); //结果是undefinedtest = &amp;apos;test&amp;apos;;
+ES612console.log(test); //结果是ReferenceError">
+  
+    <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/meAndYou.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">blue</h5>
+          <a href="mailto:rong650751@163.com" title="rong650751@163.com" class="mail">rong650751@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                成就
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Chanran" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2308631120?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/users/1402753fcc6f/latest_articles" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                简书
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>blue&#39;s blog &copy; 2017</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ES6(一)--let和const</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">ES6(一)--let和const</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-11T03:44:13.000Z" itemprop="datePublished" class="page-time">
+  2017-01-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用let，不会造成变量提升"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用let，不会造成变量提升</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES5"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ES5</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES6"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">ES6</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#作用在块级作用域"><span class="post-toc-number">2.</span> <span class="post-toc-text">作用在块级作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES5-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">ES5</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES6-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">ES6</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#不允许重复声明变量"><span class="post-toc-number">3.</span> <span class="post-toc-text">不允许重复声明变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES5-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">ES5</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES6-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">ES6</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#暂时性死区-temporal-dead-zone，简称-TDZ"><span class="post-toc-number">4.</span> <span class="post-toc-text">暂时性死区(temporal dead zone，简称 TDZ)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#没有let的区块-无论是es5还是es6"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">没有let的区块(无论是es5还是es6)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#有let的区块"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">有let的区块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#typeof"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">typeof</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#隐蔽的暂时性死区"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">隐蔽的暂时性死区</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在块级作用域里声明函数"><span class="post-toc-number">5.</span> <span class="post-toc-text">在块级作用域里声明函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES5严格模式下-非严格模式下不会报错"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">ES5严格模式下(非严格模式下不会报错)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES6允许在块级作用域声明函数"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">ES6允许在块级作用域声明函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#非严格模式"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">非严格模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#严格模式"><span class="post-toc-number">5.2.2.</span> <span class="post-toc-text">严格模式</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#const定义常量"><span class="post-toc-number">6.</span> <span class="post-toc-text">const定义常量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不可以重新赋值"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">不可以重新赋值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一旦定义就必须初始化"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">一旦定义就必须初始化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#const定义的地址不能改变，但是内容可以改变"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">const定义的地址不能改变，但是内容可以改变</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不存在变量提升"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">不存在变量提升</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#有暂时性死区"><span class="post-toc-number">6.5.</span> <span class="post-toc-text">有暂时性死区</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#作用在块级作用域-1"><span class="post-toc-number">6.6.</span> <span class="post-toc-text">作用在块级作用域</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-ES6-let-const" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ES6(一)--let和const</h1>
+        <div class="post-meta">
+            <time datetime="2017-01-11T03:44:13.000Z" itemprop="datePublished" class="post-time">
+  2017-01-11
+</time>
+
+            
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="使用let，不会造成变量提升"><a href="#使用let，不会造成变量提升" class="headerlink" title="使用let，不会造成变量提升"></a>使用let，不会造成变量提升</h1><h2 id="ES5"><a href="#ES5" class="headerlink" title="ES5"></a>ES5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(test); //结果是undefined</div><div class="line">var test = &apos;test&apos;;</div></pre></td></tr></table></figure>
+<p>可以理解为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var test;</div><div class="line">console.log(test); //结果是undefined</div><div class="line">test = &apos;test&apos;;</div></pre></td></tr></table></figure></p>
+<h2 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(test); //结果是ReferenceError:test is not defined</div><div class="line">let test = &apos;test&apos;;</div></pre></td></tr></table></figure>
+<p>因为不存在变量提升，可以理解为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(test);</div><div class="line">let test; //上不去哩，所以报错了。</div><div class="line">test = &apos;test&apos;;</div></pre></td></tr></table></figure>
+<h1 id="作用在块级作用域"><a href="#作用在块级作用域" class="headerlink" title="作用在块级作用域"></a>作用在块级作用域</h1><p>首先要科普一下块级作用域：</p>
+<blockquote>
+<p>在ES6之前javascript是用函数function来划分作用域，于是定义的变量作用在各个函数里，单独或者嵌套，也造成了函数作用域链。</p>
+<p>现在ES6定义了块级作用域，用{}(if、for等使用了{}才具备块级作用域的条件)划分块级作用域，let在块级作用域定义的变量在离开块级作用域的时候会被销毁，所以在块级作用域内定义的变量在块级作用域外访问的话会报引用错误(ReferenceError)</p>
+</blockquote>
+<h2 id="ES5-1"><a href="#ES5-1" class="headerlink" title="ES5"></a>ES5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    var a = 1;</div><div class="line">&#125;</div><div class="line">console.log(a); //结果为1</div></pre></td></tr></table></figure>
+<h2 id="ES6-1"><a href="#ES6-1" class="headerlink" title="ES6"></a>ES6</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    let a = 1;</div><div class="line">&#125;</div><div class="line">console.log(a) //结果是ReferenceError: a is not defined</div></pre></td></tr></table></figure>
+<h1 id="不允许重复声明变量"><a href="#不允许重复声明变量" class="headerlink" title="不允许重复声明变量"></a>不允许重复声明变量</h1><h2 id="ES5-2"><a href="#ES5-2" class="headerlink" title="ES5"></a>ES5</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    var a = 1;</div><div class="line">    var a = 2; //我照样过得好好的～</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="ES6-2"><a href="#ES6-2" class="headerlink" title="ES6"></a>ES6</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    let a = 1;</div><div class="line">    let a = 2; //出错啦～,SyntaxError: Identifier &apos;a&apos; has already been declared</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="暂时性死区-temporal-dead-zone，简称-TDZ"><a href="#暂时性死区-temporal-dead-zone，简称-TDZ" class="headerlink" title="暂时性死区(temporal dead zone，简称 TDZ)"></a>暂时性死区(temporal dead zone，简称 TDZ)</h1><blockquote>
+<p>ES6明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。</p>
+</blockquote>
+<h2 id="没有let的区块-无论是es5还是es6"><a href="#没有let的区块-无论是es5还是es6" class="headerlink" title="没有let的区块(无论是es5还是es6)"></a>没有let的区块(无论是es5还是es6)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  tmp = &apos;abc&apos;;</div><div class="line">  console.log(tmp); //结果为abc</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  tmp = &apos;abc&apos;;</div><div class="line">  console.log(tmp); //结果为abc</div><div class="line">  var tmp; //这里定义的tmp将会变量提升，相当于移动这个语句在tmp = &apos;abc&apos;上面。</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="有let的区块"><a href="#有let的区块" class="headerlink" title="有let的区块"></a>有let的区块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  // TDZ开始，因为下面出现了let tmp，所以let以上的语句出现暂时性死区</div><div class="line">  tmp = &apos;abc&apos;; // ReferenceError</div><div class="line">  console.log(tmp); // ReferenceError</div><div class="line"></div><div class="line">  let tmp; // TDZ结束，let tmp以下的语句没有暂时性死区，因为这里let tmp没有赋值，所以下面报undefined的错</div><div class="line">  console.log(tmp); // undefined</div><div class="line"></div><div class="line">  tmp = 123;</div><div class="line">  console.log(tmp); // 123</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p>typeof也会报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  typeof test; //ReferenceError: test is not defined</div><div class="line">  let test = 2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="隐蔽的暂时性死区"><a href="#隐蔽的暂时性死区" class="headerlink" title="隐蔽的暂时性死区"></a>隐蔽的暂时性死区</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function bar(x = y,y = 2)&#123;</div><div class="line">    return [x,y]</div><div class="line">&#125;</div><div class="line">bar(); //ReferenceError: y is not defined</div></pre></td></tr></table></figure>
+<h1 id="在块级作用域里声明函数"><a href="#在块级作用域里声明函数" class="headerlink" title="在块级作用域里声明函数"></a>在块级作用域里声明函数</h1><h2 id="ES5严格模式下-非严格模式下不会报错"><a href="#ES5严格模式下-非严格模式下不会报错" class="headerlink" title="ES5严格模式下(非严格模式下不会报错)"></a>ES5严格模式下(非严格模式下不会报错)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">if (true)&#123;</div><div class="line">    function test()&#123;console.log(&apos;test&apos;)&#125;</div><div class="line">&#125;</div><div class="line">test();  //ReferenceError:test is not defined</div></pre></td></tr></table></figure>
+<h2 id="ES6允许在块级作用域声明函数"><a href="#ES6允许在块级作用域声明函数" class="headerlink" title="ES6允许在块级作用域声明函数"></a>ES6允许在块级作用域声明函数</h2><h3 id="非严格模式"><a href="#非严格模式" class="headerlink" title="非严格模式"></a>非严格模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (true) &#123;</div><div class="line">  function test() &#123;console.log(&apos;test&apos;)&#125;</div><div class="line">&#125;</div><div class="line">test(); //结果为test</div></pre></td></tr></table></figure>
+<h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><p>不用var、let、const定义:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">if (true) &#123;</div><div class="line">  function test() &#123;console.log(&apos;test&apos;)&#125; //由于function没有加var、let、const定义，所以此函数的作用域是全局的</div><div class="line">&#125;</div><div class="line">test() //结果为test</div></pre></td></tr></table></figure></p>
+<p>var:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">if (true)&#123;</div><div class="line">    var test = function()&#123;console.log(&apos;test&apos;)&#125; //由于function是用var定义的，所以此函数是当前function作用域，此处为global</div><div class="line">&#125;</div><div class="line">test() //结果为test</div></pre></td></tr></table></figure></p>
+<p>let或者const：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;;</div><div class="line">if (true)&#123;</div><div class="line">    let test = function()&#123;console.log(&apos;test&apos;)&#125; //由于function是用let定义的，所以此函数是当前块级作用域，即是&#123;&#125;包括的区域，离开之后变量被销毁</div><div class="line">&#125;</div><div class="line">test() //结果为ReferenceError: test is not defined</div></pre></td></tr></table></figure></p>
+<h1 id="const定义常量"><a href="#const定义常量" class="headerlink" title="const定义常量"></a>const定义常量</h1><h2 id="不可以重新赋值"><a href="#不可以重新赋值" class="headerlink" title="不可以重新赋值"></a>不可以重新赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const test = 1;</div><div class="line">test = 0; //TypeError: Assignment to constant variable.</div></pre></td></tr></table></figure>
+<h2 id="一旦定义就必须初始化"><a href="#一旦定义就必须初始化" class="headerlink" title="一旦定义就必须初始化"></a>一旦定义就必须初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const test; //SyntaxError: Missing initializer in const declaration</div></pre></td></tr></table></figure>
+<h2 id="const定义的地址不能改变，但是内容可以改变"><a href="#const定义的地址不能改变，但是内容可以改变" class="headerlink" title="const定义的地址不能改变，但是内容可以改变"></a>const定义的地址不能改变，但是内容可以改变</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const test = [];</div><div class="line">test.push(&apos;test&apos;);</div><div class="line">console.log(test); //[&apos;test&apos;]</div></pre></td></tr></table></figure>
+<h2 id="不存在变量提升"><a href="#不存在变量提升" class="headerlink" title="不存在变量提升"></a>不存在变量提升</h2><h2 id="有暂时性死区"><a href="#有暂时性死区" class="headerlink" title="有暂时性死区"></a>有暂时性死区</h2><h2 id="作用在块级作用域-1"><a href="#作用在块级作用域-1" class="headerlink" title="作用在块级作用域"></a>作用在块级作用域</h2>
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        转载请注明转自:<a href="/2017/01/11/ES6-let-const/" target="_blank" rel="external">https://chanran.github.io/2017/01/11/ES6-let-const/index.html</a>
+    </div>
+    <footer>
+        <a href="https://chanran.github.io">
+            <img src="/img/meAndYou.jpg" alt="blue">
+            blue
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2017/01/11/ES6-let-const/&title=《ES6(一)--let和const》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2017/01/11/ES6-let-const/&title=《ES6(一)--let和const》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2017/01/11/ES6-let-const/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6(一)--let和const》 — blue's blog&url=https://chanran.github.io/2017/01/11/ES6-let-const/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2017/01/11/ES6-let-const/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/05/holiday-plan/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">2017年初寒假学习计划</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="ES6-let-const" data-title="ES6(一)--let和const" data-url="https://chanran.github.io/2017/01/11/ES6-let-const/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'chanran', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        如果对你有用...
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechatpay.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2017/01/11/ES6-let-const/&title=《ES6(一)--let和const》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2017/01/11/ES6-let-const/&title=《ES6(一)--let和const》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2017/01/11/ES6-let-const/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES6(一)--let和const》 — blue's blog&url=https://chanran.github.io/2017/01/11/ES6-let-const/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2017/01/11/ES6-let-const/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="http://s.jiathis.com/qrcode.php?url=https://chanran.github.io/2017/01/11/ES6-let-const/" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.2"></script>
+
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260728730&web_id=1260728730"></script>
+
+
+
+
+
+</body>
+</html>
