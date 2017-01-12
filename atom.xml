@@ -30,11 +30,11 @@
   </entry>
   
   <entry>
-    <title>变量的解构赋值</title>
+    <title>ES6(二)--变量的解构赋值</title>
     <link href="https://chanran.github.io/2017/01/11/variable-deconstruction/"/>
     <id>https://chanran.github.io/2017/01/11/variable-deconstruction/</id>
     <published>2017-01-11T10:38:09.000Z</published>
-    <updated>2017-01-12T13:31:08.258Z</updated>
+    <updated>2017-01-12T13:37:52.450Z</updated>
     
     <content type="html"><![CDATA[<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><blockquote>
 <p>ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。</p>
