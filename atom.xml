@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-01-11T09:19:34.030Z</updated>
+  <updated>2017-01-12T12:22:22.462Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -14,6 +14,97 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[转载]Node.js框架之express与koa对比分析</title>
+    <link href="https://chanran.github.io/2017/01/12/%E8%BD%AC%E8%BD%BD-Node-js%E6%A1%86%E6%9E%B6%E4%B9%8Bexpress%E4%B8%8Ekoa%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90/"/>
+    <id>https://chanran.github.io/2017/01/12/转载-Node-js框架之express与koa对比分析/</id>
+    <published>2017-01-12T12:22:22.000Z</published>
+    <updated>2017-01-12T12:22:22.462Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>变量的解构赋值</title>
+    <link href="https://chanran.github.io/2017/01/11/variable-deconstruction/"/>
+    <id>https://chanran.github.io/2017/01/11/variable-deconstruction/</id>
+    <published>2017-01-11T10:38:09.000Z</published>
+    <updated>2017-01-12T13:31:08.258Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><blockquote>
+<p>ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。</p>
+</blockquote>
+<h1 id="数组的解构赋值"><a href="#数组的解构赋值" class="headerlink" title="数组的解构赋值"></a>数组的解构赋值</h1><blockquote>
+<p>基本要领：结构一致，左边变量等于“=”右边的值</p>
+</blockquote>
+<h2 id="完全匹配"><a href="#完全匹配" class="headerlink" title="完全匹配"></a>完全匹配</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,b,c] = [1,2,3];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div><div class="line">console.log(c); //3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,[b],c] = [1,[2],3];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div><div class="line">console.log(c); //3</div></pre></td></tr></table></figure>
+<h2 id="部分匹配"><a href="#部分匹配" class="headerlink" title="部分匹配"></a>部分匹配</h2><p><strong> 不匹配的变量默认赋值undefined </strong></p>
+<h3 id="变量比“-”右边的值多"><a href="#变量比“-”右边的值多" class="headerlink" title="变量比“=”右边的值多"></a>变量比“=”右边的值多</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,b,c] = [,2,3];</div><div class="line">console.log(a); //undefined</div><div class="line">console.log(b); //2</div><div class="line">console.log(c); //3</div></pre></td></tr></table></figure>
+<h3 id="变量比“-”右边的值少"><a href="#变量比“-”右边的值少" class="headerlink" title="变量比“=”右边的值少"></a>变量比“=”右边的值少</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,b,c] = [1,2,3,4];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div><div class="line">console.log(c); //3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,[b],c] = [1,[2,3],4];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div><div class="line">console.log(c); //4</div></pre></td></tr></table></figure>
+<h2 id="不定参数匹配"><a href="#不定参数匹配" class="headerlink" title="不定参数匹配"></a>不定参数匹配</h2><p><strong> …variable是<a href="http://www.infoq.com/cn/articles/es6-in-depth-rest-parameters-and-defaults" target="_blank" rel="external">不定参数</a> </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let [a,...b] = [1,2,3,4];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //[2,3,4]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let [a,...b] = [1,2,3,4,5];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //[2,3,4,5]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,b,...c] = [1];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //undefined</div><div class="line">console.log(c); //[],空数组</div></pre></td></tr></table></figure>
+<h2 id="支持默认值"><a href="#支持默认值" class="headerlink" title="支持默认值"></a>支持默认值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let [a = 1] = [];</div><div class="line">console.log(a); //1</div></pre></td></tr></table></figure>
+<p>特殊地:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let [a = 1] = [undefined]; //undefined不能赋值给a</div><div class="line">console.log(a); //1</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let [a = 1] = [NaN]; //NaN可以赋值给a</div><div class="line">console.log(a); //NaN</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let [a = 1] = [null]; //null可以赋值给a</div><div class="line">console.log(a); //null</div></pre></td></tr></table></figure>
+<h2 id="var-let-const都支持解构赋值"><a href="#var-let-const都支持解构赋值" class="headerlink" title="var,let,const都支持解构赋值"></a>var,let,const都支持解构赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var [a,b] = [1,2];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const [a,b] = [1,2];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div></pre></td></tr></table></figure>
+<h2 id="支持变量解构的数据结构–可以迭代-iterator-的结构"><a href="#支持变量解构的数据结构–可以迭代-iterator-的结构" class="headerlink" title="支持变量解构的数据结构–可以迭代(iterator)的结构"></a>支持变量解构的数据结构–可以迭代(iterator)的结构</h2><p>科普：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols" target="_blank" rel="external">可迭代协议</a></p>
+<h1 id="对象解构"><a href="#对象解构" class="headerlink" title="对象解构"></a>对象解构</h1><h2 id="变量必须与属性同名"><a href="#变量必须与属性同名" class="headerlink" title="变量必须与属性同名"></a>变量必须与属性同名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a,b&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div></pre></td></tr></table></figure>
+<p>否则变量默认赋值undefined<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let &#123;c&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(c); //undefined</div></pre></td></tr></table></figure></p>
+<h2 id="次序无关"><a href="#次序无关" class="headerlink" title="次序无关"></a>次序无关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;b,a&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div></pre></td></tr></table></figure>
+<h2 id="自定义变量名称"><a href="#自定义变量名称" class="headerlink" title="自定义变量名称"></a>自定义变量名称</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a:newA,b:newB&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(newA); //1</div><div class="line">console.log(newB); //2</div></pre></td></tr></table></figure>
+<p><strong> 要注意的是: </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a:newA,b:newB&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(a); //ReferenceError: a is not defined</div><div class="line">console.log(b); //ReferenceError: a is not defined</div></pre></td></tr></table></figure></p>
+<p>因为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a,b&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div></pre></td></tr></table></figure></p>
+<p>等价于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a:a,b:b&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(a); //1，但这里的a其实是第二个a</div><div class="line">console.log(a); //2，但这里的b其实是第二个b</div></pre></td></tr></table></figure></p>
+<h2 id="声明与赋值"><a href="#声明与赋值" class="headerlink" title="声明与赋值"></a>声明与赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let a;</div><div class="line">let &#123;a&#125; = &#123;a:1&#125;; //Identifier &apos;newA&apos; has already been declared</div></pre></td></tr></table></figure>
+<p>应为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let a;</div><div class="line">(&#123;a&#125; = &#123;a:1&#125;);</div></pre></td></tr></table></figure>
+<h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a = 0,b = 0&#125; = &#123;c:3,d:4&#125;;</div><div class="line">console.log(a); //0</div><div class="line">console.log(b); //0</div></pre></td></tr></table></figure>
+<h2 id="嵌套对象"><a href="#嵌套对象" class="headerlink" title="嵌套对象"></a>嵌套对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let &#123;a,b:&#123;c&#125;&#125; = &#123;a:1,b:&#123;c:3&#125;&#125;</div><div class="line">console.log(a); //1</div><div class="line">console.log(c); //2</div><div class="line">console.log(b); //ReferenceError: b is not defined</div></pre></td></tr></table></figure>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import &#123;Component&#125; from &apos;react&apos;; //导入</div><div class="line">let &#123;log,sin,cos&#125; = Math;</div></pre></td></tr></table></figure>
+<h1 id="字符串的解构"><a href="#字符串的解构" class="headerlink" title="字符串的解构"></a>字符串的解构</h1><h2 id="字符串的数组解构"><a href="#字符串的数组解构" class="headerlink" title="字符串的数组解构"></a>字符串的数组解构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,b,c] = &apos;123&apos;;</div><div class="line">console.log(a); //&quot;1&quot;</div><div class="line">console.log(b); //&quot;2&quot;</div><div class="line">console.log(c); //&quot;3&quot;</div></pre></td></tr></table></figure>
+<h2 id="字符串的对象解构"><a href="#字符串的对象解构" class="headerlink" title="字符串的对象解构"></a>字符串的对象解构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let &#123;length:a&#125; = &apos;123&apos;; //因为字符串是特殊的对象，且拥有length这一属性</div><div class="line">console.log(a); //3</div></pre></td></tr></table></figure>
+<h1 id="函数解构"><a href="#函数解构" class="headerlink" title="函数解构"></a>函数解构</h1><h2 id="完全匹配-1"><a href="#完全匹配-1" class="headerlink" title="完全匹配"></a>完全匹配</h2><h3 id="传入数组"><a href="#传入数组" class="headerlink" title="传入数组"></a>传入数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max([a,b])&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max([1,2]); //结果为2</div></pre></td></tr></table></figure>
+<h3 id="传入对象"><a href="#传入对象" class="headerlink" title="传入对象"></a>传入对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max(&#123;a,b&#125;)&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max(&#123;a:1,b:2&#125;); //结果为2</div></pre></td></tr></table></figure>
+<h2 id="部分匹配-1"><a href="#部分匹配-1" class="headerlink" title="部分匹配"></a>部分匹配</h2><h3 id="少值"><a href="#少值" class="headerlink" title="少值"></a>少值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max([a,b])&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max([1]); //结果为undefined</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max(&#123;a,b&#125;)&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max(&#123;a:1&#125;); //结果为undefined</div></pre></td></tr></table></figure>
+<h3 id="多值"><a href="#多值" class="headerlink" title="多值"></a>多值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max([a,b])&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max([1,2,3]); //结果为2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max(&#123;a,b&#125;)&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max(&#123;a:1,b:2,c:3&#125;); //结果为2</div></pre></td></tr></table></figure>
+<h2 id="默认值-1"><a href="#默认值-1" class="headerlink" title="默认值"></a>默认值</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function array2Object([a = 0,b = 0] = [])&#123; //一种是没有传入数组时给一个默认空数组，一种是传入了数组，但是没有包含a或b或a和b，默认给a和b一个0值</div><div class="line">    return &#123;a,b&#125;;</div><div class="line">&#125;</div><div class="line">array2Object([1,2]); //&#123;a:1,b:2&#125;</div><div class="line">array2Object([1]); //&#123;a:1,b:0&#125;</div><div class="line">array2Object([]); //&#123;a:0,b:0&#125;</div><div class="line">array2Object();   //&#123;a:0,b:0&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function array2Object([a,b] = [0,0])&#123; //一种是没有传入数组时给一个默认有值的数组，一种是传入了数组，但是没有包含a或b或a和b，js引擎给a和b一个undefined值</div><div class="line">    return &#123;a,b&#125;;</div><div class="line">&#125;</div><div class="line">array2Object([1,2]); //&#123;a:1,b:2&#125;</div><div class="line">array2Object([1]);  //&#123;a:1,b:undefined&#125;</div><div class="line">array2Object([]);   //&#123;a:undefined,b:undefined&#125;</div><div class="line">array2Object();     //&#123;0,0&#125;</div></pre></td></tr></table></figure>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function object2Array(&#123;a = 0, b = 0&#125; = &#123;&#125;) &#123; //一种是没有传入对象时给一个默认空对象，一种是传入了对象，但是没有包含a或b或a和b，默认给a和b一个0值</div><div class="line">  return [a, b];</div><div class="line">&#125;</div><div class="line"></div><div class="line">object2Array(&#123;a: 1, b: 2&#125;); // [1, 2]</div><div class="line">object2Array(&#123;a: 1&#125;); // [1, 0]</div><div class="line">object2Array(&#123;&#125;); // [0, 0]</div><div class="line">object2Array(); // [0, 0]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function object2Array(&#123;a, b&#125; = &#123; a: 0, b: 0 &#125;) &#123; //一种是没有传入对象时给一个默认有值的对象，一种是传入了对象，但是没有包含a或b或a和b，js引擎给a和b一个undefined值</div><div class="line">  return [a, b];</div><div class="line">&#125;</div><div class="line"></div><div class="line">object2Array(&#123;a: 3, b: 8&#125;); // [3, 8]</div><div class="line">object2Array(&#123;a: 3&#125;); // [3, undefined]</div><div class="line">object2Array(&#123;&#125;); // [undefined, undefined]</div><div class="line">object2Array(); // [0, 0]</div></pre></td></tr></table></figure>
+<h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><h2 id="交换变量的值"><a href="#交换变量的值" class="headerlink" title="交换变量的值"></a>交换变量的值</h2><h3 id="ES5"><a href="#ES5" class="headerlink" title="ES5:"></a>ES5:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var x = 1,y = 2,tmp;</div><div class="line">/*三行代码*/</div><div class="line">tmp = x;</div><div class="line">x = y;</div><div class="line">y = tmp;</div><div class="line">console.log(x); //2</div><div class="line">console.log(y); //1</div></pre></td></tr></table></figure>
+<h3 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let x = 1,y = 2;</div><div class="line">/*一行代码解决*/</div><div class="line">[y,x] = [x,y];</div><div class="line">console.log(x); //2</div><div class="line">console.log(y); //1</div></pre></td></tr></table></figure>
+<h2 id="从函数返回多个值"><a href="#从函数返回多个值" class="headerlink" title="从函数返回多个值"></a>从函数返回多个值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 返回一个数组</div><div class="line"></div><div class="line">function example() &#123;</div><div class="line">  return [1, 2, 3];</div><div class="line">&#125;</div><div class="line">var [a, b, c] = example();</div><div class="line"></div><div class="line">// 返回一个对象</div><div class="line"></div><div class="line">function example() &#123;</div><div class="line">  return &#123;</div><div class="line">    foo: 1,</div><div class="line">    bar: 2</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">var &#123; foo, bar &#125; = example();</div></pre></td></tr></table></figure>
+<h2 id="函数参数定义"><a href="#函数参数定义" class="headerlink" title="函数参数定义"></a>函数参数定义</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 参数是一组有次序的值</div><div class="line">function f([x, y, z]) &#123; ... &#125;</div><div class="line">f([1, 2, 3]);</div><div class="line"></div><div class="line">// 参数是一组无次序的值</div><div class="line">function f(&#123;x, y, z&#125;) &#123; ... &#125;</div><div class="line">f(&#123;z: 3, y: 2, x: 1&#125;);</div></pre></td></tr></table></figure>
+<h2 id="提取json数据"><a href="#提取json数据" class="headerlink" title="提取json数据"></a>提取json数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var jsonData = &#123;</div><div class="line">  id: 42,</div><div class="line">  status: &quot;OK&quot;,</div><div class="line">  data: [867, 5309]</div><div class="line">&#125;;</div><div class="line"></div><div class="line">let &#123; id, status, data: number &#125; = jsonData;</div><div class="line"></div><div class="line">console.log(id, status, number);</div><div class="line">// 42, &quot;OK&quot;, [867, 5309]</div></pre></td></tr></table></figure>
+<h2 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">jQuery.ajax = function (url, &#123;</div><div class="line">  async = true,</div><div class="line">  beforeSend = function () &#123;&#125;,</div><div class="line">  cache = true,</div><div class="line">  complete = function () &#123;&#125;,</div><div class="line">  crossDomain = false,</div><div class="line">  global = true,</div><div class="line">  // ... more config</div><div class="line">&#125;) &#123;</div><div class="line">  // ... do stuff</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="遍历Map结构"><a href="#遍历Map结构" class="headerlink" title="遍历Map结构"></a>遍历Map结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var map = new Map();</div><div class="line">map.set(&apos;first&apos;, &apos;hello&apos;);</div><div class="line">map.set(&apos;second&apos;, &apos;world&apos;);</div><div class="line"></div><div class="line">for (let [key, value] of map) &#123;</div><div class="line">  console.log(key + &quot; is &quot; + value);</div><div class="line">&#125;</div><div class="line">// first is hello</div><div class="line">// second is world</div></pre></td></tr></table></figure>
+<h2 id="输入模块的指定方法"><a href="#输入模块的指定方法" class="headerlink" title="输入模块的指定方法"></a>输入模块的指定方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const &#123; SourceMapConsumer, SourceNode &#125; = require(&quot;source-map&quot;);</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="ES6" scheme="https://chanran.github.io/tags/ES6/"/>
+    
+  </entry>
   
   <entry>
     <title>ES6(一)--let和const</title>
@@ -204,9 +295,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
-    
       <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
     
   </entry>
   
@@ -272,9 +363,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
-    
       <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
     
   </entry>
   
@@ -318,9 +409,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
-    
       <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
     
   </entry>
   
@@ -353,9 +444,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
-    
       <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
     
   </entry>
   

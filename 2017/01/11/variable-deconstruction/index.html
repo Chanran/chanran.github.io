@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>变量的解构赋值 | blue&#39;s blog | coding is funny.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="ES6">
+  <meta name="description" content="定义
+ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。
+
+数组的解构赋值
+基本要领：结构一致，左边变量等于“=”右边的值
+
+完全匹配1234let [a,b,c] = [1,2,3];console.log(a); //1console.log(b); //2console.log(c); //3
+1234let [a,[b],c] = [">
+<meta property="og:type" content="article">
+<meta property="og:title" content="变量的解构赋值">
+<meta property="og:url" content="https://chanran.github.io/2017/01/11/variable-deconstruction/index.html">
+<meta property="og:site_name" content="blue's blog">
+<meta property="og:description" content="定义
+ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。
+
+数组的解构赋值
+基本要领：结构一致，左边变量等于“=”右边的值
+
+完全匹配1234let [a,b,c] = [1,2,3];console.log(a); //1console.log(b); //2console.log(c); //3
+1234let [a,[b],c] = [">
+<meta property="og:updated_time" content="2017-01-12T13:31:08.258Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="变量的解构赋值">
+<meta name="twitter:description" content="定义
+ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。
+
+数组的解构赋值
+基本要领：结构一致，左边变量等于“=”右边的值
+
+完全匹配1234let [a,b,c] = [1,2,3];console.log(a); //1console.log(b); //2console.log(c); //3
+1234let [a,[b],c] = [">
+  
+    <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/meAndYou.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">blue</h5>
+          <a href="mailto:rong650751@163.com" title="rong650751@163.com" class="mail">rong650751@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                成就
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Chanran" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2308631120?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/users/1402753fcc6f/latest_articles" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                简书
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>blue&#39;s blog &copy; 2017</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">变量的解构赋值</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">变量的解构赋值</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-11T10:38:09.000Z" itemprop="datePublished" class="page-time">
+  2017-01-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数组的解构赋值"><span class="post-toc-number">2.</span> <span class="post-toc-text">数组的解构赋值</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#完全匹配"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">完全匹配</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#部分匹配"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">部分匹配</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量比“-”右边的值多"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">变量比“=”右边的值多</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量比“-”右边的值少"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">变量比“=”右边的值少</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不定参数匹配"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">不定参数匹配</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持默认值"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">支持默认值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#var-let-const都支持解构赋值"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">var,let,const都支持解构赋值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持变量解构的数据结构–可以迭代-iterator-的结构"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">支持变量解构的数据结构–可以迭代(iterator)的结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#对象解构"><span class="post-toc-number">3.</span> <span class="post-toc-text">对象解构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变量必须与属性同名"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">变量必须与属性同名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#次序无关"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">次序无关</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自定义变量名称"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">自定义变量名称</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#声明与赋值"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">声明与赋值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#默认值"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">默认值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#嵌套对象"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">嵌套对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">应用</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#字符串的解构"><span class="post-toc-number">4.</span> <span class="post-toc-text">字符串的解构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串的数组解构"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">字符串的数组解构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串的对象解构"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">字符串的对象解构</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#函数解构"><span class="post-toc-number">5.</span> <span class="post-toc-text">函数解构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#完全匹配-1"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">完全匹配</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#传入数组"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">传入数组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#传入对象"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">传入对象</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#部分匹配-1"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">部分匹配</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#少值"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">少值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多值"><span class="post-toc-number">5.2.2.</span> <span class="post-toc-text">多值</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#默认值-1"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">默认值</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数组"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">数组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对象"><span class="post-toc-number">5.3.2.</span> <span class="post-toc-text">对象</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#用途"><span class="post-toc-number">6.</span> <span class="post-toc-text">用途</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#交换变量的值"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">交换变量的值</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES5"><span class="post-toc-number">6.1.1.</span> <span class="post-toc-text">ES5:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES6"><span class="post-toc-number">6.1.2.</span> <span class="post-toc-text">ES6</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从函数返回多个值"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">从函数返回多个值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数参数定义"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">函数参数定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#提取json数据"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">提取json数据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数参数的默认值"><span class="post-toc-number">6.5.</span> <span class="post-toc-text">函数参数的默认值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#遍历Map结构"><span class="post-toc-number">6.6.</span> <span class="post-toc-text">遍历Map结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输入模块的指定方法"><span class="post-toc-number">6.7.</span> <span class="post-toc-text">输入模块的指定方法</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-variable-deconstruction" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">变量的解构赋值</h1>
+        <div class="post-meta">
+            <time datetime="2017-01-11T10:38:09.000Z" itemprop="datePublished" class="post-time">
+  2017-01-11
+</time>
+
+            
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><blockquote>
+<p>ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。</p>
+</blockquote>
+<h1 id="数组的解构赋值"><a href="#数组的解构赋值" class="headerlink" title="数组的解构赋值"></a>数组的解构赋值</h1><blockquote>
+<p>基本要领：结构一致，左边变量等于“=”右边的值</p>
+</blockquote>
+<h2 id="完全匹配"><a href="#完全匹配" class="headerlink" title="完全匹配"></a>完全匹配</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,b,c] = [1,2,3];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div><div class="line">console.log(c); //3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,[b],c] = [1,[2],3];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div><div class="line">console.log(c); //3</div></pre></td></tr></table></figure>
+<h2 id="部分匹配"><a href="#部分匹配" class="headerlink" title="部分匹配"></a>部分匹配</h2><p><strong> 不匹配的变量默认赋值undefined </strong></p>
+<h3 id="变量比“-”右边的值多"><a href="#变量比“-”右边的值多" class="headerlink" title="变量比“=”右边的值多"></a>变量比“=”右边的值多</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,b,c] = [,2,3];</div><div class="line">console.log(a); //undefined</div><div class="line">console.log(b); //2</div><div class="line">console.log(c); //3</div></pre></td></tr></table></figure>
+<h3 id="变量比“-”右边的值少"><a href="#变量比“-”右边的值少" class="headerlink" title="变量比“=”右边的值少"></a>变量比“=”右边的值少</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,b,c] = [1,2,3,4];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div><div class="line">console.log(c); //3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,[b],c] = [1,[2,3],4];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div><div class="line">console.log(c); //4</div></pre></td></tr></table></figure>
+<h2 id="不定参数匹配"><a href="#不定参数匹配" class="headerlink" title="不定参数匹配"></a>不定参数匹配</h2><p><strong> …variable是<a href="http://www.infoq.com/cn/articles/es6-in-depth-rest-parameters-and-defaults" target="_blank" rel="external">不定参数</a> </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let [a,...b] = [1,2,3,4];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //[2,3,4]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let [a,...b] = [1,2,3,4,5];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //[2,3,4,5]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,b,...c] = [1];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //undefined</div><div class="line">console.log(c); //[],空数组</div></pre></td></tr></table></figure>
+<h2 id="支持默认值"><a href="#支持默认值" class="headerlink" title="支持默认值"></a>支持默认值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let [a = 1] = [];</div><div class="line">console.log(a); //1</div></pre></td></tr></table></figure>
+<p>特殊地:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let [a = 1] = [undefined]; //undefined不能赋值给a</div><div class="line">console.log(a); //1</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let [a = 1] = [NaN]; //NaN可以赋值给a</div><div class="line">console.log(a); //NaN</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let [a = 1] = [null]; //null可以赋值给a</div><div class="line">console.log(a); //null</div></pre></td></tr></table></figure>
+<h2 id="var-let-const都支持解构赋值"><a href="#var-let-const都支持解构赋值" class="headerlink" title="var,let,const都支持解构赋值"></a>var,let,const都支持解构赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var [a,b] = [1,2];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const [a,b] = [1,2];</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div></pre></td></tr></table></figure>
+<h2 id="支持变量解构的数据结构–可以迭代-iterator-的结构"><a href="#支持变量解构的数据结构–可以迭代-iterator-的结构" class="headerlink" title="支持变量解构的数据结构–可以迭代(iterator)的结构"></a>支持变量解构的数据结构–可以迭代(iterator)的结构</h2><p>科普：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols" target="_blank" rel="external">可迭代协议</a></p>
+<h1 id="对象解构"><a href="#对象解构" class="headerlink" title="对象解构"></a>对象解构</h1><h2 id="变量必须与属性同名"><a href="#变量必须与属性同名" class="headerlink" title="变量必须与属性同名"></a>变量必须与属性同名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a,b&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div></pre></td></tr></table></figure>
+<p>否则变量默认赋值undefined<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let &#123;c&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(c); //undefined</div></pre></td></tr></table></figure></p>
+<h2 id="次序无关"><a href="#次序无关" class="headerlink" title="次序无关"></a>次序无关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;b,a&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div></pre></td></tr></table></figure>
+<h2 id="自定义变量名称"><a href="#自定义变量名称" class="headerlink" title="自定义变量名称"></a>自定义变量名称</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a:newA,b:newB&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(newA); //1</div><div class="line">console.log(newB); //2</div></pre></td></tr></table></figure>
+<p><strong> 要注意的是: </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a:newA,b:newB&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(a); //ReferenceError: a is not defined</div><div class="line">console.log(b); //ReferenceError: a is not defined</div></pre></td></tr></table></figure></p>
+<p>因为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a,b&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(a); //1</div><div class="line">console.log(b); //2</div></pre></td></tr></table></figure></p>
+<p>等价于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a:a,b:b&#125; = &#123;a:1,b:2&#125;;</div><div class="line">console.log(a); //1，但这里的a其实是第二个a</div><div class="line">console.log(a); //2，但这里的b其实是第二个b</div></pre></td></tr></table></figure></p>
+<h2 id="声明与赋值"><a href="#声明与赋值" class="headerlink" title="声明与赋值"></a>声明与赋值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let a;</div><div class="line">let &#123;a&#125; = &#123;a:1&#125;; //Identifier &apos;newA&apos; has already been declared</div></pre></td></tr></table></figure>
+<p>应为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let a;</div><div class="line">(&#123;a&#125; = &#123;a:1&#125;);</div></pre></td></tr></table></figure>
+<h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let &#123;a = 0,b = 0&#125; = &#123;c:3,d:4&#125;;</div><div class="line">console.log(a); //0</div><div class="line">console.log(b); //0</div></pre></td></tr></table></figure>
+<h2 id="嵌套对象"><a href="#嵌套对象" class="headerlink" title="嵌套对象"></a>嵌套对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let &#123;a,b:&#123;c&#125;&#125; = &#123;a:1,b:&#123;c:3&#125;&#125;</div><div class="line">console.log(a); //1</div><div class="line">console.log(c); //2</div><div class="line">console.log(b); //ReferenceError: b is not defined</div></pre></td></tr></table></figure>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import &#123;Component&#125; from &apos;react&apos;; //导入</div><div class="line">let &#123;log,sin,cos&#125; = Math;</div></pre></td></tr></table></figure>
+<h1 id="字符串的解构"><a href="#字符串的解构" class="headerlink" title="字符串的解构"></a>字符串的解构</h1><h2 id="字符串的数组解构"><a href="#字符串的数组解构" class="headerlink" title="字符串的数组解构"></a>字符串的数组解构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let [a,b,c] = &apos;123&apos;;</div><div class="line">console.log(a); //&quot;1&quot;</div><div class="line">console.log(b); //&quot;2&quot;</div><div class="line">console.log(c); //&quot;3&quot;</div></pre></td></tr></table></figure>
+<h2 id="字符串的对象解构"><a href="#字符串的对象解构" class="headerlink" title="字符串的对象解构"></a>字符串的对象解构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let &#123;length:a&#125; = &apos;123&apos;; //因为字符串是特殊的对象，且拥有length这一属性</div><div class="line">console.log(a); //3</div></pre></td></tr></table></figure>
+<h1 id="函数解构"><a href="#函数解构" class="headerlink" title="函数解构"></a>函数解构</h1><h2 id="完全匹配-1"><a href="#完全匹配-1" class="headerlink" title="完全匹配"></a>完全匹配</h2><h3 id="传入数组"><a href="#传入数组" class="headerlink" title="传入数组"></a>传入数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max([a,b])&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max([1,2]); //结果为2</div></pre></td></tr></table></figure>
+<h3 id="传入对象"><a href="#传入对象" class="headerlink" title="传入对象"></a>传入对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max(&#123;a,b&#125;)&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max(&#123;a:1,b:2&#125;); //结果为2</div></pre></td></tr></table></figure>
+<h2 id="部分匹配-1"><a href="#部分匹配-1" class="headerlink" title="部分匹配"></a>部分匹配</h2><h3 id="少值"><a href="#少值" class="headerlink" title="少值"></a>少值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max([a,b])&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max([1]); //结果为undefined</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max(&#123;a,b&#125;)&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max(&#123;a:1&#125;); //结果为undefined</div></pre></td></tr></table></figure>
+<h3 id="多值"><a href="#多值" class="headerlink" title="多值"></a>多值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max([a,b])&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max([1,2,3]); //结果为2</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function max(&#123;a,b&#125;)&#123;</div><div class="line">    return a&gt;b?a:b;</div><div class="line">&#125;</div><div class="line">max(&#123;a:1,b:2,c:3&#125;); //结果为2</div></pre></td></tr></table></figure>
+<h2 id="默认值-1"><a href="#默认值-1" class="headerlink" title="默认值"></a>默认值</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function array2Object([a = 0,b = 0] = [])&#123; //一种是没有传入数组时给一个默认空数组，一种是传入了数组，但是没有包含a或b或a和b，默认给a和b一个0值</div><div class="line">    return &#123;a,b&#125;;</div><div class="line">&#125;</div><div class="line">array2Object([1,2]); //&#123;a:1,b:2&#125;</div><div class="line">array2Object([1]); //&#123;a:1,b:0&#125;</div><div class="line">array2Object([]); //&#123;a:0,b:0&#125;</div><div class="line">array2Object();   //&#123;a:0,b:0&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function array2Object([a,b] = [0,0])&#123; //一种是没有传入数组时给一个默认有值的数组，一种是传入了数组，但是没有包含a或b或a和b，js引擎给a和b一个undefined值</div><div class="line">    return &#123;a,b&#125;;</div><div class="line">&#125;</div><div class="line">array2Object([1,2]); //&#123;a:1,b:2&#125;</div><div class="line">array2Object([1]);  //&#123;a:1,b:undefined&#125;</div><div class="line">array2Object([]);   //&#123;a:undefined,b:undefined&#125;</div><div class="line">array2Object();     //&#123;0,0&#125;</div></pre></td></tr></table></figure>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function object2Array(&#123;a = 0, b = 0&#125; = &#123;&#125;) &#123; //一种是没有传入对象时给一个默认空对象，一种是传入了对象，但是没有包含a或b或a和b，默认给a和b一个0值</div><div class="line">  return [a, b];</div><div class="line">&#125;</div><div class="line"></div><div class="line">object2Array(&#123;a: 1, b: 2&#125;); // [1, 2]</div><div class="line">object2Array(&#123;a: 1&#125;); // [1, 0]</div><div class="line">object2Array(&#123;&#125;); // [0, 0]</div><div class="line">object2Array(); // [0, 0]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function object2Array(&#123;a, b&#125; = &#123; a: 0, b: 0 &#125;) &#123; //一种是没有传入对象时给一个默认有值的对象，一种是传入了对象，但是没有包含a或b或a和b，js引擎给a和b一个undefined值</div><div class="line">  return [a, b];</div><div class="line">&#125;</div><div class="line"></div><div class="line">object2Array(&#123;a: 3, b: 8&#125;); // [3, 8]</div><div class="line">object2Array(&#123;a: 3&#125;); // [3, undefined]</div><div class="line">object2Array(&#123;&#125;); // [undefined, undefined]</div><div class="line">object2Array(); // [0, 0]</div></pre></td></tr></table></figure>
+<h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><h2 id="交换变量的值"><a href="#交换变量的值" class="headerlink" title="交换变量的值"></a>交换变量的值</h2><h3 id="ES5"><a href="#ES5" class="headerlink" title="ES5:"></a>ES5:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var x = 1,y = 2,tmp;</div><div class="line">/*三行代码*/</div><div class="line">tmp = x;</div><div class="line">x = y;</div><div class="line">y = tmp;</div><div class="line">console.log(x); //2</div><div class="line">console.log(y); //1</div></pre></td></tr></table></figure>
+<h3 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let x = 1,y = 2;</div><div class="line">/*一行代码解决*/</div><div class="line">[y,x] = [x,y];</div><div class="line">console.log(x); //2</div><div class="line">console.log(y); //1</div></pre></td></tr></table></figure>
+<h2 id="从函数返回多个值"><a href="#从函数返回多个值" class="headerlink" title="从函数返回多个值"></a>从函数返回多个值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 返回一个数组</div><div class="line"></div><div class="line">function example() &#123;</div><div class="line">  return [1, 2, 3];</div><div class="line">&#125;</div><div class="line">var [a, b, c] = example();</div><div class="line"></div><div class="line">// 返回一个对象</div><div class="line"></div><div class="line">function example() &#123;</div><div class="line">  return &#123;</div><div class="line">    foo: 1,</div><div class="line">    bar: 2</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">var &#123; foo, bar &#125; = example();</div></pre></td></tr></table></figure>
+<h2 id="函数参数定义"><a href="#函数参数定义" class="headerlink" title="函数参数定义"></a>函数参数定义</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 参数是一组有次序的值</div><div class="line">function f([x, y, z]) &#123; ... &#125;</div><div class="line">f([1, 2, 3]);</div><div class="line"></div><div class="line">// 参数是一组无次序的值</div><div class="line">function f(&#123;x, y, z&#125;) &#123; ... &#125;</div><div class="line">f(&#123;z: 3, y: 2, x: 1&#125;);</div></pre></td></tr></table></figure>
+<h2 id="提取json数据"><a href="#提取json数据" class="headerlink" title="提取json数据"></a>提取json数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var jsonData = &#123;</div><div class="line">  id: 42,</div><div class="line">  status: &quot;OK&quot;,</div><div class="line">  data: [867, 5309]</div><div class="line">&#125;;</div><div class="line"></div><div class="line">let &#123; id, status, data: number &#125; = jsonData;</div><div class="line"></div><div class="line">console.log(id, status, number);</div><div class="line">// 42, &quot;OK&quot;, [867, 5309]</div></pre></td></tr></table></figure>
+<h2 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">jQuery.ajax = function (url, &#123;</div><div class="line">  async = true,</div><div class="line">  beforeSend = function () &#123;&#125;,</div><div class="line">  cache = true,</div><div class="line">  complete = function () &#123;&#125;,</div><div class="line">  crossDomain = false,</div><div class="line">  global = true,</div><div class="line">  // ... more config</div><div class="line">&#125;) &#123;</div><div class="line">  // ... do stuff</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="遍历Map结构"><a href="#遍历Map结构" class="headerlink" title="遍历Map结构"></a>遍历Map结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var map = new Map();</div><div class="line">map.set(&apos;first&apos;, &apos;hello&apos;);</div><div class="line">map.set(&apos;second&apos;, &apos;world&apos;);</div><div class="line"></div><div class="line">for (let [key, value] of map) &#123;</div><div class="line">  console.log(key + &quot; is &quot; + value);</div><div class="line">&#125;</div><div class="line">// first is hello</div><div class="line">// second is world</div></pre></td></tr></table></figure>
+<h2 id="输入模块的指定方法"><a href="#输入模块的指定方法" class="headerlink" title="输入模块的指定方法"></a>输入模块的指定方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const &#123; SourceMapConsumer, SourceNode &#125; = require(&quot;source-map&quot;);</div></pre></td></tr></table></figure>
+
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        转载请注明转自:<a href="/2017/01/11/variable-deconstruction/" target="_blank" rel="external">https://chanran.github.io/2017/01/11/variable-deconstruction/index.html</a>
+    </div>
+    <footer>
+        <a href="https://chanran.github.io">
+            <img src="/img/meAndYou.jpg" alt="blue">
+            blue
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2017/01/11/variable-deconstruction/&title=《变量的解构赋值》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2017/01/11/variable-deconstruction/&title=《变量的解构赋值》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2017/01/11/variable-deconstruction/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《变量的解构赋值》 — blue's blog&url=https://chanran.github.io/2017/01/11/variable-deconstruction/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2017/01/11/variable-deconstruction/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/01/12/转载-Node-js框架之express与koa对比分析/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[转载]Node.js框架之express与koa对比分析</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/11/ES6-let-const/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ES6(一)--let和const</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="variable-deconstruction" data-title="变量的解构赋值" data-url="https://chanran.github.io/2017/01/11/variable-deconstruction/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'chanran', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        如果对你有用...
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechatpay.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2017/01/11/variable-deconstruction/&title=《变量的解构赋值》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2017/01/11/variable-deconstruction/&title=《变量的解构赋值》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2017/01/11/variable-deconstruction/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《变量的解构赋值》 — blue's blog&url=https://chanran.github.io/2017/01/11/variable-deconstruction/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2017/01/11/variable-deconstruction/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="http://s.jiathis.com/qrcode.php?url=https://chanran.github.io/2017/01/11/variable-deconstruction/" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.2"></script>
+
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260728730&web_id=1260728730"></script>
+
+
+
+
+
+</body>
+</html>
