@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-01-17T15:43:26.397Z</updated>
+  <updated>2017-01-17T16:11:03.997Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -14,6 +14,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>express和webpack配合时热刷新出错的解决方法</title>
+    <link href="https://chanran.github.io/2017/01/17/express-webpack-hot-refresh/"/>
+    <id>https://chanran.github.io/2017/01/17/express-webpack-hot-refresh/</id>
+    <published>2017-01-17T15:44:29.000Z</published>
+    <updated>2017-01-17T16:11:03.997Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="出错"><a href="#出错" class="headerlink" title="出错"></a>出错</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[WDS] App updated. Recompiling...</div><div class="line">bundle.js:635 [WDS] Disconnected!</div><div class="line">log @ bundle.js:635</div><div class="line">bundle.js:631 [WDS] Hot Module Replacement enabled.</div><div class="line">bundle.js:631 [WDS] App hot update...</div><div class="line">bundle.js:8453 [HMR] Checking for updates on the server...</div></pre></td></tr></table></figure>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p><strong>不能使用nodemon或者supervisor去启动webpack-dev-server</strong></p>
+<p>之前因为把express服务和webpack-dev-server在同一个server.js里启动，然后执行<code>nodemon server.js</code>，然后发现出错信息。</p>
+<p>折腾了好久，google、百度、问人、还去github提issue，最后还是靠自己解决了。</p>
+<p>具体原因是因为<strong>nodemon</strong>是重启整个进程的，如果用<strong>nodemon</strong>来启动<strong>webpack</strong>，那么这样的话会使webpack丢失某些存在内存中的东西，所以不建议使用<strong>nodemon</strong>来启动<strong>webpack</strong>。</p>
+<p>详细可以看webpack-hot-middleware的<a href="https://github.com/glenjamin/webpack-hot-middleware/issues/21" target="_blank" rel="external">issue</a></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ol>
+<li>把express server和webpack-dev-server分开</li>
+</ol>
+<blockquote>
+<p>server.js(express server)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const proxy = require(&apos;proxy-middleware&apos;)</div><div class="line">const url = require(&apos;url&apos;)</div><div class="line">const express = require(&apos;express&apos;)</div><div class="line">const app = express()</div><div class="line"></div><div class="line">app.get(&apos;/&apos;,function(req,res)&#123;</div><div class="line">  res.sendFile(__dirname+&apos;/src/html/index.html&apos;);</div><div class="line">&#125;)</div><div class="line">app.listen(3001)</div><div class="line">app.use(&apos;/build&apos;,proxy(url.parse(&apos;http://localhost:3000/build&apos;)))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>webpack.server.js</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">const webpack = require(&apos;webpack&apos;)</div><div class="line">const WebpackDevServer = require(&apos;webpack-dev-server&apos;)</div><div class="line">const config = require(&apos;./webpack.config&apos;)</div><div class="line">const compiler = webpack(config)</div><div class="line"></div><div class="line">new WebpackDevServer(compiler, &#123;</div><div class="line">  publicPath: config.output.publicPath,</div><div class="line">  inline:true,</div><div class="line">  hot: true,</div><div class="line">  historyApiFallback: true</div><div class="line">&#125;).listen(3000, &apos;localhost&apos;, function (err, result) &#123;</div><div class="line">  if (err) &#123;</div><div class="line">    return console.log(err);</div><div class="line">  &#125;</div><div class="line">  console.log(&apos;Listening at http://localhost:3000/&apos;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ol>
+<li>分别用nodemon和node启动</li>
+</ol>
+<blockquote>
+<p>终端1</p>
+</blockquote>
+<p><code>nodemon server.js</code></p>
+<blockquote>
+<p>终端2</p>
+</blockquote>
+<p><code>node webpack-dev-server</code></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;出错&quot;&gt;&lt;a href=&quot;#出错&quot; class=&quot;headerlink&quot; title=&quot;出错&quot;&gt;&lt;/a&gt;出错&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div c
+    
+    </summary>
+    
+    
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
+    
+      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>[转载]Node.js框架之express与koa对比分析</title>
