@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-01-19T16:40:21.671Z</updated>
+  <updated>2017-01-19T16:41:51.815Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -16,17 +16,17 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>由于iptables开启导致网站无法访问</title>
+    <title>由于centOS iptables开启导致网站无法访问</title>
     <link href="https://chanran.github.io/2017/01/20/fix-iptables-port-filter/"/>
     <id>https://chanran.github.io/2017/01/20/fix-iptables-port-filter/</id>
     <published>2017-01-19T16:11:16.000Z</published>
-    <updated>2017-01-19T16:40:21.671Z</updated>
+    <updated>2017-01-19T16:41:51.815Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前因"><a href="#前因" class="headerlink" title="前因"></a>前因</h1><p>由于网站无法访问（不是我部署的），上去服务器查看问题。</p>
 <h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><ol>
 <li><p>先进入到网站目录，开启laravel的debug模式，看一下有没有反应，结果还是无法访问，想了一想，也不是500，那就不应该是网站的问题。</p>
 </li>
-<li><p>因为服务器里php是5.3的，但是挂点的网站却是php7的，就去检查php-fpm的进程，发现还在运行，也不是这里的问题。</p>
+<li><p>因为服务器里php是5.3的，但是挂的网站却是php7的，就去检查php-fpm的进程，发现还在运行，也不是这里的问题。</p>
 </li>
 <li><p>查看nginx的配置文件，看是不是有人改动了挂点的网站的配置，发现也没有，reload了一下nginx，发现网站也没有好。</p>
 </li>

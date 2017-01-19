@@ -176,7 +176,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/01/20/fix-iptables-port-filter/">由于iptables开启导致网站无法访问</a>
+      <a class="post-title-link" href="/2017/01/20/fix-iptables-port-filter/">由于centOS iptables开启导致网站无法访问</a>
     </h3>
   
 
@@ -190,9 +190,9 @@
 过程
 先进入到网站目录，开启laravel的debug模式，看一下有没有反应，结果还是无法访问，想了一想，也不是500，那就不应该是网站的问题。
 
-因为服务器里php是5.3的，但是挂点的网站却是php7的，就去检查php-fpm的进程，发现还在运行，也不是这里的问题。
+因为服务器里php是5.3的，但是挂的网站却是php7的，就去检查php-fpm的进程，发现还在运行，也不是这里的问题。
 
-查看nginx的配置文件，看是不是有人改动了挂点的网站的配置...
+查看nginx的配置文件，看是不是有人改动了挂点的网站的配置，...
     
     
         <a href="/2017/01/20/fix-iptables-port-filter/" class="post-more waves-effect waves-button">
