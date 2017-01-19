@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-01-17T16:13:55.410Z</updated>
+  <updated>2017-01-19T16:38:24.794Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>由于iptables开启导致网站无法访问</title>
+    <link href="https://chanran.github.io/2017/01/20/fix-iptables-port-filter/"/>
+    <id>https://chanran.github.io/2017/01/20/fix-iptables-port-filter/</id>
+    <published>2017-01-19T16:11:16.000Z</published>
+    <updated>2017-01-19T16:38:24.794Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前因"><a href="#前因" class="headerlink" title="前因"></a>前因</h1><p>由于网站无法访问（不是我部署的），上去服务器查看问题。</p>
+<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><ol>
+<li><p>先进入到网站目录，开启laravel的debug模式，看一下有没有反应，结果还是无法访问，想了一想，也不是500，那就不应该是网站的问题。</p>
+</li>
+<li><p>因为服务器里php是5.3的，但是挂点的网站却是php7的，就去检查php-fpm的进程，发现还在运行，也不是这里的问题。</p>
+</li>
+<li><p>查看nginx的配置文件，看是不是有人改动了挂点的网站的配置，发现也没有，reload了一下nginx，发现网站也没有好。</p>
+</li>
+<li><p>综上，于是判断出不是应用和服务器软件nginx的问题。</p>
+</li>
+<li><p>在服务器wget了一下网站的首页，倒！发现wget到了！那肯定是服务器到客户端之间出了问题，于是判断应该是服务器防火墙问题。</p>
+</li>
+<li><p>80端口的应用跑得好好的，有个网站却挂掉了，应该是过滤规则有问题，于是执行了开启防火墙网站端口。</p>
+</li>
+<li><p>这个时候被自己坑了！开启端口命令里的端口写成了php-fpm的端口，搞得弄了好久。后来被师兄点醒。。。改了一下命令里的端口号为网站端口号就好了。。。</p>
+</li>
+</ol>
+<h1 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h1><ol>
+<li><p>服务器最好不要关闭防火墙，写好过滤规则就好。修改<code>/etc/sysconfig/iptables</code>里的过则。</p>
+</li>
+<li><p>mark一下关于iptables的文章</p>
+</li>
+</ol>
+<p><a href="https://my.oschina.net/shipley/blog/299025" target="_blank" rel="external">iptables的详细介绍及配置方法</a><br><a href="http://www.cnblogs.com/gergro/archive/2008/06/06/1215219.html" target="_blank" rel="external">Iptables 规则 一些简单实例和详细介绍</a></p>
+<ol>
+<li>做事一定要细心。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前因&quot;&gt;&lt;a href=&quot;#前因&quot; class=&quot;headerlink&quot; title=&quot;前因&quot;&gt;&lt;/a&gt;前因&lt;/h1&gt;&lt;p&gt;由于网站无法访问（不是我部署的），上去服务器查看问题。&lt;/p&gt;
+&lt;h1 id=&quot;过程&quot;&gt;&lt;a href=&quot;#过程&quot; class=&quot;heade
+    
+    </summary>
+    
+    
+      <category term="服务器" scheme="https://chanran.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>express和webpack配合时热刷新出错的解决方法</title>
@@ -51,9 +99,9 @@
     </summary>
     
     
-      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
-    
       <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
   </entry>
   
@@ -417,9 +465,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -485,9 +533,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -531,9 +579,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -566,9 +614,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -856,11 +904,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
-      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
+      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
     
       <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
-      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
+      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
   </entry>
   
@@ -970,11 +1018,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
+    
       <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
       <category term="js" scheme="https://chanran.github.io/tags/js/"/>
-    
-      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
   </entry>
   
