@@ -31,7 +31,7 @@ textarea
 
 123456&amp;lt;textarea cols=&amp;quot;30&amp;quot; rows=&amp;quot;10&amp;quot;&amp;gt;&amp;lt;/textarea&amp;gt; &amp;lt;!--推荐这样写--&amp;gt;&amp;lt;textarea cols=&amp;quot;30&amp;quot; rows=&amp;quot;10&amp;q">
 <meta property="og:image" content="http://p1.bqimg.com/567571/6edda8a4e61cb669.png">
-<meta property="og:updated_time" content="2016-11-29T12:29:04.169Z">
+<meta property="og:updated_time" content="2017-01-21T09:20:01.477Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重构页面遇到的各种奇怪问题">
 <meta name="twitter:description" content="记录一下干货
@@ -223,7 +223,7 @@ textarea
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;Document&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">        html,body,div&#123;</div><div class="line">            height:100%;</div><div class="line">            width:100%;</div><div class="line">        &#125;</div><div class="line">        #span1&#123;</div><div class="line">            display:inline-block;</div><div class="line">            width:45%;</div><div class="line">            height:100%;</div><div class="line">            background-color:black;</div><div class="line">        &#125;</div><div class="line">        #span2&#123;</div><div class="line">            display:inline-block;</div><div class="line">            width:45%;</div><div class="line">            height:100%;</div><div class="line">            background-color:red;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;span id=&quot;span1&quot;&gt;&lt;/span&gt;</div><div class="line">        &lt;span id=&quot;span2&quot;&gt;&lt;/span&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <blockquote>
-<p>左图出现奇怪的间距(元素换行之后会有一个换行符),右图是解决之后的状态</p>
+<p>左图出现奇怪的间距(元素换行之后会有一个换行符,在《Javascript高级程序设计(第3版)》p269有介绍到类似的问题),右图是解决之后的状态</p>
 </blockquote>
 <p><img src="/img/strangeSpace.png" alt="奇怪的间距"><br><img src="/img/clearSpace.png" alt="清除了边距"></p>
 <blockquote>
