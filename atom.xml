@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-01-19T16:42:59.992Z</updated>
+  <updated>2017-02-07T15:33:41.027Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[转载]在github下载单一文件夹</title>
+    <link href="https://chanran.github.io/2017/02/07/%E8%BD%AC%E8%BD%BD-%E5%9C%A8github%E4%B8%8B%E8%BD%BD%E5%8D%95%E4%B8%80%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
+    <id>https://chanran.github.io/2017/02/07/转载-在github下载单一文件夹/</id>
+    <published>2017-02-07T15:28:29.000Z</published>
+    <updated>2017-02-07T15:33:41.027Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载自：<a href="https://www.zhihu.com/question/25369412/answer/96174755" target="_blank" rel="external">知乎-如何在github上下载单个文件夹？</a></p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>Git1.7.0以后加入了Sparse Checkout模式，这使得Check Out指定文件或者文件夹成为可能。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$mkdir project_folder</div><div class="line">$cd project_folder</div><div class="line">$git init</div><div class="line">$git remote add -f origin &lt;url&gt;</div></pre></td></tr></table></figure>
+<p>上面的代码会帮助你创建一个空的本地仓库，同时将远程Git Server URL加入到Git Config文件中。</p>
+<p>接下来，我们在Config中允许使用Sparse Checkout模式：</p>
+<p><code>$git config core.sparsecheckout true</code></p>
+<p>接下来你需要告诉Git哪些文件或者文件夹是你真正想Check Out的，你可以将它们作为一个列表保存在 .git/info/sparse-checkout 文件中。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$echo “libs” &gt;&gt; .git/info/sparse-checkout</div><div class="line">$echo “apps/register.go” &gt;&gt; .git/info/sparse-checkout</div><div class="line">$echo “resource/css” &gt;&gt; .git/info/sparse-checkout</div></pre></td></tr></table></figure>
+<p>最后，你只要以正常方式从你想要的分支中将你的项目拉下来就可以了：</p>
+<p><code>$git pull origin master</code></p>
+<p>具体可参考Git的Sparse checkout文档：<a href="https://link.zhihu.com/?target=http%3A//schacon.github.io/git/git-read-tree.html%23_sparse_checkout" target="_blank" rel="external">https://link.zhihu.com/?target=http%3A//schacon.github.io/git/git-read-tree.html%23_sparse_checkout</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转载自：&lt;a href=&quot;https://www.zhihu.com/question/25369412/answer/96174755&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;知乎-如何在github上下载单个文件夹？&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id
+    
+    </summary>
+    
+    
+      <category term="折腾" scheme="https://chanran.github.io/tags/%E6%8A%98%E8%85%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>由于centOS iptables开启导致网站无法访问</title>
@@ -97,9 +130,9 @@
     </summary>
     
     
-      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
-    
       <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
   </entry>
   
@@ -463,9 +496,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -531,9 +564,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -577,9 +610,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -612,9 +645,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -902,11 +935,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
-      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
+      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
     
       <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
-      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
+      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
   </entry>
   
@@ -1016,11 +1049,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
+    
       <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
       <category term="js" scheme="https://chanran.github.io/tags/js/"/>
-    
-      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
   </entry>
   
