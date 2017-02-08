@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>[转载]译文《容器组件和展示组件》原作者：Dan Abramov | blue&#39;s blog | coding is funny.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="react">
+  <meta name="description" content="转载自:译文《容器组件和展示组件》原作者：Dan Abramov
+前言最初学习react时，只是认识了它的api与十分好用的jsx语法。现在尝试着用react和meteor写实际webapp时，就不知不觉地习惯了一些react方法。今晚偶然逛到redux作者————Dan Abramov 的medium主页，发现他的《Presentational and Container Components》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[转载]译文《容器组件和展示组件》原作者：Dan Abramov">
+<meta property="og:url" content="https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/index.html">
+<meta property="og:site_name" content="blue's blog">
+<meta property="og:description" content="转载自:译文《容器组件和展示组件》原作者：Dan Abramov
+前言最初学习react时，只是认识了它的api与十分好用的jsx语法。现在尝试着用react和meteor写实际webapp时，就不知不觉地习惯了一些react方法。今晚偶然逛到redux作者————Dan Abramov 的medium主页，发现他的《Presentational and Container Components》">
+<meta property="og:updated_time" content="2017-02-08T10:37:42.426Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[转载]译文《容器组件和展示组件》原作者：Dan Abramov">
+<meta name="twitter:description" content="转载自:译文《容器组件和展示组件》原作者：Dan Abramov
+前言最初学习react时，只是认识了它的api与十分好用的jsx语法。现在尝试着用react和meteor写实际webapp时，就不知不觉地习惯了一些react方法。今晚偶然逛到redux作者————Dan Abramov 的medium主页，发现他的《Presentational and Container Components》">
+  
+    <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/meAndYou.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">blue</h5>
+          <a href="mailto:rong650751@163.com" title="rong650751@163.com" class="mail">rong650751@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                成就
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Chanran" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/2308631120?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.jianshu.com/users/1402753fcc6f/latest_articles" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                简书
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>blue&#39;s blog &copy; 2017</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">[转载]译文《容器组件和展示组件》原作者：Dan Abramov</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container">
+        <h1 class="title">[转载]译文《容器组件和展示组件》原作者：Dan Abramov</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-08T10:20:05.000Z" itemprop="datePublished" class="page-time">
+  2017-02-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#译文"><span class="post-toc-number">2.</span> <span class="post-toc-text">译文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#容器组件和展示组件"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">容器组件和展示组件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#我所说的展示组件："><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">我所说的展示组件：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#我所说的容器组件："><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">我所说的容器组件：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#这种方法的好处"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">这种方法的好处</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么时候引入容器？"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">什么时候引入容器？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其他二分法"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">其他二分法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多状态变量和少状态变量"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">多状态变量和少状态变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#类与函数"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">类与函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#纯的不纯的"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">纯的不纯的</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例子"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#延伸阅读"><span class="post-toc-number">3.</span> <span class="post-toc-text">延伸阅读</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-转载-译文《容器组件和展示组件》原作者：Dan-Abramov" 
+  class="post-article article-type-post" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">[转载]译文《容器组件和展示组件》原作者：Dan Abramov</h1>
+        <div class="post-meta">
+            <time datetime="2017-02-08T10:20:05.000Z" itemprop="datePublished" class="post-time">
+  2017-02-08
+</time>
+
+            
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>转载自:<a href="http://www.jianshu.com/p/6fa2b21f5df3" target="_blank" rel="external">译文《容器组件和展示组件》原作者：Dan Abramov</a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最初学习react时，只是认识了它的api与十分好用的jsx语法。现在尝试着用react和meteor写实际webapp时，就不知不觉地习惯了一些react方法。今晚偶然逛到redux作者————<strong>Dan Abramov</strong> 的medium主页，发现他的<a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0" target="_blank" rel="external">《Presentational and Container Components》</a>文章中总结了一种模式。看后，获益匪浅，便将其翻译了，分享给大家。</p>
+<h1 id="译文"><a href="#译文" class="headerlink" title="译文"></a>译文</h1><h2 id="容器组件和展示组件"><a href="#容器组件和展示组件" class="headerlink" title="容器组件和展示组件"></a>容器组件和展示组件</h2><blockquote>
+<p>容器组件和展示组件名词都来自于redux中文文档。</p>
+</blockquote>
+<p>我在用react写程序时，发现了一种简单好用的模式。如果你也熟悉react，或许它早就被你发现了。<a href="https://medium.com/@learnreact/container-components-c0e67432e005" target="_blank" rel="external">有一篇文章</a>讲得很好，但是，我想补充几点。</p>
+<p>如果你将组件分成两类，你会发现它们容易更被重用和理解。这两类我称之为容器组件和展示组件。我也听过其他说法，比如”臃肿的”和”苗条的”，”智能的”和”单调的”，”多状态变量”和”单纯的”，”封装物”和”元件”等等。概念不完全一致，却有一样的中心思想。</p>
+<h3 id="我所说的展示组件："><a href="#我所说的展示组件：" class="headerlink" title="我所说的展示组件："></a>我所说的展示组件：</h3><ul>
+<li>只关心它们的样子。</li>
+<li>可能同时包含子级容器组件和展示组件，一般含DOM标签和自定的样式。</li>
+<li>通常用<code>this.props.children</code>来包含其他组件</li>
+<li>不依赖app其它组件，比如flux的actions和stores</li>
+<li>不会定义数据如何读取，如何改变</li>
+<li>只通过<code>this.props</code>接受数据和回调函数</li>
+<li>很少有自己的状态变量，即使有，也是UI的状态变量，比如<br><code>toggleMenuOpen</code>,<code>InputFocus</code></li>
+<li>一般是函数级组件，除非它们需要状态，lifecycle hooks，优化处理。</li>
+</ul>
+<blockquote>
+<p>lifecycle hook这个词语很形象，但我不知道怎么翻译得贴切,大概指那些监控组件生命周期里一些关键时刻的函数，比如，我需要在这组件初始化的时候调用某函数，那么我实现一个onInit()接口。react中的componentWillMount之类的函数也许也是lifecycle hook?</p>
+</blockquote>
+<ul>
+<li>例子有Page,Sidebar,Story,UserInfo,List。</li>
+</ul>
+<h3 id="我所说的容器组件："><a href="#我所说的容器组件：" class="headerlink" title="我所说的容器组件："></a>我所说的容器组件：</h3><ul>
+<li>只关心它们的运作方式。</li>
+<li>可能同时包含子级容器组件和展示组件，但大都不含DOM标签，而含他们自己所用的wrapping div，从不用自己的样式。</li>
+<li>为展示组件或其他组件提供数据和方法。</li>
+<li>调用Flux的actions，并且将其作为展示组件的回调函数。</li>
+<li>维持许多状态变量，通常充当一个数据源。</li>
+<li>通常由<a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750" target="_blank" rel="external">高阶组件</a>生成，比如Redux里的connect()，Relay里的createContainer()，Flux Utils里的Container.create()，而非手工写出（译者：可能在meteor中数据是例外吧）</li>
+<li>例子有UserPage, FollowersSidebar, StoryContainer, FollowedUserList。<br>我把他们放在不同的文件夹中，以示区别。</li>
+</ul>
+<h2 id="这种方法的好处"><a href="#这种方法的好处" class="headerlink" title="这种方法的好处"></a>这种方法的好处</h2><ul>
+<li>分离关注，你可以更好的理解app和UI。</li>
+<li>更易复用，同样的展示组件可以在不同的状态源、数据源中使用。也可以封装成容器组件，在未来重用它们。</li>
+<li>展示组件是app的调色板。你可以把它们放到单独的页面，并让设计师来调整它们的样式和结构，而不用改变app的逻辑。单独的页面有静态性，你可以在上面进行<a href="https://github.com/Huddle/PhantomCSS" target="_blank" rel="external">screenshot regression</a>测试。</li>
+<li>这种方法会强迫你去解析布局相关的组件，比如Sidebar, Page, ContextMenu，强迫你去使用this.props.children，而非在不同容器中不断复制jsx那块地方。<br>记住，react的组件不一定要生成DOM，它们只需要考虑如何设计UI之间的分界与组合关系。利用好这一点。</li>
+</ul>
+<h2 id="什么时候引入容器？"><a href="#什么时候引入容器？" class="headerlink" title="什么时候引入容器？"></a>什么时候引入容器？</h2><p>我的建议是，你最好先做展示组件。当你意识到，有一些中间组件传递了过多的props，有一些组件并不使用它们继承的props而只是将这些props传递给他们的子级，而且每次子级组件需要更多数据时，你都需要重新调整或编写这些中间组件，那么，这时候你可以考虑引入容器组件了。这样做，你可以传递props和方法给末端的子级组件，而不必麻烦一些不相关的中间组件。</p>
+<p>这是一个边写边改的重构，所以不必一步到位。你尝试着这种模式，慢慢地会培养起一种对何时引入容器的直觉，就像你知道何时该增加函数一样。我的<a href="https://egghead.io/series/getting-started-with-redux" target="_blank" rel="external">redux教程</a>也许会帮助你哦。</p>
+<h2 id="其他二分法"><a href="#其他二分法" class="headerlink" title="其他二分法"></a>其他二分法</h2><p>容器组件和展示组件的分别并不被严格定义，理解这一点很重要。为了对比，我再列举一些相关（但是不同的）的二分法。</p>
+<h3 id="多状态变量和少状态变量"><a href="#多状态变量和少状态变量" class="headerlink" title="多状态变量和少状态变量"></a>多状态变量和少状态变量</h3><p>有些组件用<code>setState()</code>，有些不用。容器组件通常多状态变量，而展示组件却不，这不是铁规律。展示组件也可以多状态变量，而容器组件也可以少状态变量。</p>
+<h3 id="类与函数"><a href="#类与函数" class="headerlink" title="类与函数"></a>类与函数</h3><p>自从<a href="https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components" target="_blank" rel="external">React0.14</a>，组件可以被声明为类，也可以被声明为函数。定义函数方便，却少了类独有的特性。有些限制或许会在未来消失，但是它们至少是存在的。因为函数容易理解，所以我推荐使用函数，除非你需要那些，现在只有类才有的状态管理，lifecycle hooks，性能优化等特性。</p>
+<h3 id="纯的不纯的"><a href="#纯的不纯的" class="headerlink" title="纯的不纯的"></a>纯的不纯的</h3><p>人们说一个组件纯，是指给予它一样props和state，它保证能输出一样的结果。纯函数可以是类，可以是函数，可以多状态，可以无状态。Another important aspect of pure components is that they don’t rely on deep mutations in props or state, so their rendering performance can be optimized by a shallow comparison in their <a href="https://facebook.github.io/react/docs/pure-render-mixin.html" target="_blank" rel="external">shouldComponentUpdate() hook</a>。目前只有类可以定义<code>shouldComponentUpdate()</code>，或许将来有改变吧。</p>
+<p>展示组件和容器组件都有上述的二分特性。在我看来，展示组件倾向于少状态、纯的函数，容器组件倾向于多状态，纯的类。当然啦，这只是个人观察，而非规则，我也见过完全相反的情况。</p>
+<p>不要将展示组件和容器组件当作教条。有些时候，不必划出清晰的线条，也不用觉得划出区分会很困难。如果你分不清某个组件是展示组件还是容器组件，也许是为时尚早。要知道，心急吃不了热豆腐</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><a href="https://gist.github.com/chantastic/fc9e3853464dffdb1e3c" target="_blank" rel="external">This gist</a> by <a href="https://twitter.com/chantastic" target="_blank" rel="external">Michael Chan</a> 讨论了这个</p>
+<h1 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a>延伸阅读</h1><p><a href="https://egghead.io/series/getting-started-with-redux" target="_blank" rel="external">Getting Started with Redux</a></p>
+<p><a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750" target="_blank" rel="external">Mixins are Dead, Long Live Composition</a></p>
+<p><a href="https://medium.com/@learnreact/container-components-c0e67432e005" target="_blank" rel="external">Container Components</a></p>
+<p><a href="http://bradfrost.com/blog/post/atomic-web-design/" target="_blank" rel="external">Atomic Web Design</a></p>
+<p><a href="http://facebook.github.io/react/blog/2015/03/19/building-the-facebook-news-feed-with-relay.html" target="_blank" rel="external">Building the Facebook News Feed with Relay</a></p>
+
+        </div>
+        
+        <blockquote class="post-copyright">
+    <div class="content">
+        转载请注明转自:<a href="/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/" target="_blank" rel="external">https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/index.html</a>
+    </div>
+    <footer>
+        <a href="https://chanran.github.io">
+            <img src="/img/meAndYou.jpg" alt="blue">
+            blue
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/&title=《[转载]译文《容器组件和展示组件》原作者：Dan Abramov》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/&title=《[转载]译文《容器组件和展示组件》原作者：Dan Abramov》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[转载]译文《容器组件和展示组件》原作者：Dan Abramov》 — blue's blog&url=https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>   
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/07/转载-在github下载单一文件夹/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[转载]在github下载单一文件夹</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="转载-译文《容器组件和展示组件》原作者：Dan-Abramov" data-title="[转载]译文《容器组件和展示组件》原作者：Dan Abramov" data-url="https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'chanran', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        如果对你有用...
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechatpay.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/&title=《[转载]译文《容器组件和展示组件》原作者：Dan Abramov》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/&title=《[转载]译文《容器组件和展示组件》原作者：Dan Abramov》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《[转载]译文《容器组件和展示组件》原作者：Dan Abramov》 — blue's blog&url=https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/&via=https://chanran.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="http://s.jiathis.com/qrcode.php?url=https://chanran.github.io/2017/02/08/转载-译文《容器组件和展示组件》原作者：Dan-Abramov/" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.2"></script>
+
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260728730&web_id=1260728730"></script>
+
+
+
+
+
+</body>
+</html>
