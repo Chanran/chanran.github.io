@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-03-19T02:11:24.961Z</updated>
+  <updated>2017-03-19T15:23:04.124Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://chanran.github.io/2017/03/18/interview-mark/"/>
     <id>https://chanran.github.io/2017/03/18/interview-mark/</id>
     <published>2017-03-18T15:22:03.000Z</published>
-    <updated>2017-03-19T02:11:24.961Z</updated>
+    <updated>2017-03-19T15:23:04.124Z</updated>
     
     <content type="html"><![CDATA[<h1 id="手机淘宝一面、二面、三面-–2017年1月末（年前）"><a href="#手机淘宝一面、二面、三面-–2017年1月末（年前）" class="headerlink" title="手机淘宝一面、二面、三面 –2017年1月末（年前）"></a>手机淘宝一面、二面、三面 –2017年1月末（年前）</h1><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ol>
 <li><p>自我介绍</p>
@@ -36,7 +36,7 @@
 <li><p>自我介绍</p>
 <p><strong>主要是介绍自己的学习历程(不含课程内容，基本是自学的经历)</strong></p>
 <blockquote>
-<p>大一接触web开发，用php写过失物招领项目。</p>
+<p>大一接触web开发，用thinkphp写过失物招领项目。</p>
 <p>大二上学期写了一个酒店平台外包，工作室应用laravel人事管理系统。</p>
 <p>大二下学期转前端，学习前端知识，写node网站</p>
 <p>大二暑假UC RED设计中心实习，做国际营销项目，主要写移动端页面和动画，由于实习期间做的是印度项目，页面兼容性和动画性能方面要求很高，于是学习了很多前端性能还有动画性能优化的知识</p>
@@ -78,7 +78,7 @@
 <p><strong>基本是三面说的东西，但是加上了大三寒假回到UC实习的经历</strong></p>
 <blockquote>
 <p>大三寒假(17年后)通过面试进入了UC研发中心，主要用react,redux写ABTest项目平台的前台部分;维护vue1.x的UC奇趣项目，写ruby爬虫爬取漫画、段子等。</p>
-<p>技术专长方面的回答： 由于学习历程比较崎岖，个人方面没什么特别突出的技术专长，要说技术专长，可能就应该是动画和react了。</p>
+<p>技术专长方面的回答： 由于学习历程比较复杂，个人方面没什么特别突出的技术专长，要说技术专长，可能就应该是动画和react了。</p>
 </blockquote>
 <p><strong>总结：先专于一个方向，发展深了之后才考虑向其他方面扩展</strong></p>
 </li>
