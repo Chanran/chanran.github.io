@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-02-08T10:37:42.426Z</updated>
+  <updated>2017-03-19T02:11:24.961Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -14,6 +14,158 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试经历及总结(持续更新中)</title>
+    <link href="https://chanran.github.io/2017/03/18/interview-mark/"/>
+    <id>https://chanran.github.io/2017/03/18/interview-mark/</id>
+    <published>2017-03-18T15:22:03.000Z</published>
+    <updated>2017-03-19T02:11:24.961Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="手机淘宝一面、二面、三面-–2017年1月末（年前）"><a href="#手机淘宝一面、二面、三面-–2017年1月末（年前）" class="headerlink" title="手机淘宝一面、二面、三面 –2017年1月末（年前）"></a>手机淘宝一面、二面、三面 –2017年1月末（年前）</h1><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ol>
+<li><p>自我介绍</p>
+</li>
+<li><p>针对实习的经历、做过的项目进行询问：遇到过什么问题；怎么解决的；为什么不做得更好等问题</p>
+</li>
+<li><p>对新技术的看法、了解或者掌握</p>
+</li>
+<li><p>面试官：还有什么疑问吗</p>
+</li>
+</ol>
+<h2 id="具体"><a href="#具体" class="headerlink" title="具体"></a>具体</h2><ol>
+<li><p>自我介绍</p>
+<p><strong>主要是介绍自己的学习历程(不含课程内容，基本是自学的经历)</strong></p>
+<blockquote>
+<p>大一接触web开发，用php写过失物招领项目。</p>
+<p>大二上学期写了一个酒店平台外包，工作室应用laravel人事管理系统。</p>
+<p>大二下学期转前端，学习前端知识，写node网站</p>
+<p>大二暑假UC RED设计中心实习，做国际营销项目，主要写移动端页面和动画，由于实习期间做的是印度项目，页面兼容性和动画性能方面要求很高，于是学习了很多前端性能还有动画性能优化的知识</p>
+</blockquote>
+<p><strong>总结：注重说明个人技术成长经历，最好不要涉及非技术类社团活动等话题，简洁明了</strong></p>
+</li>
+<li><p>针对实习的经历、做过的项目进行询问</p>
+<p><strong>因为是内推，面试官基本都看过我的github和博客，所以基本都是问他们想要看重的点</strong></p>
+<blockquote>
+<p>基本都是问在UC RED实习的时候做的canvas loading动画。</p>
+<p>canvas api的熟悉程度、在写这个loading动画用到的数学和物理知识，面试官提出了一个更好的解决方法，然后我老实地说出了当时没想到要这样做。</p>
+</blockquote>
+<p><strong>总结：要稳扎稳打，夯实基础，平时多看书，多总结，多写博客，加油～</strong></p>
+</li>
+<li><p>对新技术的看法、了解或者掌握</p>
+<blockquote>
+<p>问了对react、vue、angular等层出不穷的框架的看法还有基本的区别</p>
+<p>问了AR、VR等高端技术的了解</p>
+<p>对这些新技术持的态度</p>
+</blockquote>
+<p><strong>总结：要保持关注业界的主流技术和高端技术。最好有往一个高端技术方向发展过</strong></p>
+</li>
+</ol>
+<hr>
+<h1 id="手机淘宝四面（交叉面）-–2017年3月10日"><a href="#手机淘宝四面（交叉面）-–2017年3月10日" class="headerlink" title="手机淘宝四面（交叉面） –2017年3月10日"></a>手机淘宝四面（交叉面） –2017年3月10日</h1><h2 id="过程-1"><a href="#过程-1" class="headerlink" title="过程"></a>过程</h2><ol>
+<li><p>说说学习技术的过程、专长的技术</p>
+</li>
+<li><p>询问一些基础的前端问题</p>
+</li>
+<li><p>写react增减器(阿里巴巴在线评测系统)</p>
+</li>
+<li><p>聊聊在UC实习的情况、以后的技术发展方向</p>
+</li>
+<li><p>面试官：还有什么疑问吗</p>
+</li>
+</ol>
+<h2 id="具体-1"><a href="#具体-1" class="headerlink" title="具体"></a>具体</h2><ol>
+<li><p>说说学习技术的过程、专长的技术</p>
+<p><strong>基本是三面说的东西，但是加上了大三寒假回到UC实习的经历</strong></p>
+<blockquote>
+<p>大三寒假(17年后)通过面试进入了UC研发中心，主要用react,redux写ABTest项目平台的前台部分;维护vue1.x的UC奇趣项目，写ruby爬虫爬取漫画、段子等。</p>
+<p>技术专长方面的回答： 由于学习历程比较崎岖，个人方面没什么特别突出的技术专长，要说技术专长，可能就应该是动画和react了。</p>
+</blockquote>
+<p><strong>总结：先专于一个方向，发展深了之后才考虑向其他方面扩展</strong></p>
+</li>
+<li><p>询问一些基础的前端问题</p>
+<p><strong>模态框的实现</strong></p>
+<blockquote>
+<p>外面弄一层遮罩层，然后设置透明度</p>
+<p>模态框的显示与不显示使用display none和block来控制</p>
+<p>中间居中的模态框主体使用绝对定位或者固定定位</p>
+<p>模态框最好在body的子元素下，不要位于嵌套元素之下，不然模态框会有一点问题(回头查了一下，<a href="http://v3.bootcss.com/javascript/#modals" target="_blank" rel="external">bootstrap官网</a>上也有说)</p>
+</blockquote>
+<p><strong>总结：个人觉得钻研还真是很重要，不能为了做而做，要学会深究。(因为恰好我研究过一点模态框的东西，还用过原生、vue等实现过，也知道写模态框的一些注意事项)</strong></p>
+</li>
+<li><p>写react增减器(阿里巴巴在线评测系统)</p>
+<p><strong>使用了react+redux这套来实现</strong></p>
+<blockquote>
+<p>简单实现了dispatch action 然后reducer实现计数器的+1和-1</p>
+</blockquote>
+<p><strong>总结：平常多点盲打，将知识(或者说api)记在脑子里，就不会说没了lint和emmet就不会写东西了</strong></p>
+</li>
+<li><p>聊聊在UC实习的情况、以后的技术发展方向</p>
+<blockquote>
+<p>问了问所在的部门做的业务，我现在做的项目，遇到的困难等</p>
+<p>因为个人学的东西比较杂(动画、react、vue、node、ruby、php、linux。。。确实比较杂)，我老实地说了个人比较喜欢搞技术，并不拘束方向，但觉得这样也有弊端，有可能会不精通。以后会专心攻一个方向的，大概这个样子。</p>
+</blockquote>
+<p><strong>总结：面试的时候一定要老实诚恳，而且不要乱说话（有可能你提到一个不擅长的领域，面试官就会问到底。。。问原理什么的）</strong></p>
+</li>
+</ol>
+<hr>
+<h1 id="手机淘宝五面（hr面）-–2017年3月15日-消费者日"><a href="#手机淘宝五面（hr面）-–2017年3月15日-消费者日" class="headerlink" title="手机淘宝五面（hr面） –2017年3月15日(消费者日)"></a>手机淘宝五面（hr面） –2017年3月15日(消费者日)</h1><h2 id="过程-2"><a href="#过程-2" class="headerlink" title="过程"></a>过程</h2><ol>
+<li><p>自我介绍</p>
+</li>
+<li><p>为什么投杭州不投广州UC</p>
+</li>
+<li><p>家庭允许远离广州到杭州吗</p>
+</li>
+<li><p>你个人是比较急躁的人吗</p>
+</li>
+<li><p>在工作室的时候，和别人合作，别人提出不同的意见，你会怎么做</p>
+</li>
+<li><p>weex和react native的用途（我很奇怪hr也问这些）</p>
+</li>
+<li><p>VR和AR。AR具体是什么</p>
+</li>
+</ol>
+<h2 id="具体-2"><a href="#具体-2" class="headerlink" title="具体"></a>具体</h2><p> <strong>我们不谈这个东西，保密，哈哈哈</strong></p>
+<hr>
+<h1 id="腾讯一面-–2017年3月13日"><a href="#腾讯一面-–2017年3月13日" class="headerlink" title="腾讯一面 –2017年3月13日"></a>腾讯一面 –2017年3月13日</h1><h2 id="过程-3"><a href="#过程-3" class="headerlink" title="过程"></a>过程</h2><ol>
+<li><p>自我介绍</p>
+</li>
+<li><p>询问技术问题</p>
+</li>
+<li><p>面试官：还有什么疑问</p>
+</li>
+</ol>
+<h2 id="具体-3"><a href="#具体-3" class="headerlink" title="具体"></a>具体</h2><ol>
+<li><p>自我介绍</p>
+<p><strong>基本和前面的相同</strong></p>
+</li>
+<li><p>询问技术问题</p>
+<ol>
+<li>react、vue、jquery的区别</li>
+<li><a href="https://segmentfault.com/a/1190000002799156" target="_blank" rel="external">jsonp的原理</a></li>
+<li><a href="https://github.com/gaearon/redux-thunk/blob/master/src/index.js" target="_blank" rel="external">redux-thunk的源码</a></li>
+<li><a href="https://segmentfault.com/a/1190000003933990" target="_blank" rel="external">jquery的选择器原理</a></li>
+<li>source map的使用</li>
+<li>跨域的处理(前端、后端)</li>
+</ol>
+<p><strong>总结：总体感觉一般般，基本问的点都答上了，但是不够深入。还是得往一个方向钻研，而且基础要打好，要又钻研精神</strong></p>
+</li>
+</ol>
+<hr>
+<blockquote>
+<p>附上本人的<a href="https://pan.baidu.com/s/1cd7WtS" target="_blank" rel="external">小简历</a>，有兴趣可以参考一下(密码:zufy)</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;手机淘宝一面、二面、三面-–2017年1月末（年前）&quot;&gt;&lt;a href=&quot;#手机淘宝一面、二面、三面-–2017年1月末（年前）&quot; class=&quot;headerlink&quot; title=&quot;手机淘宝一面、二面、三面 –2017年1月末（年前）&quot;&gt;&lt;/a&gt;手机淘宝一面、二
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="https://chanran.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>[转载]译文《容器组件和展示组件》原作者：Dan Abramov</title>
@@ -203,9 +355,9 @@
     </summary>
     
     
-      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
-    
       <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
+    
+      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -308,7 +460,7 @@
     <link href="https://chanran.github.io/2017/01/11/variable-deconstruction/"/>
     <id>https://chanran.github.io/2017/01/11/variable-deconstruction/</id>
     <published>2017-01-11T10:38:09.000Z</published>
-    <updated>2017-01-12T13:37:52.450Z</updated>
+    <updated>2017-03-18T16:19:15.507Z</updated>
     
     <content type="html"><![CDATA[<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><blockquote>
 <p>ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。</p>
@@ -1008,11 +1160,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
-      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
+      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
       <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
-      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
+      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1122,11 +1274,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
-      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
-    
       <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
       <category term="js" scheme="https://chanran.github.io/tags/js/"/>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
   </entry>
   
@@ -1441,9 +1593,9 @@
       <category term="面试" scheme="https://chanran.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
-      <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="面试" scheme="https://chanran.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="前端" scheme="https://chanran.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
