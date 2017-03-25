@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-03-19T15:47:28.727Z</updated>
+  <updated>2017-03-25T15:34:13.829Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://chanran.github.io/2017/03/18/interview-mark/"/>
     <id>https://chanran.github.io/2017/03/18/interview-mark/</id>
     <published>2017-03-18T15:22:03.000Z</published>
-    <updated>2017-03-19T15:47:28.727Z</updated>
+    <updated>2017-03-25T15:34:13.829Z</updated>
     
     <content type="html"><![CDATA[<h1 id="手机淘宝一面、二面、三面-–2017年1月末（年前）"><a href="#手机淘宝一面、二面、三面-–2017年1月末（年前）" class="headerlink" title="手机淘宝一面、二面、三面 –2017年1月末（年前）"></a>手机淘宝一面、二面、三面 –2017年1月末（年前）</h1><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ol>
 <li><p>自我介绍</p>
@@ -148,6 +148,51 @@
 <li>跨域的处理(前端、后端)</li>
 </ol>
 <p><strong>总结：总体感觉一般般，基本问的点都答上了，但是不够深入。还是得往一个方向钻研，而且基础要打好，要有钻研精神</strong></p>
+</li>
+</ol>
+<h1 id="腾讯二面-–2017年3月22日"><a href="#腾讯二面-–2017年3月22日" class="headerlink" title="腾讯二面 –2017年3月22日"></a>腾讯二面 –2017年3月22日</h1><h2 id="过程-4"><a href="#过程-4" class="headerlink" title="过程"></a>过程</h2><ol>
+<li><p>自我介绍</p>
+</li>
+<li><p>询问技术问题</p>
+</li>
+<li><p>面试官：还有什么疑问</p>
+</li>
+</ol>
+<h2 id="具体-4"><a href="#具体-4" class="headerlink" title="具体"></a>具体</h2><ol>
+<li><p>自我介绍</p>
+<p><strong>基本和前面的相同</strong></p>
+</li>
+<li><p>询问技术问题</p>
+<ol>
+<li>react、vue源码</li>
+<li>http协议<ol>
+<li>状态码</li>
+<li>request结构(第一行是什么，第二行是什么等)</li>
+<li>get的参数长度限制</li>
+</ol>
+</li>
+<li>浏览器缓存<ol>
+<li>有几种策略</li>
+<li>expires具体的过程</li>
+</ol>
+</li>
+<li>跨域<ol>
+<li>有几种方式跨域</li>
+<li>JSONP原理</li>
+<li>跨域具体过程，状态等</li>
+</ol>
+</li>
+<li>web安全<ol>
+<li>csrf原理</li>
+<li>csrf具体例子</li>
+</ol>
+</li>
+<li>sql<ol>
+<li>索引的原理</li>
+</ol>
+</li>
+<li>PC微信端的登录过程<br>从扫了PC微信端的二维码过程中发生了什么（好像回答错了，应该是类似“在百度回车之后发生什么事”这个例子）</li>
+</ol>
 </li>
 </ol>
 <hr>
@@ -355,9 +400,9 @@
     </summary>
     
     
-      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
-    
       <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
   </entry>
   
@@ -1043,11 +1088,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
-      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
+      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
     
       <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
-      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
+      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
   </entry>
   
@@ -1157,11 +1202,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
+    
       <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
       <category term="js" scheme="https://chanran.github.io/tags/js/"/>
-    
-      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
   </entry>
   
