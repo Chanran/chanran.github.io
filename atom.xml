@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-03-25T15:34:13.829Z</updated>
+  <updated>2017-03-25T15:46:47.241Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://chanran.github.io/2017/03/18/interview-mark/"/>
     <id>https://chanran.github.io/2017/03/18/interview-mark/</id>
     <published>2017-03-18T15:22:03.000Z</published>
-    <updated>2017-03-25T15:34:13.829Z</updated>
+    <updated>2017-03-25T15:46:47.241Z</updated>
     
     <content type="html"><![CDATA[<h1 id="手机淘宝一面、二面、三面-–2017年1月末（年前）"><a href="#手机淘宝一面、二面、三面-–2017年1月末（年前）" class="headerlink" title="手机淘宝一面、二面、三面 –2017年1月末（年前）"></a>手机淘宝一面、二面、三面 –2017年1月末（年前）</h1><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ol>
 <li><p>自我介绍</p>
@@ -195,6 +195,7 @@
 </ol>
 </li>
 </ol>
+<p><strong>总结：对于前端框架源码方面还需要加强学习，http协议只知道大概，没有记住具体。思考得还不够深入，比如第七个问题，加强思维锻炼。</strong></p>
 <hr>
 <blockquote>
 <p>附上本人的<a href="https://pan.baidu.com/s/1cd7WtS" target="_blank" rel="external">小简历</a>，有兴趣可以参考一下(密码:zufy)</p>
@@ -400,9 +401,9 @@
     </summary>
     
     
-      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
-    
       <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
+    
+      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1088,11 +1089,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
-      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
+      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
       <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
-      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
+      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1202,11 +1203,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
-      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
-    
       <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
       <category term="js" scheme="https://chanran.github.io/tags/js/"/>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
   </entry>
   
