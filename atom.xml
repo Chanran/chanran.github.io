@@ -455,9 +455,9 @@
     </summary>
     
     
-      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
-    
       <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
+    
+      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -704,9 +704,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -772,9 +772,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -818,9 +818,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -853,9 +853,9 @@
     </summary>
     
     
-      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="C++" scheme="https://chanran.github.io/tags/C/"/>
+    
+      <category term="算法" scheme="https://chanran.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -1143,11 +1143,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
-      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
+      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
       <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
-      <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
+      <category term="javascript" scheme="https://chanran.github.io/tags/javascript/"/>
     
   </entry>
   
@@ -1257,11 +1257,11 @@
       <category term="nodejs" scheme="https://chanran.github.io/categories/nodejs/"/>
     
     
-      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
-    
       <category term="electron" scheme="https://chanran.github.io/tags/electron/"/>
     
       <category term="js" scheme="https://chanran.github.io/tags/js/"/>
+    
+      <category term="nodejs" scheme="https://chanran.github.io/tags/nodejs/"/>
     
   </entry>
   
@@ -1325,7 +1325,7 @@
     <link href="https://chanran.github.io/2016/11/13/%E8%AE%B0%E5%BD%95%E8%AF%BB%E8%BF%87%E7%9A%84%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E4%B9%A6%E7%B1%8D/"/>
     <id>https://chanran.github.io/2016/11/13/记录读过的有意义的书籍/</id>
     <published>2016-11-13T11:50:50.000Z</published>
-    <updated>2017-04-09T13:18:40.036Z</updated>
+    <updated>2017-04-15T11:42:14.920Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/img/yuedu.jpg" alt="阅读的猫"></p>
 <blockquote>
@@ -1351,6 +1351,11 @@
 <p>技术无分方向,学多了实践多了便会贯通。</p>
 </blockquote>
 <ul>
+<li><p>《Node与Express开发》</p>
+<blockquote>
+<p><strong>进度：</strong>第六章<br><strong>计划：</strong>5月前看完<br><strong>评价：</strong>适合node新手建站的一本书，从初学到建立一个完整的有seo优化、性能优化、安全的网站再到维护网站的过程。很实用，跟着步骤做完能掌握建站的流程和注意事项。</p>
+</blockquote>
+</li>
 <li><p>《Javascript函数式编程》</p>
 <blockquote>
 <p><strong>进度：</strong>第一章。<br><strong>计划：</strong>每天看一小节。<br><strong>评价：</strong>暂无。</p>
