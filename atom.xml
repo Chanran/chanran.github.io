@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chanran.github.io/"/>
-  <updated>2017-03-25T16:12:23.275Z</updated>
+  <updated>2017-05-09T15:47:54.029Z</updated>
   <id>https://chanran.github.io/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vuejs v-for出现的DOMExpection</title>
+    <link href="https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/"/>
+    <id>https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/</id>
+    <published>2017-05-09T15:34:18.000Z</published>
+    <updated>2017-05-09T15:47:54.029Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>出错信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DOMException: Failed to execute &apos;insertBefore&apos; on &apos;Node&apos;: The node before which the new node is to be inserted is not a child of this node.</div></pre></td></tr></table></figure>
+<p>出错代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; /* 聊天标签页聊天记录(群聊) */ &#125;&#125;</div><div class="line">&lt;div class=&quot;chat-container&quot; v-if=&quot;talkingTo === -1&quot;&gt;</div><div class="line">    群聊</div><div class="line">&lt;/div&gt;</div><div class="line">&#123;&#123; /* 聊天标签页聊天记录(私聊) */ &#125;&#125;</div><div class="line">&lt;template v-for=&quot;(personIndex, index) in talkToPeople&quot;&gt;</div><div class="line">  &lt;div class=&quot;chat-container&quot; v-if=&quot;talkingTo === personIndex&quot;&gt;</div><div class="line">    &#123;&#123;people[personIndex].label&#125;&#125;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><blockquote>
+<p>v-for前面需要有<strong>固定在dom里的元素</strong>，所以前一个同级dom元素不能用v-if(不确定是否挂载在dom上的)</p>
+</blockquote>
+<p>将v-if 和 v-for的dom元素调换位置（在我这个项目可以这样处理，应该根据自身项目需求处理）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; /* 聊天标签页聊天记录(私聊) */ &#125;&#125;</div><div class="line">&lt;template v-for=&quot;(personIndex, index) in talkToPeople&quot;&gt;</div><div class="line">&lt;div class=&quot;chat-container&quot; v-if=&quot;talkingTo === personIndex&quot;&gt;</div><div class="line">&#123;&#123;people[personIndex].label&#125;&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line">&#123;&#123; /* 聊天标签页聊天记录(群聊) */ &#125;&#125;</div><div class="line">&lt;div class=&quot;chat-container&quot; v-if=&quot;talkingTo === -1&quot;&gt;</div><div class="line">    群聊</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://github.com/vuejs/vue/issues/3406" target="_blank" rel="external">DOMException: Failed to execute ‘insertBefore’ on ‘Node’: The node before which the new node is to be inserted is not a child of this node</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h1&gt;&lt;p&gt;出错信息：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://chanran.github.io/tags/vue/"/>
+    
+      <category term="fix" scheme="https://chanran.github.io/tags/fix/"/>
+    
+  </entry>
   
   <entry>
     <title>2017年要学的知识</title>
@@ -73,17 +106,17 @@
     <link href="https://chanran.github.io/2017/03/18/interview-mark/"/>
     <id>https://chanran.github.io/2017/03/18/interview-mark/</id>
     <published>2017-03-18T15:22:03.000Z</published>
-    <updated>2017-03-25T15:57:03.864Z</updated>
+    <updated>2017-05-09T15:50:37.228Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="手机淘宝一面、二面、三面-–2017年1月末（年前）"><a href="#手机淘宝一面、二面、三面-–2017年1月末（年前）" class="headerlink" title="手机淘宝一面、二面、三面 –2017年1月末（年前）"></a>手机淘宝一面、二面、三面 –2017年1月末（年前）</h1><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ol>
+    <content type="html"><![CDATA[<p><strong>已确定去手机淘宝</strong></p>
+<h1 id="手机淘宝一面、二面、三面-–2017年1月末（年前）"><a href="#手机淘宝一面、二面、三面-–2017年1月末（年前）" class="headerlink" title="手机淘宝一面、二面、三面 –2017年1月末（年前）"></a>手机淘宝一面、二面、三面 –2017年1月末（年前）</h1><h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ol>
 <li><p>自我介绍</p>
 </li>
 <li><p>针对实习的经历、做过的项目进行询问：遇到过什么问题；怎么解决的；为什么不做得更好等问题</p>
 </li>
 <li><p>对新技术的看法、了解或者掌握</p>
 </li>
-<li><p>面试官：还有什么疑问吗</p>
-</li>
+<li>面试官：还有什么疑问吗</li>
 </ol>
 <h2 id="具体"><a href="#具体" class="headerlink" title="具体"></a>具体</h2><ol>
 <li><p>自我介绍</p>
@@ -250,15 +283,13 @@
 </li>
 </ol>
 <p><strong>总结：对于前端框架源码方面还需要加强学习，http协议只知道大概，没有记住具体。思考得还不够深入，比如第七个问题，加强思维锻炼。</strong></p>
-<hr>
-<blockquote>
-<p>附上本人的<a href="https://pan.baidu.com/s/1cd7WtS" target="_blank" rel="external">小简历</a>，有兴趣可以参考一下(密码:zufy)</p>
-</blockquote>
+<h1 id="腾讯霸面（广州希尔顿酒店）"><a href="#腾讯霸面（广州希尔顿酒店）" class="headerlink" title="腾讯霸面（广州希尔顿酒店）"></a>腾讯霸面（广州希尔顿酒店）</h1><hr>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;手机淘宝一面、二面、三面-–2017年1月末（年前）&quot;&gt;&lt;a href=&quot;#手机淘宝一面、二面、三面-–2017年1月末（年前）&quot; class=&quot;headerlink&quot; title=&quot;手机淘宝一面、二面、三面 –2017年1月末（年前）&quot;&gt;&lt;/a&gt;手机淘宝一面、二
+      &lt;p&gt;&lt;strong&gt;已确定去手机淘宝&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;手机淘宝一面、二面、三面-–2017年1月末（年前）&quot;&gt;&lt;a href=&quot;#手机淘宝一面、二面、三面-–2017年1月末（年前）&quot; class=&quot;headerlink&quot; title=&quot;手机淘宝一面、
     
     </summary>
     
@@ -1325,7 +1356,7 @@
     <link href="https://chanran.github.io/2016/11/13/%E8%AE%B0%E5%BD%95%E8%AF%BB%E8%BF%87%E7%9A%84%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E4%B9%A6%E7%B1%8D/"/>
     <id>https://chanran.github.io/2016/11/13/记录读过的有意义的书籍/</id>
     <published>2016-11-13T11:50:50.000Z</published>
-    <updated>2017-04-15T11:42:14.920Z</updated>
+    <updated>2017-04-15T11:47:08.632Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/img/yuedu.jpg" alt="阅读的猫"></p>
 <blockquote>
