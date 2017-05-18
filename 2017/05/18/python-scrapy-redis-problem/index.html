@@ -15,11 +15,9 @@
   <meta name="description" content="问题重现根据这篇文章尝试，scrapy-redis实例
 到了运行scrapy crawl dmoz,报错了
 1redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
-解决
-查询是否启动了redis
-
+解决查询是否启动了redis。
 1netstat -anltp | grep redis
-如果没有启">
+如果没有启动">
 <meta property="og:type" content="article">
 <meta property="og:title" content="scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.">
 <meta property="og:url" content="https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/index.html">
@@ -27,22 +25,18 @@
 <meta property="og:description" content="问题重现根据这篇文章尝试，scrapy-redis实例
 到了运行scrapy crawl dmoz,报错了
 1redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
-解决
-查询是否启动了redis
-
+解决查询是否启动了redis。
 1netstat -anltp | grep redis
-如果没有启">
-<meta property="og:updated_time" content="2017-05-18T15:15:27.285Z">
+如果没有启动">
+<meta property="og:updated_time" content="2017-05-18T15:30:57.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.">
 <meta name="twitter:description" content="问题重现根据这篇文章尝试，scrapy-redis实例
 到了运行scrapy crawl dmoz,报错了
 1redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
-解决
-查询是否启动了redis
-
+解决查询是否启动了redis。
 1netstat -anltp | grep redis
-如果没有启">
+如果没有启动">
   
     <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
   
@@ -207,17 +201,13 @@
             <h1 id="问题重现"><a href="#问题重现" class="headerlink" title="问题重现"></a>问题重现</h1><p>根据这篇文章尝试，<a href="http://yanyan0108.blog.163.com/blog/static/173747928201591524728727/" target="_blank" rel="external">scrapy-redis实例</a></p>
 <p>到了运行<code>scrapy crawl dmoz</code>,报错了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.</div></pre></td></tr></table></figure>
-<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><blockquote>
-<p>查询是否启动了redis</p>
-</blockquote>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>查询是否启动了redis。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -anltp | grep redis</div></pre></td></tr></table></figure>
-<p>如果没有启动则启动</p>
-<blockquote>
+<p>如果没有启动则启动。</p>
 <p>若是启动了之后还是报错，那就根据报错信息追寻，发现<strong>localhost:6379</strong>这条信息很可疑。</p>
-</blockquote>
 <p>redis确实运行在6379，那问题就处在localhost。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/hosts</div></pre></td></tr></table></figure>
-<p>打开hosts文件后发现localhost被覆盖了</p>
+<p>打开hosts文件后发现localhost被覆盖了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">127.0.0.2 localhost</div><div class="line">127.0.0.1 hhr.blue.com  </div><div class="line">127.0.0.2 grademanage.blue.com</div></pre></td></tr></table></figure>
 <p>修改成</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">127.0.0.1 localhost</div><div class="line">127.0.0.3 hhr.blue.com  </div><div class="line">127.0.0.2 grademanage.blue.com</div></pre></td></tr></table></figure>
