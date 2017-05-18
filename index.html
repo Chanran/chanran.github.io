@@ -158,6 +158,60 @@
     <ul class="post-list">
     
         <li class="post-list-item">
+            <article id="post-python-scrapy-redis-problem"
+  class="article-card article-type-post" itemprop="blogPost">
+     
+    <div class="post-meta">
+        <time datetime="2017-05-18T14:49:27.000Z" itemprop="datePublished" class="post-time">
+  2017-05-18
+</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/05/18/python-scrapy-redis-problem/">scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent" >
+
+    
+        问题重现根据这篇文章尝试，scrapy-redis实例
+到了运行scrapy crawl dmoz,报错了
+1redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+解决
+查询是否启动了redis
+
+1netstat -anltp | grep redis
+如果...
+    
+    
+        <a href="/2017/05/18/python-scrapy-redis-problem/" class="post-more waves-effect waves-button">
+            阅读全文...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item">
             <article id="post-vue-failed-to-execute-insertBefore"
   class="article-card article-type-post" itemprop="blogPost">
      
@@ -621,55 +675,6 @@ ES6允许按照一定模式，从数组和对象中提取值，对变量进行�
     
     
         <a href="/2017/01/11/variable-deconstruction/" class="post-more waves-effect waves-button">
-            阅读全文...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item">
-            <article id="post-ES6-let-const"
-  class="article-card article-type-post" itemprop="blogPost">
-     
-    <div class="post-meta">
-        <time datetime="2017-01-11T03:44:13.000Z" itemprop="datePublished" class="post-time">
-  2017-01-11
-</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/01/11/ES6-let-const/">ES6(一)--let和const</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent" >
-
-    
-        使用let，不会造成变量提升ES512console.log(test); //结果是undefinedvar test = &apos;test&apos;;
-可以理解为:123var test;console.log(test); //结果是undefinedtest = &apos;test&apos;;
-ES612console.log(test); //结果是ReferenceEr...
-    
-    
-        <a href="/2017/01/11/ES6-let-const/" class="post-more waves-effect waves-button">
             阅读全文...
         </a>
     </div>

@@ -5,32 +5,44 @@
   
   
   
-  <title>vuejs v-for出现的DOMExpection | blue&#39;s blog | coding is funny.</title>
+  <title>scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused. | blue&#39;s blog | coding is funny.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="vue,fix">
-  <meta name="description" content="问题描述出错信息：
-1DOMException: Failed to execute &amp;apos;insertBefore&amp;apos; on &amp;apos;Node&amp;apos;: The node before which the new node is to be inserted is not a child of this node.
-出错代码：
-12345678910&amp;#123;&amp;#123;">
+  <meta name="keywords" content="python,爬虫">
+  <meta name="description" content="问题重现根据这篇文章尝试，scrapy-redis实例
+到了运行scrapy crawl dmoz,报错了
+1redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+解决
+查询是否启动了redis
+
+1netstat -anltp | grep redis
+如果没有启">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vuejs v-for出现的DOMExpection">
-<meta property="og:url" content="https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/index.html">
+<meta property="og:title" content="scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.">
+<meta property="og:url" content="https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/index.html">
 <meta property="og:site_name" content="blue's blog">
-<meta property="og:description" content="问题描述出错信息：
-1DOMException: Failed to execute &amp;apos;insertBefore&amp;apos; on &amp;apos;Node&amp;apos;: The node before which the new node is to be inserted is not a child of this node.
-出错代码：
-12345678910&amp;#123;&amp;#123;">
-<meta property="og:updated_time" content="2017-05-09T15:47:54.029Z">
+<meta property="og:description" content="问题重现根据这篇文章尝试，scrapy-redis实例
+到了运行scrapy crawl dmoz,报错了
+1redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+解决
+查询是否启动了redis
+
+1netstat -anltp | grep redis
+如果没有启">
+<meta property="og:updated_time" content="2017-05-18T15:01:04.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vuejs v-for出现的DOMExpection">
-<meta name="twitter:description" content="问题描述出错信息：
-1DOMException: Failed to execute &amp;apos;insertBefore&amp;apos; on &amp;apos;Node&amp;apos;: The node before which the new node is to be inserted is not a child of this node.
-出错代码：
-12345678910&amp;#123;&amp;#123;">
+<meta name="twitter:title" content="scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.">
+<meta name="twitter:description" content="问题重现根据这篇文章尝试，scrapy-redis实例
+到了运行scrapy crawl dmoz,报错了
+1redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.
+解决
+查询是否启动了redis
+
+1netstat -anltp | grep redis
+如果没有启">
   
     <link rel="alternative" href="/atom.xml" title="blue&#39;s blog" type="application/atom+xml">
   
@@ -129,7 +141,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">vuejs v-for出现的DOMExpection</div>
+        <div class="flex-col header-title ellipsis">scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -151,11 +163,11 @@
 <header class="content-header post-header">
 
     <div class="container">
-        <h1 class="title">vuejs v-for出现的DOMExpection</h1>
+        <h1 class="title">scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-05-09T15:34:18.000Z" itemprop="datePublished" class="page-time">
-  2017-05-09
+                <time datetime="2017-05-18T14:49:27.000Z" itemprop="datePublished" class="page-time">
+  2017-05-18
 </time>
 
 
@@ -173,18 +185,18 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题描述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解决方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">解决方法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考链接</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题重现"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题重现</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解决"><span class="post-toc-number">2.</span> <span class="post-toc-text">解决</span></a></li></ol>
         </nav>
     </aside>
     
-<article id="post-vue-failed-to-execute-insertBefore" 
+<article id="post-python-scrapy-redis-problem" 
   class="post-article article-type-post" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">vuejs v-for出现的DOMExpection</h1>
+        <h1 class="post-card-title">scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.</h1>
         <div class="post-meta">
-            <time datetime="2017-05-09T15:34:18.000Z" itemprop="datePublished" class="post-time">
-  2017-05-09
+            <time datetime="2017-05-18T14:49:27.000Z" itemprop="datePublished" class="post-time">
+  2017-05-18
 </time>
 
             
@@ -192,22 +204,30 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>出错信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DOMException: Failed to execute &apos;insertBefore&apos; on &apos;Node&apos;: The node before which the new node is to be inserted is not a child of this node.</div></pre></td></tr></table></figure>
-<p>出错代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; /* 聊天标签页聊天记录(群聊) */ &#125;&#125;</div><div class="line">&lt;div class=&quot;chat-container&quot; v-if=&quot;talkingTo === -1&quot;&gt;</div><div class="line">    群聊</div><div class="line">&lt;/div&gt;</div><div class="line">&#123;&#123; /* 聊天标签页聊天记录(私聊) */ &#125;&#125;</div><div class="line">&lt;template v-for=&quot;(personIndex, index) in talkToPeople&quot;&gt;</div><div class="line">  &lt;div class=&quot;chat-container&quot; v-if=&quot;talkingTo === personIndex&quot;&gt;</div><div class="line">    &#123;&#123;people[personIndex].label&#125;&#125;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><blockquote>
-<p>v-for前面需要有<strong>固定在dom里的元素</strong>，所以前一个同级dom元素不能用v-if(不确定是否挂载在dom上的)</p>
-</blockquote>
-<p>将v-if 和 v-for的dom元素调换位置（在我这个项目可以这样处理，应该根据自身项目需求处理）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; /* 聊天标签页聊天记录(私聊) */ &#125;&#125;</div><div class="line">&lt;template v-for=&quot;(personIndex, index) in talkToPeople&quot;&gt;</div><div class="line">&lt;div class=&quot;chat-container&quot; v-if=&quot;talkingTo === personIndex&quot;&gt;</div><div class="line">&#123;&#123;people[personIndex].label&#125;&#125;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/template&gt;</div><div class="line">&#123;&#123; /* 聊天标签页聊天记录(群聊) */ &#125;&#125;</div><div class="line">&lt;div class=&quot;chat-container&quot; v-if=&quot;talkingTo === -1&quot;&gt;</div><div class="line">    群聊</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://github.com/vuejs/vue/issues/3406" target="_blank" rel="external">DOMException: Failed to execute ‘insertBefore’ on ‘Node’: The node before which the new node is to be inserted is not a child of this node</a></p>
+            <h1 id="问题重现"><a href="#问题重现" class="headerlink" title="问题重现"></a>问题重现</h1><p>根据这篇文章尝试，<a href="http://yanyan0108.blog.163.com/blog/static/173747928201591524728727/" target="_blank" rel="external">scrapy-redis实例</a></p>
+<p>到了运行<code>scrapy crawl dmoz</code>,报错了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis.exceptions.ConnectionError: Error 111 connecting to localhost:6379. Connection refused.</div></pre></td></tr></table></figure>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><ol>
+<li>查询是否启动了redis</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -anltp | grep redis</div></pre></td></tr></table></figure>
+<p>如果没有启动则启动</p>
+<ol>
+<li>若是启动了之后还是报错，那就根据报错信息追寻，发现<strong>localhost:6379</strong>这条信息很可疑。</li>
+</ol>
+<p>redis确实运行在6379，那问题就处在localhost。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/hosts</div></pre></td></tr></table></figure>
+<p>打开hosts文件后发现localhost被覆盖了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">127.0.0.2 localhost</div><div class="line">127.0.0.1 hhr.blue.com  </div><div class="line">127.0.0.2 grademanage.blue.com</div></pre></td></tr></table></figure>
+<p>修改成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">127.0.0.1 localhost</div><div class="line">127.0.0.3 hhr.blue.com  </div><div class="line">127.0.0.2 grademanage.blue.com</div></pre></td></tr></table></figure>
+<p>再试一下<code>scrapy crawl dmoz</code>，问题解决啦～</p>
 
         </div>
         
         <blockquote class="post-copyright">
     <div class="content">
-        转载请注明转自:<a href="/2017/05/09/vue-failed-to-execute-insertBefore/" target="_blank" rel="external">https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/index.html</a>
+        转载请注明转自:<a href="/2017/05/18/python-scrapy-redis-problem/" target="_blank" rel="external">https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/index.html</a>
     </div>
     <footer>
         <a href="https://chanran.github.io">
@@ -225,7 +245,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fix/">fix</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
 
 
             
@@ -236,7 +256,7 @@
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/&title=《vuejs v-for出现的DOMExpection》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/&title=《scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -246,22 +266,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/&title=《vuejs v-for出现的DOMExpection》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/&title=《scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vuejs v-for出现的DOMExpection》 — blue's blog&url=https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/&via=https://chanran.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.》 — blue's blog&url=https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/&via=https://chanran.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -281,21 +301,14 @@
     </div>   
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/05/18/python-scrapy-redis-problem/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/03/25/2017planTolearn/" id="post-next" class="post-nav-link">
+      <a href="/2017/05/09/vue-failed-to-execute-insertBefore/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">2017年要学的知识</h4>
+        <h4 class="title">vuejs v-for出现的DOMExpection</h4>
       </a>
     </div>
   
@@ -305,7 +318,7 @@
             
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="vue-failed-to-execute-insertBefore" data-title="vuejs v-for出现的DOMExpection" data-url="https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/"></div>
+	<div class="ds-thread" data-thread-key="python-scrapy-redis-problem" data-title="scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused." data-url="https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/"></div>
 </div>
 <script src="/js/embed.min.js?v=1.2"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -359,7 +372,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/&title=《vuejs v-for出现的DOMExpection》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/&title=《scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.》 — blue's blog&pic=https://chanran.github.io/img/meAndYou.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -369,22 +382,22 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/&title=《vuejs v-for出现的DOMExpection》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/&title=《scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.》 — blue's blog&source=记录着blue的技术生涯--前端,后端,服务器遇到的各种问题以及感悟的博客" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vuejs v-for出现的DOMExpection》 — blue's blog&url=https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/&via=https://chanran.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《scrapy-redis启动爬虫时出错：Error 111 connecting to localhost:6379. Connection refused.》 — blue's blog&url=https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/&via=https://chanran.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -395,7 +408,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="http://s.jiathis.com/qrcode.php?url=https://chanran.github.io/2017/05/09/vue-failed-to-execute-insertBefore/" alt="微信分享二维码">
+    <img src="http://s.jiathis.com/qrcode.php?url=https://chanran.github.io/2017/05/18/python-scrapy-redis-problem/" alt="微信分享二维码">
 </div>
 
 
